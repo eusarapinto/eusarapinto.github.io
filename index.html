@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eu sarapinto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111;
+      --white: #fff;
+      --gray: #e8e8e4;
+      --light-gray: #f4f4f2;
+      --mid-gray: #999;
+      --gap: 3px;
+      --expand-bg: #f9f9f7;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      background: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 40px;
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 100;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    header.scrolled { border-color: var(--gray); }
+
+    .logo {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--black);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    /* placeholder until real logo is provided */
+    .logo-placeholder {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.5rem;
+      color: #c0392b;
+      letter-spacing: -0.01em;
+    }
+
+    nav a {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--black); }
+
+    /* ── GRID ── */
+    main { flex: 1; }
+
+    .grid-wrapper {
+      padding: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap);
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .grid-wrapper { padding: 20px; }
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .grid-wrapper { padding: 12px; }
+      header { padding: 20px 20px; }
+    }
+
+    /* each tile is a grid item */
+    .tile {
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      background: var(--light-gray);
+    }
+
+    /* strict square via padding trick */
+    .tile-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+    }
+
+    .tile img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+    }
+
+    .tile:hover img { transform: scale(1.04); }
+
+    /* tile overlay on hover */
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      transition: background 0.3s;
+      pointer-events: none;
+    }
+
+    .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
+
+    .tile-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: white;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.25s, transform 0.25s;
+      line-height: 1.3;
+    }
+
+    .tile:hover .tile-title {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* placeholder tile while images load */
+    .tile-placeholder {
+      position: absolute;
+      inset: 0;
+      background: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--mid-gray);
+      letter-spacing: 0.05em;
+    }
+
+    /* active tile state */
+    .tile.active img { opacity: 0.7; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .lightbox.open { display: flex; flex-direction: column; }
+
+    @keyframes lbIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* top bar */
+    .lb-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--gray);
+      flex-shrink: 0;
+    }
+
+    .lb-title {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--black);
+    }
+
+    .lb-close {
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mid-gray);
+      transition: color 0.2s;
+      padding: 0;
+    }
+
+    .lb-close:hover { color: var(--black); }
+    .lb-close svg { width: 20px; height: 20px; }
+
+    /* main content area */
+    .lb-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 32px 80px;
+    }
+
+    /* desktop: panels side by side */
+    .lb-images {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+      max-height: 100%;
+      width: 100%;
+    }
+
+    .lb-images img {
+      flex: 1;
+      min-width: 0;
+      max-height: calc(100vh - 160px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* desktop prev/next comic arrows */
+    .lb-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: var(--white);
+      border: 1px solid var(--gray);
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      transition: background 0.2s, border-color 0.2s;
+      z-index: 10;
+    }
+
+    .lb-arrow:hover { background: var(--light-gray); border-color: var(--black); }
+    .lb-arrow:disabled { opacity: 0.2; cursor: default; }
+    .lb-arrow svg { width: 16px; height: 16px; }
+    .lb-arrow.prev { left: 20px; }
+    .lb-arrow.next { right: 20px; }
+
+    /* dots — panel indicator, mobile only */
+    .lb-dots {
+      flex-shrink: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px;
+    }
+
+    .lb-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gray);
+      transition: background 0.2s;
+    }
+
+    .lb-dot.active { background: var(--black); }
+
+    @media (max-width: 600px) {
+      .lb-dots { display: flex; }
+    }
+
+    /* ── MOBILE LIGHTBOX ── */
+    @media (max-width: 600px) {
+      .lightbox.open {
+        display: block;
+        overflow-y: auto;
+        background: var(--white);
+      }
+
+      .lb-bar {
+        position: sticky;
+        top: 0;
+        background: var(--white);
+        z-index: 10;
+      }
+
+      .lb-content {
+        padding: 0;
+        display: block;
+        overflow: visible;
+      }
+
+      .lb-images {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .lb-images img {
+        width: 100%;
+        max-height: none;
+        height: auto;
+      }
+
+      .lb-arrow { display: none; }
+
+      /* mobile: show all panels stacked, then more comics below */
+      .lb-more {
+        border-top: 1px solid var(--gray);
+        padding: 20px 16px 12px;
+      }
+
+      .lb-more-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--mid-gray);
+        margin-bottom: 10px;
+      }
+
+      .lb-more-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+      }
+
+      .lb-more-tile {
+        aspect-ratio: 1;
+        overflow: hidden;
+        cursor: pointer;
+        background: var(--light-gray);
+      }
+
+      .lb-more-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    @media (min-width: 601px) {
+      .lb-more { display: none; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 48px 40px;
+      border-top: 1px solid var(--gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 32px 20px;
+        text-align: center;
+      }
+    }
+
+    .footer-name {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--mid-gray);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--black); }
+
+    /* ── LOADING STATE ── */
+    .loading {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px;
+      font-size: 0.8rem;
+      color: var(--mid-gray);
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <!-- Replace the span below with an <img> tag once you have your logo file -->
+    <a href="/" class="logo-placeholder">eu sarapinto</a>
+    <nav>
+      <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </header>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lb-bar">
+      <span class="lb-title" id="lb-title"></span>
+      <button class="lb-close" id="lb-close" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="lb-content" id="lb-content">
+      <button class="lb-arrow prev" id="lb-prev" aria-label="Comic anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+      <div class="lb-images" id="lb-images"></div>
+      <button class="lb-arrow next" id="lb-next" aria-label="Próximo comic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </button>
+    </div>
+    <div class="lb-dots" id="lb-dots"></div>
+    <!-- mobile only: more comics below -->
+    <div class="lb-more" id="lb-more">
+      <div class="lb-more-label">Mais comics</div>
+      <div class="lb-more-grid" id="lb-more-grid"></div>
+    </div>
+  </div>
+
+  <main>
+    <div class="grid-wrapper">
+      <div class="grid" id="grid">
+        <div class="loading">a carregar...</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-name">eu sarapinto</span>
+    <div class="footer-links">
+      <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    let comics = [];
+    let activeIndex = null;
+
+    // ── Sticky header ──
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // ── Load ──
+    async function loadComics() {
+      try {
+        const res = await fetch('comics.json');
+        comics = await res.json();
+        renderGrid();
+      } catch (e) {
+        document.getElementById('grid').innerHTML =
+          '<div class="loading">erro a carregar os comics.</div>';
+      }
+    }
+
+    // ── Grid ──
+    function renderGrid() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      comics.forEach((comic, i) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.dataset.index = i;
+        tile.innerHTML = `
+          <div class="tile-inner">
+            <div class="tile-placeholder">✦</div>
+            <img src="${comic.cover}" alt="${comic.title}" loading="lazy" onerror="this.style.display='none'">
+            <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
+          </div>`;
+        tile.addEventListener('click', () => openLightbox(i));
+        grid.appendChild(tile);
+      });
+    }
+
+    // ── Open lightbox ──
+    function openLightbox(index) {
+      activeIndex = index;
+      const comic = comics[index];
+      const isMobile = window.innerWidth <= 600;
+
+      // title
+      document.getElementById('lb-title').textContent = comic.title;
+
+      // images
+      const imagesEl = document.getElementById('lb-images');
+      imagesEl.innerHTML = comic.images
+        .map(src => `<img src="${src}" alt="${comic.title}" loading="lazy" onerror="this.style.display='none'">`)
+        .join('');
+
+      // dots (only if more than 1 panel)
+      const dotsEl = document.getElementById('lb-dots');
+      dotsEl.innerHTML = comic.images.length > 1
+        ? comic.images.map((_, i) => `<div class="lb-dot${i === 0 ? ' active' : ''}"></div>`).join('')
+        : '';
+
+      // prev/next comic arrows
+      document.getElementById('lb-prev').disabled = index === 0;
+      document.getElementById('lb-next').disabled = index === comics.length - 1;
+
+      // mobile: show other comics below
+      if (isMobile) {
+        const moreGrid = document.getElementById('lb-more-grid');
+        moreGrid.innerHTML = comics
+          .filter((_, i) => i !== index)
+          .map((c, _, arr) => {
+            const origIndex = comics.indexOf(c);
+            return `<div class="lb-more-tile" onclick="openLightbox(${origIndex})">
+              <img src="${c.cover}" alt="${c.title}" loading="lazy" onerror="this.style.display='none'">
+            </div>`;
+          }).join('');
+        document.getElementById('lb-more').style.display = comics.length > 1 ? '' : 'none';
+      }
+
+      // open
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('open');
+      lb.scrollTop = 0;
+      document.body.style.overflow = isMobile ? '' : 'hidden';
+
+      // mark active tile
+      document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+      document.querySelector(`.tile[data-index="${index}"]`)?.classList.add('active');
+    }
+
+    // ── Navigate between comics (desktop) ──
+    document.getElementById('lb-prev').addEventListener('click', () => {
+      if (activeIndex > 0) openLightbox(activeIndex - 1);
+    });
+
+    document.getElementById('lb-next').addEventListener('click', () => {
+      if (activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+    });
+
+    // ── Close ──
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+      document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
+      activeIndex = null;
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+
+    // click outside images to close (desktop)
+    document.getElementById('lb-content').addEventListener('click', e => {
+      if (e.target === document.getElementById('lb-content')) closeLightbox();
+    });
+
+    // keyboard
+    document.addEventListener('keydown', e => {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft' && activeIndex > 0) openLightbox(activeIndex - 1);
+      if (e.key === 'ArrowRight' && activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+    });
+
+    // resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => renderGrid(), 200);
+    });
+
+    loadComics();
+  </script>
+
+</body>
+</html>
