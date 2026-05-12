@@ -80,24 +80,24 @@
     main { flex: 1; }
 
     .grid-wrapper {
-      padding: 40px;
+      padding: 40px 150px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: var(--gap);
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
       .grid { grid-template-columns: repeat(3, 1fr); }
-      .grid-wrapper { padding: 20px; }
+      .grid-wrapper { padding: 20px 40px; }
     }
 
     @media (max-width: 600px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      .grid-wrapper { padding: 12px; }
-      header { padding: 20px 20px; }
+      .grid { grid-template-columns: repeat(3, 1fr); }
+      .grid-wrapper { padding: 0; }
+      header { padding: 20px; }
     }
 
     /* each tile is a grid item */
