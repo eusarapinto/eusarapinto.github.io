@@ -122,10 +122,17 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       will-change: transform;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
+    }
+
+    @media (hover: none) {
+      .tile img {
+        transition: none;
+        will-change: auto;
+      }
     }
 
     /* tile overlay on hover */
