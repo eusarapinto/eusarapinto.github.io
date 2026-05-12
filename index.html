@@ -69,7 +69,7 @@
       font-size: 0.8rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--mid-gray);
+      color: #c0392b;
       text-decoration: none;
       transition: color 0.2s;
     }
@@ -123,6 +123,9 @@
       object-fit: cover;
       display: block;
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
+      will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
 
     /* tile overlay on hover */
