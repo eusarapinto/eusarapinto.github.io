@@ -527,8 +527,8 @@
         tile.dataset.index = i;
         tile.innerHTML = `
           <div class="tile-inner">
-            <div class="tile-placeholder">✦</div>
-            <img src="${comic.cover}" alt="${comic.title}" loading="lazy" onerror="this.style.display='none'">
+            <div class="tile-placeholder" id="placeholder-${i}">✦</div>
+            <img src="${comic.cover}" alt="${comic.title}" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'">
             <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
           </div>`;
         tile.addEventListener('click', () => openLightbox(i));
