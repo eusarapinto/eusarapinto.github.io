@@ -36,7 +36,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 40px;
+      padding: 28px 150px;
       position: sticky;
       top: 0;
       background: var(--white);
@@ -46,6 +46,14 @@
     }
 
     header.scrolled { border-color: var(--gray); }
+
+    @media (max-width: 1100px) {
+      header { padding: 24px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 20px; }
+    }
 
     .logo { text-decoration: none; display: flex; align-items: center; }
 
@@ -376,20 +384,19 @@
 
     /* ── FOOTER ── */
     footer {
-      padding: 48px 40px;
+      padding: 48px 150px;
       border-top: 1px solid var(--gray);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
+    @media (max-width: 1100px) {
+      footer { padding: 40px; }
+    }
+
     @media (max-width: 600px) {
-      footer {
-        flex-direction: column;
-        gap: 16px;
-        padding: 32px 20px;
-        text-align: center;
-      }
+      footer { flex-direction: column; gap: 16px; padding: 32px 20px; text-align: center; }
     }
 
     .footer-name {
