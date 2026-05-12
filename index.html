@@ -47,22 +47,16 @@
 
     header.scrolled { border-color: var(--gray); }
 
-    .logo {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: 1.5rem;
-      color: var(--black);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+    .logo { text-decoration: none; display: flex; align-items: center; }
+
+    .logo-img {
+      height: 28px;
+      width: auto;
+      display: block;
     }
 
-    /* placeholder until real logo is provided */
-    .logo-placeholder {
-      font-family: 'Instrument Serif', serif;
-      font-style: italic;
-      font-size: 1.5rem;
-      color: #c0392b;
-      letter-spacing: -0.01em;
+    @media (max-width: 600px) {
+      .logo-img { height: 22px; }
     }
 
     nav a {
@@ -95,7 +89,7 @@
     }
 
     @media (max-width: 600px) {
-      .grid { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+      .grid { grid-template-columns: repeat(3, 1fr); gap: 1px; }
       .grid-wrapper { padding: 0; }
       header { padding: 20px; }
     }
@@ -122,18 +116,11 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
-    @media (hover: none) {
-      .tile img {
-        transition: none;
-        will-change: auto;
-      }
-    }
+    .tile img.loaded { opacity: 1; }
 
     /* tile overlay on hover */
     .tile-overlay {
@@ -442,8 +429,10 @@
 <body>
 
   <header id="header">
-    <!-- Replace the span below with an <img> tag once you have your logo file -->
-    <a href="/" class="logo-placeholder">eu sarapinto</a>
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <img src="eusarapintologo.svg" alt="eu sarapinto" class="logo-img">
+    </a>
     <nav>
       <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
     </nav>
@@ -517,6 +506,26 @@
       }
     }
 
+    // ── Lazy loading with IntersectionObserver ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const src = img.dataset.src;
+          if (src) {
+            img.src = src;
+            img.removeAttribute('data-src');
+            img.onload = () => {
+              img.classList.add('loaded');
+              img.previousElementSibling.style.display = 'none';
+            };
+            img.onerror = () => { img.style.display = 'none'; };
+          }
+          observer.unobserve(img);
+        }
+      });
+    }, { rootMargin: '200px' });
+
     // ── Grid ──
     function renderGrid() {
       const grid = document.getElementById('grid');
@@ -527,12 +536,13 @@
         tile.dataset.index = i;
         tile.innerHTML = `
           <div class="tile-inner">
-            <div class="tile-placeholder" id="placeholder-${i}">✦</div>
-            <img src="${comic.cover}" alt="${comic.title}" onerror="this.style.display='none'" onload="this.previousElementSibling.style.display='none'">
+            <div class="tile-placeholder">✦</div>
+            <img data-src="${comic.cover}" alt="${comic.title}">
             <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
           </div>`;
         tile.addEventListener('click', () => openLightbox(i));
         grid.appendChild(tile);
+        observer.observe(tile.querySelector('img'));
       });
     }
 
