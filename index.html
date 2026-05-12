@@ -125,8 +125,6 @@
       transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s;
     }
 
-    .tile:hover img { transform: scale(1.04); }
-
     /* tile overlay on hover */
     .tile-overlay {
       position: absolute;
@@ -139,8 +137,6 @@
       pointer-events: none;
     }
 
-    .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
-
     .tile-title {
       font-family: 'Instrument Serif', serif;
       font-style: italic;
@@ -152,9 +148,11 @@
       line-height: 1.3;
     }
 
-    .tile:hover .tile-title {
-      opacity: 1;
-      transform: translateY(0);
+    /* hover effects only on devices that actually have a mouse */
+    @media (hover: hover) {
+      .tile:hover img { transform: scale(1.04); }
+      .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
+      .tile:hover .tile-title { opacity: 1; transform: translateY(0); }
     }
 
     /* placeholder tile while images load */
