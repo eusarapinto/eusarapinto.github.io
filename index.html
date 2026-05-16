@@ -682,7 +682,9 @@
 
     document.getElementById('lb-close').addEventListener('click', closeLightbox);
 
+    // desktop only: click outside to close
     document.getElementById('lb-content').addEventListener('click', e => {
+      if (window.innerWidth <= 600) return;
       if (e.target === document.getElementById('lb-content')) closeLightbox();
     });
 
@@ -695,9 +697,35 @@
       }
     });
 
-    window.addEventListener('resize', () => {
-      if (activeIndex !== null) closeLightbox();
-    });
+    // ── Touch swipe for mobile carousel ──
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.getElementById('lb-images').addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    document.getElementById('lb-images').addEventListener('touchend', e => {
+      if (window.innerWidth > 600) return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+
+      // only register as horizontal swipe if mostly horizontal
+      if (Math.abs(dx) < Math.abs(dy)) return;
+      if (Math.abs(dx) < 40) return; // minimum swipe distance
+
+      const images = comics[activeIndex].images;
+      if (dx < 0 && mobilePanelIndex < images.length - 1) {
+        // swipe left → next panel
+        mobilePanelIndex++;
+        updateMobileCarousel(images);
+      } else if (dx > 0 && mobilePanelIndex > 0) {
+        // swipe right → previous panel
+        mobilePanelIndex--;
+        updateMobileCarousel(images);
+      }
+    }, { passive: true });
 
     loadComics();
   </script>
