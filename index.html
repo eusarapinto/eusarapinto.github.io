@@ -329,20 +329,20 @@
       }
 
       .lb-images {
-        display: block;
+        display: flex;
         width: 100%;
+        overflow: hidden;
       }
 
-      /* only show active panel on mobile */
+      /* all panels in a horizontal strip */
       .lb-images img {
-        display: none;
+        flex-shrink: 0;
         width: 100%;
         height: auto;
         max-height: none;
         flex: none;
+        display: block;
       }
-
-      .lb-images img.mobile-active { display: block; }
 
       /* carousel arrows overlaid on image */
       .lb-arrow {
@@ -579,9 +579,9 @@
 
     // ── Mobile panel navigation ──
     function updateMobileCarousel(images) {
-      // show only active panel
-      const imgs = document.querySelectorAll('#lb-images img');
-      imgs.forEach((img, i) => img.classList.toggle('mobile-active', i === mobilePanelIndex));
+      const offset = -mobilePanelIndex * 100;
+      lbImages.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      lbImages.style.transform = `translateX(${offset}%)`;
 
       // update dots
       document.querySelectorAll('.lb-dot').forEach((dot, i) => {
@@ -639,6 +639,8 @@
       const lb = document.getElementById('lightbox');
       lb.classList.add('open');
       lb.scrollTop = 0;
+      lbImages.style.transform = 'translateX(0)';
+      lbImages.style.transition = 'none';
       document.body.style.overflow = isMobile ? '' : 'hidden';
 
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
@@ -697,34 +699,67 @@
       }
     });
 
-    // ── Touch swipe for mobile carousel ──
+    // ── Touch drag carousel for mobile ──
     let touchStartX = 0;
     let touchStartY = 0;
+    let isDragging = false;
+    let isHorizontal = null;
 
-    document.getElementById('lb-images').addEventListener('touchstart', e => {
+    const lbImages = document.getElementById('lb-images');
+
+    lbImages.addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
+      isDragging = true;
+      isHorizontal = null;
+      lbImages.style.transition = 'none';
     }, { passive: true });
 
-    document.getElementById('lb-images').addEventListener('touchend', e => {
-      if (window.innerWidth > 600) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
+    lbImages.addEventListener('touchmove', e => {
+      if (!isDragging || window.innerWidth > 600) return;
+      const dx = e.touches[0].clientX - touchStartX;
+      const dy = e.touches[0].clientY - touchStartY;
 
-      // only register as horizontal swipe if mostly horizontal
-      if (Math.abs(dx) < Math.abs(dy)) return;
-      if (Math.abs(dx) < 40) return; // minimum swipe distance
+      // determine direction on first move
+      if (isHorizontal === null) {
+        isHorizontal = Math.abs(dx) > Math.abs(dy);
+      }
+
+      if (!isHorizontal) return;
+
+      // prevent page scroll when swiping horizontally
+      e.preventDefault();
 
       const images = comics[activeIndex].images;
-      if (dx < 0 && mobilePanelIndex < images.length - 1) {
-        // swipe left → next panel
+      const baseOffset = -mobilePanelIndex * 100;
+      const dragPercent = (dx / window.innerWidth) * 100;
+
+      // add resistance at edges
+      let offset = baseOffset + dragPercent;
+      if (mobilePanelIndex === 0 && dx > 0) offset = dragPercent * 0.2;
+      if (mobilePanelIndex === images.length - 1 && dx < 0) offset = baseOffset + dragPercent * 0.2;
+
+      lbImages.style.transform = `translateX(${offset}%)`;
+    }, { passive: false });
+
+    lbImages.addEventListener('touchend', e => {
+      if (!isDragging || window.innerWidth > 600) return;
+      isDragging = false;
+
+      if (!isHorizontal) return;
+
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const images = comics[activeIndex].images;
+
+      lbImages.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+
+      if (dx < -50 && mobilePanelIndex < images.length - 1) {
         mobilePanelIndex++;
-        updateMobileCarousel(images);
-      } else if (dx > 0 && mobilePanelIndex > 0) {
-        // swipe right → previous panel
+      } else if (dx > 50 && mobilePanelIndex > 0) {
         mobilePanelIndex--;
-        updateMobileCarousel(images);
       }
+
+      updateMobileCarousel(images);
     }, { passive: true });
 
     loadComics();
