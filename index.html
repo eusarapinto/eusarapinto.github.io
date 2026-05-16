@@ -72,6 +72,8 @@
 
     @media (max-width: 600px) {
       .lightbox.open { display: block; overflow-y: auto; background: var(--white); -webkit-overflow-scrolling: touch; }
+      .lightbox::-webkit-scrollbar { display: none; }
+      .lightbox { -ms-overflow-style: none; scrollbar-width: none; }
       .lb-bar { position: sticky; top: 0; background: var(--white); z-index: 10; padding: 16px 20px; }
       .lb-content { padding: 0; display: block; position: relative; overflow: visible; }
       .lb-images { display: block; width: 100%; overflow: hidden; position: relative; }
