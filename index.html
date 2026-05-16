@@ -305,21 +305,30 @@
     // simple swipe
     let touchStartX = 0;
     let touchStartY = 0;
+    let didSwipe = false;
 
     document.getElementById('lb-images').addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
+      didSwipe = false;
     }, { passive: true });
 
     document.getElementById('lb-images').addEventListener('touchend', e => {
       if (window.innerWidth > 600) return;
-      e.stopPropagation();
+      // ignore swipes starting within 30px of screen edge (iOS back gesture zone)
+      if (touchStartX < 30) return;
       const dx = e.changedTouches[0].clientX - touchStartX;
       const dy = e.changedTouches[0].clientY - touchStartY;
       if (Math.abs(dx) < Math.abs(dy) || Math.abs(dx) < 40) return;
+      didSwipe = true;
       const images = comics[activeIndex].images;
       if (dx < 0 && mobilePanelIndex < images.length - 1) { mobilePanelIndex++; updateMobileCarousel(images); }
       else if (dx > 0 && mobilePanelIndex > 0) { mobilePanelIndex--; updateMobileCarousel(images); }
+    });
+
+    // prevent close when a swipe just happened
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (didSwipe) { didSwipe = false; return; }
     });
 
     window.addEventListener('resize', () => {
