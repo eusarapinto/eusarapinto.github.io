@@ -292,7 +292,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 16px;
+      padding: 14px 0;
     }
 
     .lb-dot {
@@ -304,10 +304,6 @@
     }
 
     .lb-dot.active { background: var(--black); }
-
-    @media (max-width: 600px) {
-      .lb-dots { display: flex; }
-    }
 
     /* ── MOBILE LIGHTBOX ── */
     @media (max-width: 600px) {
@@ -322,31 +318,57 @@
         top: 0;
         background: var(--white);
         z-index: 10;
+        padding: 16px 20px;
       }
 
       .lb-content {
         padding: 0;
         display: block;
+        position: relative;
         overflow: visible;
       }
 
       .lb-images {
-        flex-direction: column;
-        gap: 3px;
-      }
-
-      .lb-images img {
+        display: block;
         width: 100%;
-        max-height: none;
-        height: auto;
       }
 
-      .lb-arrow { display: none; }
+      /* only show active panel on mobile */
+      .lb-images img {
+        display: none;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        flex: none;
+      }
 
-      /* mobile: show all panels stacked, then more comics below */
+      .lb-images img.mobile-active { display: block; }
+
+      /* carousel arrows overlaid on image */
+      .lb-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.85);
+        border: none;
+        border-radius: 50%;
+        z-index: 5;
+        display: flex;
+      }
+
+      .lb-arrow.prev { left: 12px; }
+      .lb-arrow.next { right: 12px; }
+      .lb-arrow:disabled { opacity: 0; pointer-events: none; }
+
+      /* dots below image */
+      .lb-dots { display: flex; }
+
+      /* mais comics */
       .lb-more {
         border-top: 1px solid var(--gray);
-        padding: 20px 16px 12px;
+        padding: 20px 0 0;
       }
 
       .lb-more-label {
@@ -355,12 +377,13 @@
         text-transform: uppercase;
         color: var(--mid-gray);
         margin-bottom: 10px;
+        padding: 0 20px;
       }
 
       .lb-more-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 3px;
+        gap: 1px;
       }
 
       .lb-more-tile {
@@ -495,6 +518,7 @@
   <script>
     let comics = [];
     let activeIndex = null;
+    let mobilePanelIndex = 0;
 
     // ── Sticky header ──
     window.addEventListener('scroll', () => {
@@ -553,63 +577,98 @@
       });
     }
 
+    // ── Mobile panel navigation ──
+    function updateMobileCarousel(images) {
+      // show only active panel
+      const imgs = document.querySelectorAll('#lb-images img');
+      imgs.forEach((img, i) => img.classList.toggle('mobile-active', i === mobilePanelIndex));
+
+      // update dots
+      document.querySelectorAll('.lb-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === mobilePanelIndex);
+      });
+
+      // update arrows
+      document.getElementById('lb-prev').disabled = mobilePanelIndex === 0;
+      document.getElementById('lb-next').disabled = mobilePanelIndex === images.length - 1;
+    }
+
     // ── Open lightbox ──
     function openLightbox(index) {
       activeIndex = index;
+      mobilePanelIndex = 0;
       const comic = comics[index];
       const isMobile = window.innerWidth <= 600;
 
-      // title
       document.getElementById('lb-title').textContent = comic.title;
 
       // images
       const imagesEl = document.getElementById('lb-images');
       imagesEl.innerHTML = comic.images
-        .map(src => `<img src="${src}" alt="${comic.title}" loading="lazy" onerror="this.style.display='none'">`)
+        .map((src, i) => `<img src="${src}" alt="${comic.title}" onerror="this.style.display='none'"${isMobile && i === 0 ? ' class="mobile-active"' : ''}>`)
         .join('');
 
-      // dots (only if more than 1 panel)
+      // dots
       const dotsEl = document.getElementById('lb-dots');
       dotsEl.innerHTML = comic.images.length > 1
         ? comic.images.map((_, i) => `<div class="lb-dot${i === 0 ? ' active' : ''}"></div>`).join('')
         : '';
 
-      // prev/next comic arrows
-      document.getElementById('lb-prev').disabled = index === 0;
-      document.getElementById('lb-next').disabled = index === comics.length - 1;
-
-      // mobile: show other comics below
       if (isMobile) {
+        // mobile: carousel arrows navigate panels
+        document.getElementById('lb-prev').disabled = true;
+        document.getElementById('lb-next').disabled = comic.images.length <= 1;
+
+        // more comics grid
         const moreGrid = document.getElementById('lb-more-grid');
         moreGrid.innerHTML = comics
           .filter((_, i) => i !== index)
-          .map((c, _, arr) => {
+          .map(c => {
             const origIndex = comics.indexOf(c);
             return `<div class="lb-more-tile" onclick="openLightbox(${origIndex})">
-              <img src="${c.cover}" alt="${c.title}" loading="lazy" onerror="this.style.display='none'">
+              <img src="${c.cover}" alt="${c.title}" onerror="this.style.display='none'">
             </div>`;
           }).join('');
         document.getElementById('lb-more').style.display = comics.length > 1 ? '' : 'none';
+      } else {
+        // desktop: arrows navigate between comics
+        document.getElementById('lb-prev').disabled = index === 0;
+        document.getElementById('lb-next').disabled = index === comics.length - 1;
       }
 
-      // open
       const lb = document.getElementById('lightbox');
       lb.classList.add('open');
       lb.scrollTop = 0;
       document.body.style.overflow = isMobile ? '' : 'hidden';
 
-      // mark active tile
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       document.querySelector(`.tile[data-index="${index}"]`)?.classList.add('active');
     }
 
-    // ── Navigate between comics (desktop) ──
+    // ── Arrow clicks ──
     document.getElementById('lb-prev').addEventListener('click', () => {
-      if (activeIndex > 0) openLightbox(activeIndex - 1);
+      const isMobile = window.innerWidth <= 600;
+      if (isMobile) {
+        if (mobilePanelIndex > 0) {
+          mobilePanelIndex--;
+          updateMobileCarousel(comics[activeIndex].images);
+        }
+      } else {
+        if (activeIndex > 0) openLightbox(activeIndex - 1);
+      }
     });
 
     document.getElementById('lb-next').addEventListener('click', () => {
-      if (activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+      const isMobile = window.innerWidth <= 600;
+      if (isMobile) {
+        const images = comics[activeIndex].images;
+        if (mobilePanelIndex < images.length - 1) {
+          mobilePanelIndex++;
+          updateMobileCarousel(images);
+        }
+      } else {
+        if (activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+      }
     });
 
     // ── Close ──
@@ -618,28 +677,26 @@
       document.body.style.overflow = '';
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       activeIndex = null;
+      mobilePanelIndex = 0;
     }
 
     document.getElementById('lb-close').addEventListener('click', closeLightbox);
 
-    // click outside images to close (desktop)
     document.getElementById('lb-content').addEventListener('click', e => {
       if (e.target === document.getElementById('lb-content')) closeLightbox();
     });
 
-    // keyboard
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft' && activeIndex > 0) openLightbox(activeIndex - 1);
-      if (e.key === 'ArrowRight' && activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+      if (window.innerWidth > 600) {
+        if (e.key === 'ArrowLeft' && activeIndex > 0) openLightbox(activeIndex - 1);
+        if (e.key === 'ArrowRight' && activeIndex < comics.length - 1) openLightbox(activeIndex + 1);
+      }
     });
 
-    // resize
-    let resizeTimer;
     window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => renderGrid(), 200);
+      if (activeIndex !== null) closeLightbox();
     });
 
     loadComics();
