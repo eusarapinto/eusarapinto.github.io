@@ -22,44 +22,65 @@
   },
   {
     "id": "004",
-    "title": "Segunda-feira",
+    "title": "Amazon",
     "date": "2025-03-28",
-    "cover": "comics/004-cover.jpg",
-    "images": ["comics/004-a.jpg", "comics/004-b.jpg", "comics/004-c.jpg"]
+    "cover": "comics/Amazon.JPG",
+    "images": ["comics/Amazon.JPG"]
   },
   {
     "id": "005",
-    "title": "Reunião",
+    "title": "Smoking",
     "date": "2025-03-15",
-    "cover": "comics/005-cover.jpg",
-    "images": ["comics/005-a.jpg"]
+    "cover": "comics/Smoking.JPG",
+    "images": ["comics/Smoking.JPG"]
   },
   {
     "id": "006",
-    "title": "Metro",
+    "title": "Love happens when you least expect it",
     "date": "2025-03-01",
-    "cover": "comics/006-cover.jpg",
-    "images": ["comics/006-a.jpg", "comics/006-b.jpg"]
+    "cover": "comics/Lovehappens.JPG",
+    "images": ["comics/Lovehappens.JPG"]
   },
   {
     "id": "007",
-    "title": "Domingo",
+    "title": "Moda foca",
     "date": "2025-02-14",
-    "cover": "comics/007-cover.jpg",
-    "images": ["comics/007-a.jpg"]
+    "cover": "comics/Modafoca.JPG",
+    "images": ["comics/Modafoca.JPG"]
   },
   {
     "id": "008",
-    "title": "Café",
+    "title": "Hiper foca",
     "date": "2025-02-01",
-    "cover": "comics/008-cover.jpg",
-    "images": ["comics/008-a.jpg", "comics/008-b.jpg"]
+    "cover": "comics/Toufocada.JPG",
+    "images": ["comics/Toufocada.JPG"]
+  },
+  {
+    "id": "008",
+    "title": "Dados",
+    "date": "2025-02-01",
+    "cover": "comics/Olhardados.JPG",
+    "images": ["comics/Olhardados.JPG"]
+  },
+  {
+    "id": "008",
+    "title": "Tempo patudo",
+    "date": "2025-02-01",
+    "cover": "comics/Tempopatudo.JPG",
+    "images": ["comics/Tempopatudo.JPG"]
+  },
+  {
+    "id": "008",
+    "title": "Paulo, o terapeuta poeta",
+    "date": "2025-02-01",
+    "cover": "comics/cerebronarrador.JPG",
+    "images": ["comics/cerebronarrador.JPG"]
   },
   {
     "id": "009",
-    "title": "Insónia",
+    "title": "Don't be a stalker",
     "date": "2025-01-20",
-    "cover": "comics/009-cover.jpg",
-    "images": ["comics/009-a.jpg", "comics/009-b.jpg", "comics/009-c.jpg"]
+    "cover": "comics/Possoajudar1.JPG",
+    "images": ["comics/Possoajudar1.JPG", "comics/Possoajudar2.JPG", "comics/Possoajudar3.JPG", "comics/Possoajudar4.JPG"]
   }
 ]
