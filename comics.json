@@ -82,5 +82,68 @@
     "date": "2025-01-20",
     "cover": "comics/Possoajudar1.JPG",
     "images": ["comics/Possoajudar1.JPG", "comics/Possoajudar2.JPG", "comics/Possoajudar3.JPG", "comics/Possoajudar4.JPG"]
-  }
+  },
+  {
+    "id": "009",
+    "title": "Não tenho tempo para cortar as unhas",
+    "date": "2025-01-20",
+    "cover": "comics/Naotenhotempo1.JPG",
+    "images": ["comics/Naotenhotempo1.JPG", "comics/Naotenhotempo2.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "Pum intended",
+    "date": "2025-01-20",
+    "cover": "comics/Puns12.JPG",
+    "images": ["comics/Puns12.JPG", "comics/Puns2.JPG", "comics/Puns3.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "A Júlia com FOMO a ver os vossos stories no Primavera",
+    "date": "2025-01-20",
+    "cover": "comics/Primaverafomo.JPG",
+    "images": ["comics/Primaverafomo.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "Uma cientista climática, uma epidemiologista em 2020, ou uma designer.",
+    "date": "2025-01-20",
+    "cover": "comics/opiniao.JPG",
+    "images": ["comics/opiniao.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "Humor possível em privação de sono.",
+    "date": "2025-01-20",
+    "cover": "comics/Insonia1.JPG",
+    "images": ["comics/Insonia1.JPG", "comics/Insonia2.JPG", "comics/Insonia3.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "Entrevista de emprego",
+    "date": "2025-01-20",
+    "cover": "comics/5mindepois.png",
+    "images": ["comics/5mindepois.png", "comics/1diadepois.jpg", "comics/1semanadepois.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Se sabem como é que esta história acaba então espoliem-me por favor.",
+    "date": "2025-01-20",
+    "cover": "comics/eraumaveztese.jpg",
+    "images": ["comics/eraumaveztese.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Medo do escuro",
+    "date": "2025-01-20",
+    "cover": "comics/asvezesestou.jpg",
+    "images": ["comics/asvezesestou.jpg", "comics/edepoispenso.jpg", "comics/mas-depois.jpg", "comics/equenao.jpg", "comics/foda-se.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Quarentena",
+    "date": "2025-01-20",
+    "cover": "comics/janaosei.jpg",
+    "images": ["comics/janaosei.jpg"]
+  },
 ]
