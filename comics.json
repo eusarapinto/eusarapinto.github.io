@@ -1,10 +1,10 @@
 [
   {
     "id": "001",
-    "title": "5 min depois de uma entrevista de emprego",
+    "title": "Burocracia",
     "date": "2025-05-01",
-    "cover": "comics/001-cover.jpg",
-    "images": ["comics/001-a.jpg", "comics/001-b.jpg", "comics/001-c.jpg"]
+    "cover": "comics/Burocracia1.JPG",
+    "images": ["comics/Burocracia1.jpg", "comics/Burocracia2.jpg", "comics/Burocracia3.jpg", "comics/Burocracia4.jpg"]
   },
   {
     "id": "002",
