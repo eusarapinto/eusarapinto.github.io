@@ -17,8 +17,8 @@
     "id": "003",
     "title": "Dentista",
     "date": "2025-04-10",
-    "cover": "comics/003-cover.jpg",
-    "images": ["comics/003-a.jpg"]
+    "cover": "comics/Dentista1.jpg",
+    "images": ["comics/Dentista1.jpg", "comics/Dentista2.jpg", "comics/Dentista3.jpg"]
   },
   {
     "id": "004",
