@@ -341,6 +341,76 @@
     "date": "2025-01-20",
     "cover": "comics/gfgf.jpg",
     "images": ["comics/gfgf.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Saudades",
+    "date": "2025-01-20",
+    "cover": "comics/sdd1.jpg",
+    "images": ["comics/sdd1.jpg", "comics/sdd2.jpg", "comics/sdd3.jpg", "comics/sdd4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Espera sentada.",
+    "date": "2025-01-20",
+    "cover": "comics/vida.jpg",
+    "images": ["comics/vida.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Agosto.",
+    "date": "2025-01-20",
+    "cover": "comics/agosto.jpg",
+    "images": ["comics/agosto.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Kit de defesa pessoal.",
+    "date": "2025-01-20",
+    "cover": "comics/st1.jpg",
+    "images": ["comics/st1.jpg", "comics/st2.jpg", "comics/st3.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Fixe pa ti que foste de férias.",
+    "date": "2025-01-20",
+    "cover": "comics/fixepti.jpg",
+    "images": ["comics/fixepti.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Outside of the box",
+    "date": "2025-01-20",
+    "cover": "comics/conc11.jpg",
+    "images": ["comics/conc11.jpg", "comics/conc22.jpg", "comics/conc33.jpg", "comics/conc44.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Quando és a única pessoa que não vê Game of Thrones",
+    "date": "2025-01-20",
+    "cover": "comics/got1.jpg",
+    "images": ["comics/got1.jpg", "comics/got2.jpg", "comics/got3.jpg", "comics/got4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Há partes em mim que não gostam mesmo nada de gatos e no entanto, a soma das minhas partes todas, tem-lhes um amor quase patológico.",
+    "date": "2025-01-20",
+    "cover": "comics/gatos1.jpg",
+    "images": ["comics/gatos1.jpg", "comics/gatos2.jpg", "comics/gatos3.jpg", "comics/gatos4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Exames e entregas :(",
+    "date": "2025-01-20",
+    "cover": "comics/pum.jpg",
+    "images": ["comics/pum.jpg", "comics/bw2.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Se deus percebesse um bocadinho de UI e UX, não havia necessidade do utilizador do planeta terra gastar um terço do seu dia a dormir e um quarto a planear e a confeccionar refeições. Acho inadmissível esta coisa de termos que repetir os mesmos processos todos os dias. O mundo devia ter sido desenhado de forma a proporcionar uma navegação que facilitasse a vida dos terráqueos. Não foi. Para quando uma atualização que traga uma solução para este problema? Em suma, o segundo semestre começou há poucos dias e já tenho saudades da minha mãe.",
+    "date": "2025-01-20",
+    "cover": "comics/deus.jpg",
+    "images": ["comics/deus.jpg"]
   }
 ]
 
