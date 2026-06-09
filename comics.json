@@ -201,5 +201,76 @@
     "date": "2025-01-20",
     "cover": "comics/pandemia.jpg",
     "images": ["comics/pandemia.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Sad but true",
+    "date": "2025-01-20",
+    "cover": "comics/paniko2.jpg",
+    "images": ["comics/paniko2.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Não é uma boa altura para se ser cotovelo",
+    "date": "2025-01-20",
+    "cover": "comics/atchu1.jpg",
+    "images": ["comics/atchu1.jpg", "cotovelos.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Como saber se alguém nasceu depois de 1996",
+    "date": "2025-01-20",
+    "cover": "comics/comosaber1000.jpg",
+    "images": ["comics/comosaber1000.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Sobre a prisão de ventre",
+    "date": "2025-01-20",
+    "cover": "comics/imful.jpg",
+    "images": ["comics/imful.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "A escolha é complexa. A legalização da escolha é muito simples.",
+    "date": "2025-01-20",
+    "cover": "comics/euta2.jpg",
+    "images": ["comics/euta2.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Dúvida legítima.",
+    "date": "2025-01-20",
+    "cover": "comics/ovoefrango.jpg",
+    "images": ["comics/ovoefrango.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "(Not so) happy valentine's!",
+    "date": "2025-01-20",
+    "cover": "comics/despedido.jpg",
+    "images": ["comics/despedido.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Dia mundial do massacre floral.",
+    "date": "2025-01-20",
+    "cover": "comics/altura4.jpg",
+    "images": ["comics/altura4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Diagrama de Gantt",
+    "date": "2025-01-20",
+    "cover": "comics/cronograma3.jpg",
+    "images": ["comics/cronograma3.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Humanos",
+    "date": "2025-01-20",
+    "cover": "comics/humanos22.jpg",
+    "images": ["comics/humanos22.jpg", "comics/humans2.jpg", "comics/humans3.jpg"]
   }
 ]
+
