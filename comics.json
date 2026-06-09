@@ -164,15 +164,15 @@
     "id": "009",
     "title": "Mood",
     "date": "2025-01-20",
-    "cover": "comics/semestofoo",
-    "images": ["comics/semestofoo"]
+    "cover": "comics/semestofoo.jpg",
+    "images": ["comics/semestofoo.jpg"]
   },
   {
     "id": "009",
     "title": "Papel higiénico",
     "date": "2025-01-20",
     "cover": "comics/papelgihi1.png",
-    "images": ["comics/papelgihi1.png", "comics/papelgihi2.png"]
+    "images": ["comics/papelgihi1.png", "comics/papelhigi2.png"]
   },
   {
     "id": "009",
