@@ -416,70 +416,70 @@
     "id": "009",
     "title": "Happy Valentine's",
     "date": "2025-01-20",
-    "cover": "VALENTINESDAY.jpg",
+    "cover": "comics/VALENTINESDAY.jpg",
     "images": ["comics/VALENTINESDAY.jpg"]
   },
   {
     "id": "009",
     "title": "Lmao",
     "date": "2025-01-20",
-    "cover": "lmao2.jpg",
+    "cover": "comics/lmao2.jpg",
     "images": ["comics/lmao2.jpg"]
   },
   {
     "id": "009",
     "title": "Seriously, WTF Google Maps?",
     "date": "2025-01-20",
-    "cover": "gps11.jpg",
+    "cover": "comics/gps11.jpg",
     "images": ["comics/gps11.jpg", "comics/gps2222.jpg", "comics/gps3.jpg"]
   },
   {
     "id": "009",
     "title": "👀",
     "date": "2025-01-20",
-    "cover": "IMG_0236.jpg",
+    "cover": "comics/IMG_0236.jpg",
     "images": ["comics/IMG_0236.jpg", "comics/IMG_0237.jpg", "comics/IMG_0238.jpg", "comics/IMG_0239.jpg", "comics/IMG_0240.jpg"]
   },
   {
     "id": "009",
     "title": "Spanish people",
     "date": "2025-01-20",
-    "cover": "IMG_0242.jpg",
+    "cover": "comics/IMG_0242.jpg",
     "images": ["comics/IMG_0242.jpg", "comics/IMG_0243.jpg", "comics/IMG_0244.jpg", "comics/IMG_0245.jpg", "comics/IMG_0246.jpg"]
   },
   {
     "id": "009",
     "title": "Entregas",
     "date": "2025-01-20",
-    "cover": "IMG_0247.jpg",
+    "cover": "comics/IMG_0247.jpg",
     "images": ["comics/IMG_0247.jpg"]
   },
   {
     "id": "009",
     "title": "Sketchbook",
     "date": "2025-01-20",
-    "cover": "IMG_0248.jpg",
+    "cover": "comics/IMG_0248.jpg",
     "images": ["comics/IMG_0248.jpg"]
   },
   {
     "id": "009",
     "title": "Happy birthday, Jeez!",
     "date": "2025-01-20",
-    "cover": "happybirthdayjeez.png",
+    "cover": "comics/happybirthdayjeez.png",
     "images": ["comics/IMG_0248.jpg"]
   },
   {
     "id": "009",
     "title": "👍",
     "date": "2025-01-20",
-    "cover": "sk81.png",
+    "cover": "comics/sk81.png",
     "images": ["comics/sk81.png", "comics/sk82.png", "comics/sk83.png", "comics/sk84.png", "comics/sk85.png", "comics/sk86.png", "comics/sk87.png"]
   },
   {
     "id": "009",
     "title": "Black Friday",
     "date": "2025-01-20",
-    "cover": "friday1.png",
+    "cover": "comics/friday1.png",
     "images": ["comics/friday1.png", "comics/blackfriday1.png"]
   }
 ]
