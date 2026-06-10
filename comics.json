@@ -466,7 +466,7 @@
     "title": "Happy birthday, Jeez!",
     "date": "2025-01-20",
     "cover": "comics/happybirthdayjeez.png",
-    "images": ["comics/IMG_0248.jpg"]
+    "images": ["comics/happybirthdayjeez.png"]
   },
   {
     "id": "009",
@@ -481,6 +481,132 @@
     "date": "2025-01-20",
     "cover": "comics/friday1.png",
     "images": ["comics/friday1.png", "comics/blackfriday1.png"]
+  },
+  {
+    "id": "009",
+    "title": "Às vezes é desagradável pensar por imagens.",
+    "date": "2025-01-20",
+    "cover": "comics/IMG_0249.JPG",
+    "images": ["comics/IMG_0249.JPG", "comics/IMG_0250.JPG", "comics/IMG_0251.JPG"]
+  },
+  {
+    "id": "009",
+    "title": "Dust.",
+    "date": "2025-01-20",
+    "cover": "comics/TESTE1.jpg",
+    "images": ["comics/TESTE1.jpg", "comics/TESTE2.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Toteel fish",
+    "date": "2025-01-20",
+    "cover": "comics/toteel.jpg",
+    "images": ["comics/toteel.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Uma Thurman",
+    "date": "2025-01-20",
+    "cover": "comics/uma.jpg",
+    "images": ["comics/uma.jpg", "comics/duas.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "A ansiedade é um inimigo imaginária",
+    "date": "2025-01-20",
+    "cover": "comics/anxi1.jpg",
+    "images": ["comics/anxi1.jpg", "comics/anxi2.jpg", "comics/anxi3.jpg", "comics/anxi4.jpg", "comics/anxi5.jpg", "comics/anxi7.jpg", "comics/anxilastlast.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Unexpected",
+    "date": "2025-01-20",
+    "cover": "comics/comum.jpg",
+    "images": ["comics/comum.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Mas depois veio o Leslie",
+    "date": "2025-01-20",
+    "cover": "comics/lub.jpg",
+    "images": ["comics/lub.jpg", "comics/lub2.jpg", "comics/lub3.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Make instagram's algorithm chronological again.",
+    "date": "2025-01-20",
+    "cover": "comics/insta.jpg",
+    "images": ["comics/insta.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Elevador",
+    "date": "2025-01-20",
+    "cover": "comics/IMG_0252.jpg",
+    "images": ["comics/IMG_0252.jpg", "comics/IMG_0253.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "You're crazy, Beth",
+    "date": "2025-01-20",
+    "cover": "comics/moon1.jpg",
+    "images": ["comics/moon1.jpg", "comics/moon3.jpg", "comics/moon4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "My honest thoughts on the word Homophobia and its overall concept",
+    "date": "2025-01-20",
+    "cover": "comics/homo1.jpg",
+    "images": ["comics/homo1.jpg", "comics/homo2.jpg", "comics/homo3.jpg", "comics/homo4.jpg", "comics/homo5.jpg", "comics/homo6.jpg",]
+  },
+  {
+    "id": "009",
+    "title": "Morreu abafada como a piada",
+    "date": "2025-01-20",
+    "cover": "comics/IMG_0254.jpg",
+    "images": ["comics/IMG_0254.jpg", "comics/IMG_0255.jpg", "comics/IMG_0256.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Não consigo escolher uma",
+    "date": "2025-01-20",
+    "cover": "comics/selfes1.jpg",
+    "images": ["comics/selfes1.jpg", "comics/selfes2.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Hashtag no filter",
+    "date": "2025-01-20",
+    "cover": "comics/lol11.jpg",
+    "images": ["comics/lol11.jpg", "comics/lol22.jpg", "comics/lol33.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "The perk of having a terrible memory is that life will surprise you with cute pockets every time you camp in a music festival.",
+    "date": "2025-01-20",
+    "cover": "comics/pocket1.jpg",
+    "images": ["comics/pocket1.jpg", "comics/pocket2.jpg", "comics/pocket3.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Thanks Mark Zuckerberg",
+    "date": "2025-01-20",
+    "cover": "comics/IMG_0257.jpg",
+    "images": ["comics/IMG_0257.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Summer shower thought",
+    "date": "2025-01-20",
+    "cover": "comics/shower4.jpg",
+    "images": ["comics/shower4.jpg"]
+  },
+  {
+    "id": "009",
+    "title": "Bad habits",
+    "date": "2025-01-20",
+    "cover": "comics/IMG_0259.jpg",
+    "images": ["comics/IMG_0259.jpg", "comics/IMG_0260.jpg"]
   }
 ]
 
