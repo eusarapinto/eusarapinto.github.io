@@ -41,7 +41,15 @@
       .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
       .tile:hover .tile-title { opacity: 1; transform: translateY(0); }
     }
-    .tile-placeholder { position: absolute; inset: 0; background: var(--light-gray); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--mid-gray); letter-spacing: 0.05em; }
+    .tile-multi {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 18px;
+      height: 18px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
     .tile.active img { opacity: 0.7; }
 
     /* LIGHTBOX */
@@ -202,6 +210,10 @@
           <div class="tile-inner">
             <div class="tile-placeholder">✦</div>
             <img data-src="${comic.cover}" alt="${comic.title}">
+            ${comic.images.length > 1 ? `<svg class="tile-multi" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <rect x="7" y="3" width="13" height="13" rx="2" fill="white" fill-opacity="0.9"/>
+              <rect x="3" y="7" width="13" height="13" rx="2" fill="white" fill-opacity="0.6" stroke="white" stroke-width="0.5"/>
+            </svg>` : ''}
             <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
           </div>`;
         tile.addEventListener('click', () => openLightbox(i));
