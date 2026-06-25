@@ -349,6 +349,19 @@
       if (e.target === document.getElementById('lb-content')) closeLightbox();
     });
 
+    // prevent clicks/touches in scrollable lightbox content from closing it on Android
+    ['lb-dots', 'lb-more', 'lb-bar'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('click', e => e.stopPropagation());
+        el.addEventListener('touchend', e => e.stopPropagation(), { passive: true });
+      }
+    });
+
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (didSwipe) { didSwipe = false; return; }
+    });
+
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
@@ -378,10 +391,6 @@
       const images = comics[activeIndex].images;
       if (dx < 0 && mobilePanelIndex < images.length - 1) { mobilePanelIndex++; updateMobileCarousel(images); }
       else if (dx > 0 && mobilePanelIndex > 0) { mobilePanelIndex--; updateMobileCarousel(images); }
-    });
-
-    document.getElementById('lightbox').addEventListener('click', e => {
-      if (didSwipe) { didSwipe = false; return; }
     });
 
     window.addEventListener('resize', () => {
