@@ -407,8 +407,13 @@
       else if (dx > 0 && mobilePanelIndex > 0) { mobilePanelIndex--; updateMobileCarousel(images); }
     });
 
+    let lastWindowWidth = window.innerWidth;
     window.addEventListener('resize', () => {
-      if (activeIndex !== null) closeLightbox();
+      const newWidth = window.innerWidth;
+      if (newWidth !== lastWindowWidth) {
+        if (activeIndex !== null) closeLightbox();
+        lastWindowWidth = newWidth;
+      }
     });
 
     loadComics();
