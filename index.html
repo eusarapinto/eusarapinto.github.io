@@ -50,8 +50,8 @@
 
     /* lightbox image skeleton */
     .lb-img-skeleton {
-      width: 100%;
-      aspect-ratio: 1;
+      position: absolute;
+      inset: 0;
       background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e4 50%, #f0f0ee 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
@@ -59,7 +59,7 @@
     }
 
     /* desktop: wrapper takes equal space, image on top of skeleton */
-    .lb-img-wrap { flex: 1; min-width: 0; position: relative; }
+    .lb-img-wrap { flex: 1; min-width: 0; position: relative; max-height: calc(100vh - 160px); aspect-ratio: 1; }
     .lb-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .tile.active img { opacity: 0.7; }
     .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; }
@@ -99,7 +99,8 @@
       .lb-content { padding: 0; display: block; position: relative; overflow: visible; }
       .lb-images { display: block; width: 100%; overflow: hidden; position: relative; }
       .lb-img-wrap { display: none; width: 100%; position: relative; }
-      .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; }
+      .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; z-index: 1; }
+      .lb-img-wrap .lb-img-skeleton { position: absolute; inset: 0; z-index: 0; aspect-ratio: 1; }
       .lb-img-wrap.mobile-active { display: block; }
       .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.85); border: none; z-index: 5; display: flex; }
       .lb-arrow.prev { left: 12px; }
