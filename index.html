@@ -50,14 +50,17 @@
 
     /* lightbox image skeleton */
     .lb-img-skeleton {
-      flex: 1;
-      min-width: 0;
+      width: 100%;
       aspect-ratio: 1;
       background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e4 50%, #f0f0ee 75%);
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
       border-radius: 2px;
     }
+
+    /* desktop: wrapper takes equal space, image on top of skeleton */
+    .lb-img-wrap { flex: 1; min-width: 0; position: relative; }
+    .lb-img-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .tile.active img { opacity: 0.7; }
     .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
@@ -95,8 +98,9 @@
       .lb-bar { position: sticky; top: 0; background: var(--white); z-index: 10; padding: 16px 20px; }
       .lb-content { padding: 0; display: block; position: relative; overflow: visible; }
       .lb-images { display: block; width: 100%; overflow: hidden; position: relative; }
-      .lb-images img { display: none; width: 100%; height: auto; max-height: none; flex: none; }
-      .lb-images img.mobile-active { display: block; }
+      .lb-img-wrap { display: none; width: 100%; position: relative; }
+      .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; }
+      .lb-img-wrap.mobile-active { display: block; }
       .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.85); border: none; z-index: 5; display: flex; }
       .lb-arrow.prev { left: 12px; }
       .lb-arrow.next { right: 12px; }
@@ -239,8 +243,8 @@
     }
 
     function updateMobileCarousel(images) {
-      document.querySelectorAll('#lb-images img').forEach((img, i) => {
-        img.classList.toggle('mobile-active', i === mobilePanelIndex);
+      document.querySelectorAll('#lb-images .lb-img-wrap').forEach((wrap, i) => {
+        wrap.classList.toggle('mobile-active', i === mobilePanelIndex);
       });
       document.querySelectorAll('.lb-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === mobilePanelIndex);
@@ -274,12 +278,10 @@
 
       document.getElementById('lb-images').innerHTML = comic.images
         .map((src, i) => `
-          <div style="flex:1;min-width:0;position:relative;">
+          <div class="lb-img-wrap${i === 0 ? ' mobile-active' : ''}" data-panel="${i}">
             <div class="lb-img-skeleton" id="lb-skel-${i}"></div>
             <img src="${src}" alt="${comic.title}" onerror="this.style.display='none'"
-              style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 0.4s ease;"
-              onload="this.style.opacity='1';document.getElementById('lb-skel-${i}').style.display='none';"
-              ${i === 0 ? ' class="mobile-active"' : ''}>
+              onload="this.style.opacity='1';var s=document.getElementById('lb-skel-${i}');if(s)s.style.display='none';">
           </div>`)
         .join('');
 
