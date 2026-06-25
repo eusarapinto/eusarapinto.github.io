@@ -52,7 +52,9 @@
     @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
 
     .lb-bar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--gray); flex-shrink: 0; }
+    .lb-bar-left { display: flex; flex-direction: column; gap: 3px; }
     .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--black); }
+    .lb-date { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
     .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
     .lb-close:hover { color: var(--mid-gray); }
     .lb-close svg { width: 20px; height: 20px; }
@@ -114,7 +116,10 @@
 
   <div class="lightbox" id="lightbox">
     <div class="lb-bar">
-      <span class="lb-title" id="lb-title"></span>
+      <div class="lb-bar-left">
+        <span class="lb-title" id="lb-title"></span>
+        <span class="lb-date" id="lb-date"></span>
+      </div>
       <button class="lb-close" id="lb-close" aria-label="Fechar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -235,6 +240,21 @@
       const isMobile = window.innerWidth <= 600;
 
       document.getElementById('lb-title').textContent = comic.title;
+      const comicDate = new Date(comic.date);
+      const now = new Date();
+      const diffMs = now - comicDate;
+      const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      let dateLabel;
+      if (diffDays === 0) dateLabel = 'hoje';
+      else if (diffDays === 1) dateLabel = 'há 1 dia';
+      else if (diffDays < 7) dateLabel = `há ${diffDays} dias`;
+      else if (diffDays < 14) dateLabel = 'há 1 semana';
+      else if (diffDays < 21) dateLabel = 'há 2 semanas';
+      else if (diffDays < 28) dateLabel = 'há 3 semanas';
+      else if (diffDays < 60) dateLabel = 'há 1 mês';
+      else if (diffDays < 365) dateLabel = `há ${Math.floor(diffDays / 30)} meses`;
+      else dateLabel = comicDate.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
+      document.getElementById('lb-date').textContent = dateLabel;
 
       document.getElementById('lb-images').innerHTML = comic.images
         .map((src, i) => `<img src="${src}" alt="${comic.title}" onerror="this.style.display='none'"${i === 0 ? ' class="mobile-active"' : ''}>`)
