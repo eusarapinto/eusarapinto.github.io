@@ -41,7 +41,23 @@
       .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
       .tile:hover .tile-title { opacity: 1; transform: translateY(0); }
     }
-    .tile-placeholder { position: absolute; inset: 0; background: var(--light-gray); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--mid-gray); letter-spacing: 0.05em; }
+    .tile-placeholder { position: absolute; inset: 0; background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e4 50%, #f0f0ee 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* lightbox image skeleton */
+    .lb-img-skeleton {
+      flex: 1;
+      min-width: 0;
+      aspect-ratio: 1;
+      background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e4 50%, #f0f0ee 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 2px;
+    }
     .tile.active img { opacity: 0.7; }
     .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
@@ -211,7 +227,7 @@
         tile.dataset.index = i;
         tile.innerHTML = `
           <div class="tile-inner">
-            <div class="tile-placeholder">✦</div>
+            <div class="tile-placeholder"></div>
             <img data-src="${comic.cover}" alt="${comic.title}">
             ${comic.images.length > 1 ? MULTI_ICON : ''}
             <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
@@ -257,7 +273,14 @@
       document.getElementById('lb-date').textContent = dateLabel;
 
       document.getElementById('lb-images').innerHTML = comic.images
-        .map((src, i) => `<img src="${src}" alt="${comic.title}" onerror="this.style.display='none'"${i === 0 ? ' class="mobile-active"' : ''}>`)
+        .map((src, i) => `
+          <div style="flex:1;min-width:0;position:relative;">
+            <div class="lb-img-skeleton" id="lb-skel-${i}"></div>
+            <img src="${src}" alt="${comic.title}" onerror="this.style.display='none'"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 0.4s ease;"
+              onload="this.style.opacity='1';document.getElementById('lb-skel-${i}').style.display='none';"
+              ${i === 0 ? ' class="mobile-active"' : ''}>
+          </div>`)
         .join('');
 
       document.getElementById('lb-dots').innerHTML = comic.images.length > 1
