@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>eu sarapinto</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #999; --gap: 12px; }
     html { font-size: 16px; }
-    body { font-family: 'DM Sans', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
+    body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
     header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--gray); }
@@ -35,7 +35,7 @@
     .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.4s ease; }
     .tile img.loaded { opacity: 1; }
     .tile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: flex-end; padding: 16px; transition: background 0.3s; pointer-events: none; }
-    .tile-title { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.85rem; color: white; opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.25s; line-height: 1.3; }
+    .tile-title { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.85rem; color: white; opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.25s; line-height: 1.3; }
     @media (hover: hover) {
       .tile:hover img { transform: scale(1.04); }
       .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
@@ -50,7 +50,7 @@
     @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
 
     .lb-bar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--gray); flex-shrink: 0; }
-    .lb-title { font-family: 'Instrument Serif', serif; font-size: 1rem; color: var(--black); }
+    .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--black); }
     .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
     .lb-close:hover { color: var(--mid-gray); }
     .lb-close svg { width: 20px; height: 20px; }
@@ -96,7 +96,7 @@
     footer { padding: 48px 150px; border-top: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
     @media (max-width: 1100px) { footer { padding: 40px; } }
     @media (max-width: 600px) { footer { flex-direction: column; gap: 16px; padding: 32px 20px; text-align: center; } }
-    .footer-name { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; color: var(--mid-gray); }
+    .footer-name { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem; color: var(--mid-gray); }
     .footer-links a { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--black); }
     .loading { grid-column: 1 / -1; text-align: center; padding: 80px; font-size: 0.8rem; color: var(--mid-gray); letter-spacing: 0.05em; }
