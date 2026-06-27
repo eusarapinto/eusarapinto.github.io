@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>eu sarapinto</title>
   <link rel="icon" type="image/svg+xml" href="juliafavicon.svg">
   <link rel="apple-touch-icon" href="juliafavicon.svg">
@@ -83,7 +83,7 @@
     .lb-img-wrap img { max-height: calc(100vh - 160px); max-width: 100%; width: auto; height: auto; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .lb-img-skeleton { display: none; }
     .tile.active img { opacity: 0.7; }
-    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; }
+    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: calc(18px + env(safe-area-inset-bottom)); opacity: 0.9; pointer-events: none; }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
 
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94); -ms-overflow-style: none; scrollbar-width: none; }
@@ -149,12 +149,13 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 18px;
+      height: calc(18px + env(safe-area-inset-bottom));
       background: #ff0000;
       overflow: hidden;
       display: flex;
       align-items: center;
       z-index: 300;
+      padding-bottom: env(safe-area-inset-bottom);
     }
 
     .ticker-track {
@@ -174,7 +175,7 @@
     .ticker-item {
       font-family: 'Fraunces', serif;
       font-size: 14px;
-      line-height: 18px;
+      line-height: calc(18px + env(safe-area-inset-bottom));
       color: var(--white);
       padding: 0 60px 0 0;
     }
@@ -182,7 +183,7 @@
     .ticker-item strong { font-weight: 700; }
     .ticker-item span { font-weight: 400; }
 
-    body { padding-bottom: 18px; }
+    body { padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
 
   </style>
 </head>
