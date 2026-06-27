@@ -7,7 +7,7 @@
   <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
   <link rel="apple-touch-icon" href="../juliafavicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #999; --red: #ff0000; }
@@ -27,7 +27,7 @@
     nav { display: flex; align-items: center; gap: 32px; }
     nav a { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
     nav a:hover { color: var(--red); }
-    nav a.active { color: var(--red); font-weight: 600; }
+    nav a.active { color: var(--red); font-weight: 800; }
 
     /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
@@ -35,7 +35,7 @@
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
-    .mobile-menu a.active { color: var(--red); font-weight: 600; }
+    .mobile-menu a.active { color: var(--red); font-weight: 800; }
     .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
     .mobile-menu-close svg { width: 24px; height: 24px; }
     @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
