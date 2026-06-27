@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio / Contact — eu sarapinto</title>
+  <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
+  <link rel="apple-touch-icon" href="../juliafavicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #999; --red: #ff0000; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* ── HEADER ── */
+    header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+    header.scrolled { border-color: var(--gray); }
+    @media (max-width: 1100px) { header { padding: 24px 40px; } }
+    @media (max-width: 600px) { header { padding: 20px; } }
+
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo-img { height: 28px; width: auto; display: block; }
+    @media (max-width: 600px) { .logo-img { height: 22px; } }
+
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: var(--red); }
+    nav a.active { color: var(--red); font-weight: 600; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 0.3s; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .mobile-menu a.active { color: var(--red); font-weight: 600; }
+    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
+    .mobile-menu-close svg { width: 24px; height: 24px; }
+    @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
+
+    /* ── BIO CONTENT ── */
+    main { flex: 1; }
+
+    .bio-wrapper {
+      /* mirror the grid: 150px outer margin, then skip 1 column (with gap) */
+      padding: 80px 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+    }
+
+    @media (max-width: 1100px) {
+      .bio-wrapper { padding: 60px 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .bio-wrapper { padding: 40px 24px; }
+    }
+
+    .bio-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--black);
+      max-width: 780px;
+    }
+
+    @media (max-width: 600px) {
+      .bio-text { font-size: 18px; }
+    }
+
+    .bio-text .highlight {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* ── EMAIL COMPONENT ── */
+    .contact-wrapper {
+      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+    }
+
+    @media (max-width: 1100px) { .contact-wrapper { padding: 0 40px 60px; } }
+    @media (max-width: 600px) { .contact-wrapper { padding: 0 24px 40px; } }
+
+    .contact-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 12px;
+    }
+
+    .email-component {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--black);
+      position: relative;
+    }
+
+    .email-copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--mid-gray);
+      display: flex;
+      align-items: center;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .email-copy-btn:hover { color: var(--black); }
+    .email-copy-btn svg { width: 16px; height: 16px; }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .tooltip.visible { opacity: 1; }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--black);
+    }
+
+    /* ── FOOTER ── */
+    footer { padding: 48px 150px; border-top: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
+    @media (max-width: 1100px) { footer { padding: 40px; } }
+    @media (max-width: 600px) { footer { flex-direction: column; gap: 16px; padding: 32px 20px; text-align: center; } }
+    .footer-name { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.03em; }
+    .footer-links a { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--black); }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <a href="/" class="logo">
+      <img src="../eusarapintologo.svg" alt="eu sarapinto" class="logo-img">
+    </a>
+    <nav>
+      <a href="/">Início</a>
+      <a href="/bio" class="active">Bio / Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <a href="/">Início</a>
+    <a href="/bio" class="active">Bio / Contact</a>
+  </div>
+
+  <main>
+    <div class="bio-wrapper">
+      <p class="bio-text">
+        Born in 1993 in <span class="highlight">Porto, Portugal</span>, holding a pencil in her hand, straight out of the womb. Started drawing everywhere she should not have, compulsively — the hospital walls, the doors, the nurse's face. Eventually calmed down when the frontal lobe kicked in, and studied <span class="highlight">Fine Arts</span> and <span class="highlight">Design</span>. Currently works as a <span class="highlight">Product Designer</span>, not only because it pays the bills but because she actually loves it. Whenever the corporate job doesn't knock her out, she likes to produce drawings that she sometimes calls <span class="highlight">illustrations</span> and other times <span class="highlight">comics</span>, because she is not sure of the difference. She absolutely wrote this herself in the third person.
+      </p>
+    </div>
+
+    <div class="contact-wrapper">
+      <p class="contact-label">Talk to me at</p>
+      <div class="email-component">
+        <span id="email-text">eusarapinto@gmail.com</span>
+        <button class="email-copy-btn" id="copy-btn" aria-label="Copy email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="9" y="9" width="13" height="13" rx="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </button>
+        <div class="tooltip" id="tooltip">Copied!</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-name">© 2026 Eu sarapinto</span>
+    <div class="footer-links">
+      <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
+
+  <script>
+    // header scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // hamburger
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('open');
+    });
+    document.getElementById('mobile-menu-close').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+
+    // copy email
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const email = document.getElementById('email-text').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        const tooltip = document.getElementById('tooltip');
+        tooltip.classList.add('visible');
+        setTimeout(() => tooltip.classList.remove('visible'), 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

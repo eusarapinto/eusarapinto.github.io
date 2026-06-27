@@ -23,8 +23,26 @@
     .logo-img { height: 28px; width: auto; display: block; }
     @media (max-width: 600px) { .logo-img { height: 22px; } }
 
-    nav a { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: #c0392b; text-decoration: none; transition: color 0.2s; }
-    nav a:hover { color: var(--black); }
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: #ff0000; }
+    nav a.active { color: #ff0000; font-weight: 600; }
+
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 0.3s; }
+
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .mobile-menu a.active { color: #ff0000; font-weight: 600; }
+    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
+    .mobile-menu-close svg { width: 24px; height: 24px; }
+
+    @media (max-width: 600px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+    }
 
     main { flex: 1; }
     .grid-wrapper { padding: 40px 150px; }
@@ -133,9 +151,23 @@
       <img src="eusarapintologo.svg" alt="eu sarapinto" class="logo-img">
     </a>
     <nav>
-      <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+      <a href="/" class="active">Início</a>
+      <a href="/bio">Bio / Contact</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Fechar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <a href="/" class="active">Início</a>
+    <a href="/bio">Bio / Contact</a>
+  </div>
 
   <div class="lightbox" id="lightbox">
     <div class="lb-bar">
@@ -424,6 +456,13 @@
         if (activeIndex !== null) closeLightbox();
         lastWindowWidth = newWidth;
       }
+    });
+
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('open');
+    });
+    document.getElementById('mobile-menu-close').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('open');
     });
 
     loadComics();
