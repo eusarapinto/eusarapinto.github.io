@@ -323,15 +323,15 @@
       const diffMs = now - comicDate;
       const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
       let dateLabel;
-      if (diffDays === 0) dateLabel = 'hoje';
-      else if (diffDays === 1) dateLabel = 'há 1 dia';
-      else if (diffDays < 7) dateLabel = `há ${diffDays} dias`;
-      else if (diffDays < 14) dateLabel = 'há 1 semana';
-      else if (diffDays < 21) dateLabel = 'há 2 semanas';
-      else if (diffDays < 28) dateLabel = 'há 3 semanas';
-      else if (diffDays < 60) dateLabel = 'há 1 mês';
-      else if (diffDays < 365) dateLabel = `há ${Math.floor(diffDays / 30)} meses`;
-      else dateLabel = comicDate.toLocaleDateString('pt-PT', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
+      if (diffDays === 0) dateLabel = 'today';
+      else if (diffDays === 1) dateLabel = '1 day ago';
+      else if (diffDays < 7) dateLabel = `${diffDays} days ago`;
+      else if (diffDays < 14) dateLabel = '1 week ago';
+      else if (diffDays < 21) dateLabel = '2 weeks ago';
+      else if (diffDays < 28) dateLabel = '3 weeks ago';
+      else if (diffDays < 60) dateLabel = '1 month ago';
+      else if (diffDays < 365) dateLabel = `${Math.floor(diffDays / 30)} months ago`;
+      else dateLabel = comicDate.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '.');
       document.getElementById('lb-date').textContent = dateLabel;
 
       document.getElementById('lb-images').innerHTML = comic.images
