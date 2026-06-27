@@ -144,50 +144,8 @@
     .footer-links a:hover { color: var(--black); }
 
     /* ── TICKER ── */
-    .ticker {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 18px;
-      background: #ff0000;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      z-index: 300;
-    }
-
-    .ticker-track {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      animation: ticker-scroll 30s linear infinite;
-    }
-
-    .ticker-track:hover { animation-play-state: paused; }
-
-    @keyframes ticker-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .ticker-item {
-      font-family: 'Fraunces', serif;
-      font-size: 14px;
-      line-height: 18px;
-      color: var(--white);
-      padding: 0 60px 0 0;
-    }
-
-    .ticker-item strong { font-weight: 700; }
-    .ticker-item span { font-weight: 400; }
-
-    body { padding-bottom: 18px; }
-
-    @media (max-width: 600px) {
-      .ticker { bottom: auto; top: 0; }
-      body { padding-bottom: 0; padding-top: 18px; }
-    }
+    .ticker { display: none; }
+    body { padding-bottom: 0; padding-top: 0; }
 
   </style>
 </head>
