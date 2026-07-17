@@ -149,6 +149,24 @@
     }
 
     /* ── FOOTER ── */
+    .illustrations {
+      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .illustrations img {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 1100px) { .illustrations { padding: 0 40px 60px; } }
+    @media (max-width: 600px) { .illustrations { padding: 0 24px 40px; gap: 12px; } }
+
     footer { padding: 48px 150px; border-top: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
     @media (max-width: 1100px) { footer { padding: 40px; } }
     @media (max-width: 600px) { footer { flex-direction: column; gap: 16px; padding: 32px 20px; text-align: center; } }
@@ -188,7 +206,7 @@
   <main>
     <div class="bio-wrapper">
       <p class="bio-text">
-        Born in 1993 in <span class="highlight">Porto, Portugal</span>, holding a pencil in her hand, straight out of the womb, <span class="highlight">Sara</span> started drawing everywhere she should not have, compulsively. The hospital walls, the birth certificate, the nurse's face. Eventually calmed down when the frontal lobe kicked in, and studied <span class="highlight">Fine Arts</span> and <span class="highlight">Design</span>. Currently works as a <span class="highlight">Product Designer</span>, not only because it pays the bills but because she actually likes it. Whenever the corporate job doesn't knock her out, she likes to produce drawings that she sometimes calls <span class="highlight">illustrations</span> and other times <span class="highlight">comics</span>, because she is not sure of the difference. She absolutely wrote this herself in the third person.
+        Born in 1993 in <span class="highlight">Porto, Portugal</span>, holding a pencil in her hand straight out of the womb, <span class="highlight">Sara</span> started drawing everywhere she should not have, compulsively. The hospital walls, the birth certificate, the nurse's face. Eventually calmed down when the frontal lobe kicked in, and studied <span class="highlight">Fine Arts</span> and <span class="highlight">Design</span>. Currently works as a <span class="highlight">Product Designer</span>, not only because it pays the bills but because she actually likes it. Whenever the corporate job doesn't knock her out, she likes to produce drawings that she sometimes calls <span class="highlight">illustrations</span> and other times <span class="highlight">comics</span>, because she is not sure of the difference. She absolutely wrote this herself in the third person.
       </p>
     </div>
 
@@ -205,6 +223,13 @@
         <div class="tooltip" id="tooltip">Copied!</div>
       </div>
     </div>
+
+    <div class="illustrations">
+      <img src="../bio1.svg" alt="">
+      <img src="../bio2.svg" alt="">
+      <img src="../bio3.svg" alt="">
+    </div>
+
   </main>
 
   <footer>
