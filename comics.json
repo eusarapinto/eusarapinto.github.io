@@ -1,626 +1,905 @@
 [
-{
+  {
     "id": "001",
     "title": "O nascimento da monocelha.",
     "date": "2026-06-30",
     "cover": "comics/monocelha1.jpg",
-    "images": ["comics/monocelha1.jpg", "comics/monocelha2.jpg", "comics/monocelha3.jpg"]
+    "images": [
+      "comics/monocelha1.jpg",
+      "comics/monocelha2.jpg",
+      "comics/monocelha3.jpg"
+    ]
   },
-{
+  {
     "id": "001",
     "title": "My kind of late-night show 🤡",
     "date": "2026-06-19",
     "cover": "comics/circocircadiano.JPG",
-    "images": ["comics/circocircadiano.JPG"]
+    "images": [
+      "comics/circocircadiano.JPG"
+    ]
   },
   {
     "id": "001",
     "title": "Burocracia",
     "date": "2025-08-05",
     "cover": "comics/Burocracia1.JPG",
-    "images": ["comics/Burocracia1.JPG", "comics/Burocracia2.JPG", "comics/Burocracia3.JPG", "comics/Burocracia4.JPG"]
+    "images": [
+      "comics/Burocracia1.JPG",
+      "comics/Burocracia2.JPG",
+      "comics/Burocracia3.JPG",
+      "comics/Burocracia4.JPG"
+    ]
   },
   {
     "id": "002",
     "title": "Self-awareness",
     "date": "2025-04-11",
     "cover": "comics/Selfawareness.jpg",
-    "images": ["comics/Selfawareness.jpg"]
+    "images": [
+      "comics/Selfawareness.jpg"
+    ]
   },
   {
     "id": "003",
     "title": "Dentista",
     "date": "2025-04-09",
     "cover": "comics/Dentista1.jpg",
-    "images": ["comics/Dentista1.jpg", "comics/Dentista2.jpg", "comics/Dentista3.jpg"]
+    "images": [
+      "comics/Dentista1.jpg",
+      "comics/Dentista2.jpg",
+      "comics/Dentista3.jpg"
+    ]
   },
   {
     "id": "004",
     "title": "Amazon",
     "date": "2024-09-18",
     "cover": "comics/Amazon.JPG",
-    "images": ["comics/Amazon.JPG"]
+    "images": [
+      "comics/Amazon.JPG"
+    ]
   },
   {
     "id": "005",
     "title": "Smoking",
     "date": "2024-09-17",
     "cover": "comics/Smoking.JPG",
-    "images": ["comics/Smoking.JPG"]
+    "images": [
+      "comics/Smoking.JPG"
+    ]
   },
   {
     "id": "006",
     "title": "Love happens when you least expect it",
     "date": "2024-09-12",
     "cover": "comics/Lovehappens.JPG",
-    "images": ["comics/Lovehappens.JPG"]
+    "images": [
+      "comics/Lovehappens.JPG"
+    ]
   },
   {
     "id": "007",
     "title": "Moda foca",
     "date": "2024-09-10",
     "cover": "comics/Modafoca.JPG",
-    "images": ["comics/Modafoca.JPG"]
+    "images": [
+      "comics/Modafoca.JPG"
+    ]
   },
   {
     "id": "008",
     "title": "Hiper foca",
     "date": "2024-09-06",
     "cover": "comics/Toufocada.JPG",
-    "images": ["comics/Toufocada.JPG"]
+    "images": [
+      "comics/Toufocada.JPG"
+    ]
   },
   {
     "id": "008",
     "title": "Dados",
     "date": "2024-09-04",
     "cover": "comics/Olhardados.JPG",
-    "images": ["comics/Olhardados.JPG"]
+    "images": [
+      "comics/Olhardados.JPG"
+    ]
   },
   {
     "id": "008",
     "title": "Tempo patudo",
     "date": "2024-06-17",
     "cover": "comics/Tempopatudo.JPG",
-    "images": ["comics/Tempopatudo.JPG"]
+    "images": [
+      "comics/Tempopatudo.JPG"
+    ]
   },
   {
     "id": "008",
     "title": "Paulo, o terapeuta poeta",
     "date": "2024-05-01",
     "cover": "comics/Cerebronarrador.JPG",
-    "images": ["comics/Cerebronarrador.JPG"]
+    "images": [
+      "comics/Cerebronarrador.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Don't be a stalker",
     "date": "2023-07-10",
     "cover": "comics/Possoajudar1.JPG",
-    "images": ["comics/Possoajudar1.JPG", "comics/Possoajudar2.JPG", "comics/Possoajudar3.JPG", "comics/Possoajudar4.JPG"]
+    "images": [
+      "comics/Possoajudar1.JPG",
+      "comics/Possoajudar2.JPG",
+      "comics/Possoajudar3.JPG",
+      "comics/Possoajudar4.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Não tenho tempo para cortar as unhas",
     "date": "2023-07-04",
     "cover": "comics/Naotenhotempo1.JPG",
-    "images": ["comics/Naotenhotempo1.JPG", "comics/Naotenhotempo2.JPG"]
+    "images": [
+      "comics/Naotenhotempo1.JPG",
+      "comics/Naotenhotempo2.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Pum intended",
     "date": "2023-06-28",
     "cover": "comics/Puns12.JPG",
-    "images": ["comics/Puns12.JPG", "comics/Puns2.JPG", "comics/Puns3.JPG"]
+    "images": [
+      "comics/Puns12.JPG",
+      "comics/Puns2.JPG",
+      "comics/Puns3.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "A Júlia com FOMO a ver os vossos stories no Primavera",
     "date": "2023-06-09",
     "cover": "comics/Primaverafomo.JPG",
-    "images": ["comics/Primaverafomo.JPG"]
+    "images": [
+      "comics/Primaverafomo.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Uma cientista climática, uma epidemiologista em 2020, ou uma designer.",
     "date": "2023-06-08",
     "cover": "comics/opiniao.JPG",
-    "images": ["comics/opiniao.JPG"]
+    "images": [
+      "comics/opiniao.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Humor possível em privação de sono.",
     "date": "2023-05-28",
     "cover": "comics/Insonia1.JPG",
-    "images": ["comics/Insonia1.JPG", "comics/Insonia2.JPG", "comics/Insonia3.JPG"]
+    "images": [
+      "comics/Insonia1.JPG",
+      "comics/Insonia2.JPG",
+      "comics/Insonia3.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Entrevista de emprego",
     "date": "2021-02-06",
     "cover": "comics/5mindepois.png",
-    "images": ["comics/5mindepois.png", "comics/1diadepois.jpg", "comics/1semanadepois.jpg"]
+    "images": [
+      "comics/5mindepois.png",
+      "comics/1diadepois.jpg",
+      "comics/1semanadepois.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Se sabem como é que esta história acaba então spoilem-me por favor.",
     "date": "2020-02-25",
     "cover": "comics/eraumaveztese.jpg",
-    "images": ["comics/eraumaveztese.jpg"]
+    "images": [
+      "comics/eraumaveztese.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Medo do escuro",
     "date": "2020-02-26",
     "cover": "comics/asvezestou.jpg",
-    "images": ["comics/asvezestou.jpg", "comics/edepoispenso.jpg", "comics/mas-depois.jpg", "comics/equenao.jpg", "comics/foda-se.jpg"]
+    "images": [
+      "comics/asvezestou.jpg",
+      "comics/edepoispenso.jpg",
+      "comics/mas-depois.jpg",
+      "comics/equenao.jpg",
+      "comics/foda-se.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Quarentena",
     "date": "2020-03-24",
     "cover": "comics/janaosei.jpg",
-    "images": ["comics/janaosei.jpg"]
+    "images": [
+      "comics/janaosei.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Redes sociais",
     "date": "2020-09-17",
     "cover": "comics/redessociais.png",
-    "images": ["comics/redessociais.png"]
+    "images": [
+      "comics/redessociais.png"
+    ]
   },
   {
     "id": "009",
     "title": "Quarentena 2",
     "date": "2020-04-14",
     "cover": "comics/ai.jpg",
-    "images": ["comics/ai.jpg", "comics/fechada.jpg", "comics/eutenho.jpg"]
+    "images": [
+      "comics/ai.jpg",
+      "comics/fechada.jpg",
+      "comics/eutenho.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Mood",
     "date": "2020-04-13",
     "cover": "comics/semestofoo.jpg",
-    "images": ["comics/semestofoo.jpg"]
+    "images": [
+      "comics/semestofoo.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Papel higiénico",
     "date": "2020-04-04",
     "cover": "comics/papelgihi1.png",
-    "images": ["comics/papelgihi1.png", "comics/papelhigi2.png"]
+    "images": [
+      "comics/papelgihi1.png",
+      "comics/papelhigi2.png"
+    ]
   },
   {
     "id": "009",
     "title": "Nem sei",
     "date": "2020-04-01",
     "cover": "comics/nemsei.png",
-    "images": ["comics/nemsei.png"]
+    "images": [
+      "comics/nemsei.png"
+    ]
   },
   {
     "id": "009",
     "title": "Avó Júlia a falar com os netos em 2050",
     "date": "2020-03-23",
     "cover": "comics/avojulia.jpg",
-    "images": ["comics/avojulia.jpg"]
+    "images": [
+      "comics/avojulia.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "A gíria dos próximos tempos",
     "date": "2020-03-18",
     "cover": "comics/chamadas.jpg",
-    "images": ["comics/chamadas.jpg"]
+    "images": [
+      "comics/chamadas.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "E sair de casa para andar aí a laurear a pevide sem ser necessário, nesta altura, é uma manifestação da tua idiotice individual.",
     "date": "2020-03-14",
     "cover": "comics/pandemia.jpg",
-    "images": ["comics/pandemia.jpg"]
+    "images": [
+      "comics/pandemia.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Sad but true",
     "date": "2020-03-04",
     "cover": "comics/paniko2.jpg",
-    "images": ["comics/paniko2.jpg"]
+    "images": [
+      "comics/paniko2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Não é uma boa altura para se ser cotovelo",
     "date": "2020-03-03",
     "cover": "comics/atchu1.jpg",
-    "images": ["comics/atchu1.jpg", "comics/cotovelos.jpg"]
+    "images": [
+      "comics/atchu1.jpg",
+      "comics/cotovelos.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Como saber se alguém nasceu depois de 1996",
     "date": "2020-02-27",
     "cover": "comics/comosaber1000.jpg",
-    "images": ["comics/comosaber1000.jpg"]
+    "images": [
+      "comics/comosaber1000.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Sobre a prisão de ventre",
     "date": "2020-02-20",
     "cover": "comics/imful.jpg",
-    "images": ["comics/imful.jpg"]
+    "images": [
+      "comics/imful.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "A escolha é complexa. A legalização da escolha é muito simples.",
     "date": "2020-02-19",
     "cover": "comics/euta2.jpg",
-    "images": ["comics/euta2.jpg"]
+    "images": [
+      "comics/euta2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Dúvida legítima.",
     "date": "2020-02-18",
     "cover": "comics/ovoefrango.jpg",
-    "images": ["comics/ovoefrango.jpg"]
+    "images": [
+      "comics/ovoefrango.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "(Not so) happy valentine's!",
     "date": "2020-02-12",
     "cover": "comics/despedido.jpg",
-    "images": ["comics/despedido.jpg"]
+    "images": [
+      "comics/despedido.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Dia mundial do massacre floral.",
     "date": "2020-02-11",
     "cover": "comics/altura4.jpg",
-    "images": ["comics/altura4.jpg"]
+    "images": [
+      "comics/altura4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Diagrama de Gantt",
     "date": "2020-02-06",
     "cover": "comics/cronograma3.jpg",
-    "images": ["comics/cronograma3.jpg"]
+    "images": [
+      "comics/cronograma3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Humanos",
     "date": "2020-02-05",
     "cover": "comics/humanos22.jpg",
-    "images": ["comics/humanos22.jpg", "comics/humans2.jpg", "comics/humans3.jpg"]
+    "images": [
+      "comics/humanos22.jpg",
+      "comics/humans2.jpg",
+      "comics/humans3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Brain priorities",
     "date": "2020-02-04",
     "cover": "comics/bosniA.jpg",
-    "images": ["comics/bosniA.jpg", "comics/2dzrt.jpg", "comics/3dzrt.jpg"]
+    "images": [
+      "comics/bosniA.jpg",
+      "comics/2dzrt.jpg",
+      "comics/3dzrt.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Trip down memory lane",
     "date": "2020-01-30",
     "cover": "comics/001-a.jpg",
-    "images": ["comics/001-a.jpg", "comics/001-b.jpg", "comics/001-c.jpg", "comics/001-cover.jpg", "comics/002-a.jpg", "comics/002-b.jpg", "comics/002-cover.jpg", "comics/003-a.jpg", "comics/003-b.jpg", "comics/003-cover.jpg"]
+    "images": [
+      "comics/001-a.jpg",
+      "comics/001-b.jpg",
+      "comics/001-c.jpg",
+      "comics/001-cover.jpg",
+      "comics/002-a.jpg",
+      "comics/002-b.jpg",
+      "comics/002-cover.jpg",
+      "comics/003-a.jpg",
+      "comics/003-b.jpg",
+      "comics/003-cover.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Ponto de vista",
     "date": "2020-01-29",
     "cover": "comics/pontodevista2.jpg",
-    "images": ["comics/pontodevista2.jpg"]
+    "images": [
+      "comics/pontodevista2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Lado de dentro // Lado de fora",
     "date": "2020-01-28",
     "cover": "comics/meme.jpg",
-    "images": ["comics/meme.jpg", "comics/meme22.jpg"]
+    "images": [
+      "comics/meme.jpg",
+      "comics/meme22.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Sempre pronta para correr... os Macs todos da zona.",
     "date": "2020-01-07",
     "cover": "comics/boracorrer1.jpg",
-    "images": ["comics/boracorrer1.jpg", "comics/boracorrer2.jpg", "comics/boracorrer3.jpg"]
+    "images": [
+      "comics/boracorrer1.jpg",
+      "comics/boracorrer2.jpg",
+      "comics/boracorrer3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Penhasco psicológico metafórico dos 30.",
     "date": "2020-01-03",
     "cover": "comics/26anos.jpg",
-    "images": ["comics/26anos.jpg"]
+    "images": [
+      "comics/26anos.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "No bintebinte é que vai ser..",
     "date": "2020-01-01",
     "cover": "comics/bintebinte2.jpg",
-    "images": ["comics/bintebinte2.jpg"]
+    "images": [
+      "comics/bintebinte2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Feliz dia mundial das entradas",
     "date": "2019-12-31",
     "cover": "comics/boasentradas.jpg",
-    "images": ["comics/boasentradas.jpg"]
+    "images": [
+      "comics/boasentradas.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "I wish we were on the same page",
     "date": "2019-11-06",
     "cover": "comics/samepage.jpg",
-    "images": ["comics/samepage.jpg"]
+    "images": [
+      "comics/samepage.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "🐍",
     "date": "2019-08-27",
     "cover": "comics/gfgf.jpg",
-    "images": ["comics/gfgf.jpg"]
+    "images": [
+      "comics/gfgf.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Saudades",
     "date": "2019-08-14",
     "cover": "comics/sdd1.jpg",
-    "images": ["comics/sdd1.jpg", "comics/sdd2.jpg", "comics/sdd3.jpg", "comics/sdd4.jpg"]
+    "images": [
+      "comics/sdd1.jpg",
+      "comics/sdd2.jpg",
+      "comics/sdd3.jpg",
+      "comics/sdd4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Espera sentada.",
     "date": "2019-08-12",
     "cover": "comics/vida.jpg",
-    "images": ["comics/vida.jpg"]
+    "images": [
+      "comics/vida.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Agosto.",
     "date": "2019-08-09",
     "cover": "comics/agosto.jpg",
-    "images": ["comics/agosto.jpg"]
+    "images": [
+      "comics/agosto.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Kit de defesa pessoal.",
     "date": "2019-08-06",
     "cover": "comics/st1.jpg",
-    "images": ["comics/st1.jpg", "comics/st2.jpg", "comics/st3.jpg"]
+    "images": [
+      "comics/st1.jpg",
+      "comics/st2.jpg",
+      "comics/st3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Fixe pa ti que foste de férias.",
     "date": "2019-07-31",
     "cover": "comics/fixepti.jpg",
-    "images": ["comics/fixepti.jpg"]
+    "images": [
+      "comics/fixepti.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Outside of the box",
     "date": "2019-05-15",
     "cover": "comics/conc11.jpg",
-    "images": ["comics/conc11.jpg", "comics/conc22.jpg", "comics/conc33.jpg", "comics/conc44.jpg"]
+    "images": [
+      "comics/conc11.jpg",
+      "comics/conc22.jpg",
+      "comics/conc33.jpg",
+      "comics/conc44.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Quando és a única pessoa que não vê Game of Thrones",
     "date": "2019-04-30",
     "cover": "comics/got1.jpg",
-    "images": ["comics/got1.jpg", "comics/got2.jpg", "comics/got3.jpg", "comics/got4.jpg"]
+    "images": [
+      "comics/got1.jpg",
+      "comics/got2.jpg",
+      "comics/got3.jpg",
+      "comics/got4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Há partes em mim que não gostam mesmo nada de gatos e no entanto, a soma das minhas partes todas, tem-lhes um amor quase patológico.",
     "date": "2019-04-16",
     "cover": "comics/gatos1.jpg",
-    "images": ["comics/gatos1.jpg", "comics/gatos2.jpg", "comics/gatos3.jpg", "comics/gatos4.jpg"]
+    "images": [
+      "comics/gatos1.jpg",
+      "comics/gatos2.jpg",
+      "comics/gatos3.jpg",
+      "comics/gatos4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Exames e entregas :(",
     "date": "2019-03-28",
     "cover": "comics/pum.jpg",
-    "images": ["comics/pum.jpg", "comics/bw2.jpg"]
+    "images": [
+      "comics/pum.jpg",
+      "comics/bw2.jpg"
+    ]
   },
   {
     "id": "009",
-    "title": "Se deus percebesse um bocadinho de UI e UX, não havia necessidade do utilizador do planeta terra gastar um terço do seu dia a dormir e um quarto a planear e a confeccionar refeições. Acho inadmissível esta coisa de termos que repetir os mesmos processos todos os dias. O mundo devia ter sido desenhado de forma a proporcionar uma navegação que facilitasse a vida dos terráqueos. Não foi. Para quando uma atualização que traga uma solução para este problema? Em suma, o segundo semestre começou há poucos dias e já tenho saudades da minha mãe.",
+    "title": "Deus não era Designer",
     "date": "2019-02-27",
     "cover": "comics/deus.jpg",
-    "images": ["comics/deus.jpg"]
+    "images": [
+      "comics/deus.jpg"
+    ],
+    "text": "Se deus percebesse um bocadinho de UI e UX, não havia necessidade do utilizador do planeta terra gastar um terço do seu dia a dormir e um quarto a planear e a confeccionar refeições. Acho inadmissível esta coisa de termos que repetir os mesmos processos todos os dias. O mundo devia ter sido desenhado de forma a proporcionar uma navegação que facilitasse a vida dos terráqueos. Não foi. Para quando uma atualização que traga uma solução para este problema? Em suma, o segundo semestre começou há poucos dias e já tenho saudades da minha mãe."
   },
   {
     "id": "009",
     "title": "Happy Valentine's",
     "date": "2019-02-14",
     "cover": "comics/VALENTINESDAY.jpg",
-    "images": ["comics/VALENTINESDAY.jpg"]
+    "images": [
+      "comics/VALENTINESDAY.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Lmao",
     "date": "2019-02-14",
     "cover": "comics/lmao2.jpg",
-    "images": ["comics/lmao2.jpg"]
+    "images": [
+      "comics/lmao2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Seriously, WTF Google Maps?",
     "date": "2019-02-12",
     "cover": "comics/gps11.jpg",
-    "images": ["comics/gps11.jpg", "comics/gps2222.jpg", "comics/gps3.jpg"]
+    "images": [
+      "comics/gps11.jpg",
+      "comics/gps2222.jpg",
+      "comics/gps3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "👀",
     "date": "2019-02-05",
     "cover": "comics/IMG_0236.jpg",
-    "images": ["comics/IMG_0236.jpg", "comics/IMG_0237.jpg", "comics/IMG_0238.jpg", "comics/IMG_0239.jpg", "comics/IMG_0240.jpg"]
+    "images": [
+      "comics/IMG_0236.jpg",
+      "comics/IMG_0237.jpg",
+      "comics/IMG_0238.jpg",
+      "comics/IMG_0239.jpg",
+      "comics/IMG_0240.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Spanish people",
     "date": "2019-01-29",
     "cover": "comics/IMG_0242.jpg",
-    "images": ["comics/IMG_0242.jpg", "comics/IMG_0243.jpg", "comics/IMG_0244.jpg", "comics/IMG_0245.jpg", "comics/IMG_0246.jpg"]
+    "images": [
+      "comics/IMG_0242.jpg",
+      "comics/IMG_0243.jpg",
+      "comics/IMG_0244.jpg",
+      "comics/IMG_0245.jpg",
+      "comics/IMG_0246.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Entregas",
     "date": "2019-01-11",
     "cover": "comics/IMG_0247.jpg",
-    "images": ["comics/IMG_0247.jpg"]
+    "images": [
+      "comics/IMG_0247.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Sketchbook",
     "date": "2019-01-04",
     "cover": "comics/IMG_0248.jpg",
-    "images": ["comics/IMG_0248.jpg"]
+    "images": [
+      "comics/IMG_0248.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Happy birthday, Jeez!",
     "date": "2018-12-24",
     "cover": "comics/happybirthdayjeez.png",
-    "images": ["comics/happybirthdayjeez.png"]
+    "images": [
+      "comics/happybirthdayjeez.png"
+    ]
   },
   {
     "id": "009",
     "title": "👍",
     "date": "2018-12-08",
     "cover": "comics/sk81.png",
-    "images": ["comics/sk81.png", "comics/sk82.png", "comics/sk83.png", "comics/sk84.png", "comics/sk85.png", "comics/sk86.png", "comics/sk87.png"]
+    "images": [
+      "comics/sk81.png",
+      "comics/sk82.png",
+      "comics/sk83.png",
+      "comics/sk84.png",
+      "comics/sk85.png",
+      "comics/sk86.png",
+      "comics/sk87.png"
+    ]
   },
   {
     "id": "009",
     "title": "Black Friday",
     "date": "2018-11-26",
     "cover": "comics/friday1.png",
-    "images": ["comics/friday1.png", "comics/blackfriday1.png"]
+    "images": [
+      "comics/friday1.png",
+      "comics/blackfriday1.png"
+    ]
   },
   {
     "id": "009",
     "title": "Às vezes é desagradável pensar por imagens.",
     "date": "2018-11-11",
     "cover": "comics/IMG_0249.JPG",
-    "images": ["comics/IMG_0249.JPG", "comics/IMG_0250.JPG", "comics/IMG_0251.JPG"]
+    "images": [
+      "comics/IMG_0249.JPG",
+      "comics/IMG_0250.JPG",
+      "comics/IMG_0251.JPG"
+    ]
   },
   {
     "id": "009",
     "title": "Dust.",
     "date": "2018-11-07",
     "cover": "comics/TESTE1.jpg",
-    "images": ["comics/TESTE1.jpg", "comics/TESTE2.jpg"]
+    "images": [
+      "comics/TESTE1.jpg",
+      "comics/TESTE2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Toteel fish",
     "date": "2018-11-06",
     "cover": "comics/toteel.jpg",
-    "images": ["comics/toteel.jpg"]
+    "images": [
+      "comics/toteel.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Uma Thurman",
     "date": "2018-10-30",
     "cover": "comics/uma.jpg",
-    "images": ["comics/uma.jpg", "comics/duas.jpg"]
+    "images": [
+      "comics/uma.jpg",
+      "comics/duas.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "A ansiedade é um inimigo imaginário",
     "date": "2018-10-17",
     "cover": "comics/anxi1.jpg",
-    "images": ["comics/anxi1.jpg", "comics/anxi2.jpg", "comics/anxi3.jpg", "comics/anxi4.jpg", "comics/anxi5.jpg", "comics/anxi7.jpg", "comics/anxilastlast.jpg"]
+    "images": [
+      "comics/anxi1.jpg",
+      "comics/anxi2.jpg",
+      "comics/anxi3.jpg",
+      "comics/anxi4.jpg",
+      "comics/anxi5.jpg",
+      "comics/anxi7.jpg",
+      "comics/anxilastlast.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Unexpected",
     "date": "2018-10-16",
     "cover": "comics/comum.jpg",
-    "images": ["comics/comum.jpg"]
+    "images": [
+      "comics/comum.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Mas depois veio o Leslie",
     "date": "2018-10-13",
     "cover": "comics/lub.jpg",
-    "images": ["comics/lub.jpg", "comics/lub2.jpg", "comics/lub3.jpg"]
+    "images": [
+      "comics/lub.jpg",
+      "comics/lub2.jpg",
+      "comics/lub3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Make instagram's algorithm chronological again.",
     "date": "2018-10-12",
     "cover": "comics/insta.jpg",
-    "images": ["comics/insta.jpg"]
+    "images": [
+      "comics/insta.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Elevador",
     "date": "2018-09-13",
     "cover": "comics/IMG_0252.jpg",
-    "images": ["comics/IMG_0252.jpg", "comics/IMG_0253.jpg"]
+    "images": [
+      "comics/IMG_0252.jpg",
+      "comics/IMG_0253.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "You're crazy, Beth",
     "date": "2018-09-12",
     "cover": "comics/moon1.jpg",
-    "images": ["comics/moon1.jpg", "comics/moon3.jpg", "comics/moon4.jpg"]
+    "images": [
+      "comics/moon1.jpg",
+      "comics/moon3.jpg",
+      "comics/moon4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "My honest thoughts on the word Homophobia and its overall concept",
     "date": "2018-09-07",
     "cover": "comics/homo1.jpg",
-    "images": ["comics/homo1.jpg", "comics/homo2.jpg", "comics/homo3.jpg", "comics/homo4.jpg", "comics/homo5.jpg", "comics/homo6.jpg"]
+    "images": [
+      "comics/homo1.jpg",
+      "comics/homo2.jpg",
+      "comics/homo3.jpg",
+      "comics/homo4.jpg",
+      "comics/homo5.jpg",
+      "comics/homo6.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Morreu abafada como a piada",
     "date": "2018-09-05",
     "cover": "comics/IMG_0254.jpg",
-    "images": ["comics/IMG_0254.jpg", "comics/IMG_0255.jpg", "comics/IMG_0256.jpg"]
+    "images": [
+      "comics/IMG_0254.jpg",
+      "comics/IMG_0255.jpg",
+      "comics/IMG_0256.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Não consigo escolher uma",
     "date": "2018-08-31",
     "cover": "comics/selfes1.jpg",
-    "images": ["comics/selfes1.jpg", "comics/selfes2.jpg"]
+    "images": [
+      "comics/selfes1.jpg",
+      "comics/selfes2.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Hashtag no filter",
     "date": "2018-08-28",
     "cover": "comics/lol11.jpg",
-    "images": ["comics/lol11.jpg", "comics/lol22.jpg", "comics/lol33.jpg"]
+    "images": [
+      "comics/lol11.jpg",
+      "comics/lol22.jpg",
+      "comics/lol33.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "The perk of having a terrible memory is that life will surprise you with cute pockets every time you camp in a music festival.",
     "date": "2018-08-25",
     "cover": "comics/poket1.jpg",
-    "images": ["comics/poket1.jpg", "comics/poket2.jpg", "comics/poket3.jpg"]
+    "images": [
+      "comics/poket1.jpg",
+      "comics/poket2.jpg",
+      "comics/poket3.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Thanks Mark Zuckerberg",
     "date": "2018-08-22",
     "cover": "comics/IMG_0257.jpg",
-    "images": ["comics/IMG_0257.jpg"]
+    "images": [
+      "comics/IMG_0257.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Summer shower thought",
     "date": "2018-08-21",
     "cover": "comics/shower4.jpg",
-    "images": ["comics/shower4.jpg"]
+    "images": [
+      "comics/shower4.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "Bad habits",
     "date": "2018-08-19",
     "cover": "comics/IMG_0259.jpg",
-    "images": ["comics/IMG_0259.jpg", "comics/IMG_0260.jpg"]
+    "images": [
+      "comics/IMG_0259.jpg",
+      "comics/IMG_0260.jpg"
+    ]
   }
 ]
-
