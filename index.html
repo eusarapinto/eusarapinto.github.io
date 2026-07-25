@@ -6,7 +6,7 @@
   <title>eu sarapinto</title>
   <link rel="icon" type="image/svg+xml" href="juliafavicon.svg">
   <link rel="apple-touch-icon" href="juliafavicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #999; --gap: 12px; }
@@ -128,11 +128,42 @@
     .lb-note-btn {
       background: none; border: none; cursor: pointer; padding: 0 0 0 4px;
       color: var(--mid-gray); display: none; align-items: center;
-      transition: color 0.2s;
+      transition: color 0.2s; position: relative;
     }
     .lb-note-btn:hover { color: var(--black); }
     .lb-note-btn svg { width: 14px; height: 14px; }
     .lb-note-btn.visible { display: flex; }
+
+    .lb-note-tooltip {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      padding: 4px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s;
+    }
+
+    .lb-note-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: var(--black);
+    }
+
+    .lb-note-btn:hover .lb-note-tooltip { opacity: 1; }
 
     .lb-note-card {
       display: none;
@@ -170,7 +201,7 @@
     .lb-note-close svg { width: 14px; height: 14px; }
 
     .lb-note-text {
-      font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 300;
+      font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300;
       line-height: 1.6; color: var(--black);
     }
     .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
@@ -272,9 +303,9 @@
           <span class="lb-number" id="lb-number"></span>
           <button class="lb-note-btn" id="lb-note-btn" aria-label="Author's note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
             </svg>
+            <span class="lb-note-tooltip">Author's note</span>
           </button>
         </div>
         <div class="lb-note-card" id="lb-note-card">
