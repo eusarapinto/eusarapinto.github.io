@@ -356,10 +356,12 @@
       if (isMobile) {
         document.getElementById('lb-prev').disabled = true;
         document.getElementById('lb-next').disabled = comic.images.length <= 1;
-        document.getElementById('lb-more-grid').innerHTML = comics
-          .filter((_, i) => i !== index)
-          .map(c => {
-            const origIndex = comics.indexOf(c);
+
+        // show 9 next comics in circular order
+        const next9 = Array.from({ length: 9 }, (_, i) => (index + 1 + i) % comics.length);
+        document.getElementById('lb-more-grid').innerHTML = next9
+          .map(origIndex => {
+            const c = comics[origIndex];
             return `<div class="lb-more-tile" onclick="openLightbox(${origIndex})">
               <img src="${c.cover}" alt="${c.title}" onerror="this.style.display='none'">
               ${c.images.length > 1 ? MULTI_ICON : ''}
