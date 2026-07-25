@@ -131,6 +131,15 @@
       .lb-more-label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; padding: 0 20px; }
       .lb-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
       .lb-more-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .lb-more-copyright {
+        font-family: 'Inter', sans-serif;
+        font-weight: 300;
+        font-size: 0.78rem;
+        color: var(--mid-gray);
+        letter-spacing: 0.03em;
+        text-align: center;
+        padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+      }
     }
 
     @media (min-width: 601px) { .lb-more { display: none; } }
@@ -201,6 +210,7 @@
     <div class="lb-more" id="lb-more">
       <div class="lb-more-label">More comics</div>
       <div class="lb-more-grid" id="lb-more-grid"></div>
+      <p class="lb-more-copyright">© 2026 Eu sarapinto</p>
     </div>
   </div>
 
