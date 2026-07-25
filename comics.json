@@ -901,5 +901,41 @@
       "comics/IMG_0259.jpg",
       "comics/IMG_0260.jpg"
     ]
-  }
+},
+  {
+    "id": "009",
+    "title": "F*ck.",
+    "date": "2017-11-23",
+    "cover": "comics/IMG_0275.jpg",
+    "images": [
+      "comics/IMG_0275.jpg",
+    ]
+  },
+  {
+    "id": "009",
+    "title": "Evolution",
+    "date": "2017-10-18",
+    "cover": "comics/IMG_0273.jpg",
+    "images": [
+      "comics/IMG_0273.jpg", "comics/IMG_0272.jpg", "comics/IMG_0271.jpg",
+    ]
+ },
+  {
+    "id": "009",
+    "title": "One week before surgery I was a pussy and I'm not proud of it.",
+    "date": "2017-04-06",
+    "cover": "comics/IMG_0275.jpg",
+    "images": [
+      "comics/IMG_0275.jpg"
+    ]
+},
+  {
+    "id": "009",
+    "title": "Retrika",
+    "date": "2017-03-22",
+    "cover": "comics/IMG_0270.jpg",
+    "images": [
+      "comics/IMG_0270.jpg"
+    ]
+}
 ]
