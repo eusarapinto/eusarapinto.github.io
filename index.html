@@ -67,14 +67,15 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(255,255,255,0.92);
-      color: var(--black);
+      background: transparent;
+      color: white;
       font-family: 'Inter', sans-serif;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.04em;
       padding: 3px 8px;
       border-radius: 20px;
+      border: 1.5px solid rgba(255,255,255,0.85);
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
@@ -130,7 +131,7 @@
       color: var(--mid-gray); display: none; align-items: center;
       transition: color 0.2s; position: relative;
     }
-    .lb-note-btn:hover { color: var(--black); }
+    .lb-note-btn:hover { color: #ff0000; }
     .lb-note-btn svg { width: 14px; height: 14px; }
     .lb-note-btn.visible { display: flex; }
 
@@ -302,8 +303,8 @@
           <span class="lb-date" id="lb-date"></span>
           <span class="lb-number" id="lb-number"></span>
           <button class="lb-note-btn" id="lb-note-btn" aria-label="Author's note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
             </svg>
             <span class="lb-note-tooltip">Author's note</span>
           </button>
