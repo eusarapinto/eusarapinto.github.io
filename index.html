@@ -67,7 +67,7 @@
     .tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: opacity 0.4s ease; }
     .tile img.loaded { opacity: 1; }
     .tile-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: flex-end; padding: 16px; transition: background 0.3s; pointer-events: none; }
-    .tile-title { font-family: 'Fraunces', serif; font-size: 0.85rem; font-weight: 400; color: white; opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.25s; line-height: 1.3; }
+    .tile-title { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 400; color: white; opacity: 0; transform: translateY(6px); transition: opacity 0.25s, transform 0.25s; line-height: 1.3; }
     @media (hover: hover) {
       .tile:hover img { transform: scale(1.04); }
       .tile:hover .tile-overlay { background: rgba(0,0,0,0.18); }
@@ -82,7 +82,7 @@
       background: transparent;
       color: white;
       font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.04em;
       padding: 3px 8px;
@@ -122,7 +122,7 @@
     .lb-img-wrap img { max-height: calc(100vh - 160px); max-width: 100%; width: auto; height: auto; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .lb-img-skeleton { display: none; }
     .tile.active img { opacity: 0.7; }
-    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; filter: drop-shadow(0 0 1px rgba(0,0,0,0.3)); }
+    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
 
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94); -ms-overflow-style: none; scrollbar-width: none; }
@@ -134,17 +134,17 @@
     .lb-bar-left { display: flex; flex-direction: column; gap: 3px; }
     .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--black); }
     .lb-meta { display: flex; align-items: center; gap: 8px; }
-    .lb-date { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
+    .lb-date { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
     .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--mid-gray); border: 1px solid var(--gray); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
 
     /* author note */
     .lb-note-btn {
       background: none; border: none; cursor: pointer; padding: 0 0 0 4px;
-      color: var(--mid-gray); display: none; align-items: center;
+      color: var(--black); display: none; align-items: center;
       transition: color 0.2s; position: relative;
     }
     .lb-note-btn:hover { color: #ff0000; }
-    .lb-note-btn svg { width: 14px; height: 14px; }
+    .lb-note-btn svg { width: 16px; height: 16px; }
     .lb-note-btn.visible { display: flex; }
 
     .lb-note-tooltip {
@@ -155,7 +155,7 @@
       background: var(--black);
       color: var(--white);
       font-family: 'Inter', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.68rem;
       font-weight: 400;
       letter-spacing: 0.04em;
       padding: 4px 8px;
@@ -207,10 +207,10 @@
 
     .lb-note-close {
       background: none; border: none; cursor: pointer; padding: 0;
-      color: var(--mid-gray); display: flex; align-items: center;
+      color: var(--black); display: flex; align-items: center;
       transition: color 0.2s;
     }
-    .lb-note-close:hover { color: var(--black); }
+    .lb-note-close:hover { color: #ff0000; }
     .lb-note-close svg { width: 14px; height: 14px; }
 
     .lb-note-text {
@@ -218,14 +218,14 @@
       line-height: 1.6; color: var(--black);
     }
     .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
-    .lb-close:hover { color: var(--mid-gray); }
-    .lb-close svg { width: 20px; height: 20px; }
+    .lb-close:hover { color: #ff0000; }
+    .lb-close svg { width: 24px; height: 24px; }
 
     .lb-content { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 32px 80px; }
     .lb-images { display: flex; gap: 8px; align-items: center; justify-content: center; height: 100%; width: 100%; }
 
-    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--gray); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
-    .lb-arrow:hover { background: var(--light-gray); border-color: var(--black); }
+    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--black); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
+    .lb-arrow:hover { background: #ff0000; border-color: #ff0000; color: #fff; }
     .lb-arrow:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
     .lb-arrow svg { width: 16px; height: 16px; }
     .lb-arrow.prev { left: 20px; }
@@ -252,7 +252,7 @@
       .lb-note-btn { display: none !important; }
       .lb-mobile-note { padding: 20px 20px 0; }
       .lb-mobile-note-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; }
-      .lb-mobile-note-text { font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: var(--black); }
+      .lb-mobile-note-text { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300; line-height: 1.6; color: var(--black); }
       .lb-more { padding: 20px 0 0; }
       .lb-more-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; padding: 0 20px; }
       .lb-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
@@ -345,11 +345,11 @@
     </div>
     <div class="lb-content" id="lb-content">
       <button class="lb-arrow prev" id="lb-prev">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
       </button>
       <div class="lb-images" id="lb-images"></div>
       <button class="lb-arrow next" id="lb-next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
       </button>
     </div>
     <div class="lb-dots" id="lb-dots"></div>
@@ -390,9 +390,9 @@
   </footer>
 
   <script>
-    const MULTI_ICON = `<svg class="tile-multi" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <rect x="7" y="3" width="13" height="13" rx="2" fill="white" fill-opacity="0.9"/>
-      <rect x="3" y="7" width="13" height="13" rx="2" fill="white" fill-opacity="0.6" stroke="white" stroke-width="0.5"/>
+    const MULTI_ICON = `<svg class="tile-multi" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+      <rect x="7" y="3" width="14" height="14" rx="3"/>
+      <path d="M3 7v11a3 3 0 0 0 3 3h11"/>
     </svg>`;
 
     let comics = [];
