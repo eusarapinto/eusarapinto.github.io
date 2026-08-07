@@ -42,14 +42,14 @@
 
     /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); transition: all 0.3s; }
+    .hamburger span { display: block; width: 22px; height: 2.5px; background: var(--black); transition: all 0.3s; }
 
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
     .mobile-menu a.active { color: #ff0000; font-weight: 800; }
     .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
-    .mobile-menu-close svg { width: 24px; height: 24px; }
+    .mobile-menu-close svg { width: 22px; height: 22px; }
 
     @media (max-width: 600px) {
       nav { display: none; }
@@ -122,7 +122,7 @@
     .lb-img-wrap img { max-height: calc(100vh - 160px); max-width: 100%; width: auto; height: auto; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .lb-img-skeleton { display: none; }
     .tile.active img { opacity: 0.7; }
-    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4)); }
+    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2)); }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
 
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94); -ms-overflow-style: none; scrollbar-width: none; }
@@ -219,7 +219,7 @@
     }
     .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
     .lb-close:hover { color: #ff0000; }
-    .lb-close svg { width: 24px; height: 24px; }
+    .lb-close svg { width: 20px; height: 20px; }
 
     .lb-content { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 32px 80px; }
     .lb-images { display: flex; gap: 8px; align-items: center; justify-content: center; height: 100%; width: 100%; }
@@ -227,7 +227,7 @@
     .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--black); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
     .lb-arrow:hover { background: #ff0000; border-color: #ff0000; color: #fff; }
     .lb-arrow:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
-    .lb-arrow svg { width: 16px; height: 16px; }
+    .lb-arrow svg { width: 20px; height: 20px; }
     .lb-arrow.prev { left: 20px; }
     .lb-arrow.next { right: 20px; }
 
@@ -302,8 +302,8 @@
 
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
       </svg>
     </button>
     <a href="/" class="active">Home</a>
@@ -319,7 +319,7 @@
           <span class="lb-date" id="lb-date"></span>
           <span class="lb-number" id="lb-number"></span>
           <button class="lb-note-btn" id="lb-note-btn" aria-label="Author's note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round">
               <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.96 9.96 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
             </svg>
             <span class="lb-note-tooltip">Author's note</span>
@@ -338,18 +338,18 @@
         </div>
       </div>
       <button class="lb-close" id="lb-close" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
         </svg>
       </button>
     </div>
     <div class="lb-content" id="lb-content">
       <button class="lb-arrow prev" id="lb-prev">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="15.5 21 7.5 12 15.5 3"/></svg>
       </button>
       <div class="lb-images" id="lb-images"></div>
       <button class="lb-arrow next" id="lb-next">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="8.5 21 16.5 12 8.5 3"/></svg>
       </button>
     </div>
     <div class="lb-dots" id="lb-dots"></div>
@@ -390,9 +390,9 @@
   </footer>
 
   <script>
-    const MULTI_ICON = `<svg class="tile-multi" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
-      <rect x="7" y="3" width="14" height="14" rx="3"/>
-      <path d="M3 7v11a3 3 0 0 0 3 3h11"/>
+    const MULTI_ICON = `<svg class="tile-multi" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 7v14h14"/>
+      <rect x="7" y="3" width="14" height="14" fill="white"/>
     </svg>`;
 
     let comics = [];
