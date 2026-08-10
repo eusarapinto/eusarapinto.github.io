@@ -574,7 +574,7 @@
   },
   {
     "id": "034",
-    "title": "Há partes em mim que não gostam mesmo nada de gatos e no entanto, a soma das minhas partes todas, tem-lhes um amor quase patológico.",
+    "title": "Alergia a gatos",
     "date": "2019-04-16",
     "cover": "comics/gatos1.jpg",
     "images": [
@@ -582,7 +582,8 @@
       "comics/gatos2.jpg",
       "comics/gatos3.jpg",
       "comics/gatos4.jpg"
-    ]
+    ],
+"text": "Há partes em mim que não gostam mesmo nada de gatos e, no entanto, a soma das minhas partes todas tem-lhes um amor quase patológico. Esta é a prova de que o amor vence sempre no final."
   },
   {
     "id": "033",
@@ -794,7 +795,8 @@
     "images": [
       "comics/IMG_0252.jpg",
       "comics/IMG_0253.jpg"
-    ]
+  ],
+"text": "- Tá quente, hoje.\n- Tá. Mas dão chuva para o fim-de-semana.\n- Dão. Tem de ser. Já faz falta.\n- Faz. Tem de ser.\n- ...\n- Até logo.\n- Até logo, se Deus quiser."
   },
   {
     "id": "013",

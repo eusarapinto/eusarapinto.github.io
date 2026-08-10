@@ -131,11 +131,11 @@
     @keyframes lbIn { from { opacity: 0; } to { opacity: 1; } }
 
     .lb-bar { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--gray); flex-shrink: 0; }
-    .lb-bar-left { display: flex; flex-direction: column; gap: 3px; }
+    .lb-bar-left { display: flex; flex-direction: column; gap: 3px; position: relative; }
     .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--black); }
     .lb-meta { display: flex; align-items: center; gap: 8px; }
     .lb-date { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
-    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--mid-gray); border: 1px solid var(--gray); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
+    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--black); border: 1px solid var(--black); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
 
     /* author note */
     .lb-note-btn {
@@ -178,18 +178,62 @@
 
     .lb-note-btn:hover .lb-note-tooltip { opacity: 1; }
 
+    .lb-note-hint {
+      display: none;
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 0;
+      z-index: 21;
+      background: #FFF07D;
+      border-radius: 8px;
+      padding: 10px 14px;
+      align-items: center;
+      gap: 16px;
+      white-space: nowrap;
+    }
+
+    .lb-note-hint.open { display: flex; }
+
+    .lb-note-hint::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: var(--hint-arrow, 24px);
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-bottom-color: #FFF07D;
+    }
+
+    .lb-note-hint-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: 0.01em;
+    }
+
+    .lb-note-hint-close {
+      background: none; border: none; cursor: pointer; padding: 0;
+      color: var(--black); display: flex; align-items: center;
+      transition: color 0.2s;
+    }
+    .lb-note-hint-close:hover { color: #ff0000; }
+    .lb-note-hint-close svg { width: 14px; height: 14px; }
+
+    @media (max-width: 600px) { .lb-note-hint { display: none !important; } }
+
     .lb-note-card {
       display: none;
       position: absolute;
-      top: calc(100% - 8px);
-      left: 28px;
+      top: calc(100% + 10px);
+      left: 0;
       width: 340px;
       max-width: calc(100vw - 56px);
       background: var(--white);
       border: 1px solid var(--gray);
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      z-index: 10;
+      z-index: 20;
       padding: 16px 20px;
     }
 
@@ -250,7 +294,7 @@
       .lb-arrow:disabled { opacity: 0; pointer-events: none; }
       .lb-dots { display: flex; }
       .lb-note-btn { display: none !important; }
-      .lb-mobile-note { padding: 20px 20px 0; }
+      .lb-mobile-note { padding: 24px 20px 32px; }
       .lb-mobile-note-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; }
       .lb-mobile-note-text { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300; line-height: 1.6; color: var(--black); }
       .lb-more { padding: 20px 0 0; }
@@ -312,12 +356,12 @@
   </div>
 
   <div class="lightbox" id="lightbox">
-    <div class="lb-bar" style="position:relative;">
+    <div class="lb-bar" style="position:relative;z-index:20;">
       <div class="lb-bar-left">
         <span class="lb-title" id="lb-title"></span>
         <div class="lb-meta">
-          <span class="lb-date" id="lb-date"></span>
           <span class="lb-number" id="lb-number"></span>
+          <span class="lb-date" id="lb-date"></span>
           <button class="lb-note-btn" id="lb-note-btn" aria-label="Author's note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter">
               <path d="M3 4h18v12h-10l-5 4v-4H3z"/>
@@ -325,12 +369,21 @@
             <span class="lb-note-tooltip">Author's note</span>
           </button>
         </div>
+        <div class="lb-note-hint" id="lb-note-hint">
+          <span class="lb-note-hint-text">Click to read author's note.</span>
+          <button class="lb-note-hint-close" id="lb-note-hint-close" aria-label="Dismiss">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
+            </svg>
+          </button>
+        </div>
+
         <div class="lb-note-card" id="lb-note-card">
           <div class="lb-note-header">
             <span class="lb-note-label">Author's note</span>
             <button class="lb-note-close" id="lb-note-close">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
               </svg>
             </button>
           </div>
@@ -495,9 +548,20 @@
       const mobileNoteText = document.getElementById('lb-mobile-note-text');
       noteCard.classList.remove('open');
 
+      const noteHint = document.getElementById('lb-note-hint');
+      noteHint.classList.remove('open');
+
       if (comic.text) {
         noteText.textContent = comic.text;
         noteBtn.classList.add('visible');
+        if (window.innerWidth > 600) {
+          requestAnimationFrame(() => {
+            const btn = noteBtn.getBoundingClientRect();
+            const box = noteHint.parentElement.getBoundingClientRect();
+            noteHint.style.setProperty('--hint-arrow', (btn.left - box.left + btn.width / 2) + 'px');
+            noteHint.classList.add('open');
+          });
+        }
         mobileNoteText.textContent = comic.text;
         mobileNote.style.display = isMobile ? 'block' : 'none';
       } else {
@@ -582,6 +646,7 @@
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.getElementById('lb-note-card').classList.remove('open');
+      document.getElementById('lb-note-hint').classList.remove('open');
       document.body.style.overflow = '';
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       document.getElementById('header').classList.remove('hidden');
@@ -591,7 +656,13 @@
 
     document.getElementById('lb-note-btn').addEventListener('click', e => {
       e.stopPropagation();
+      document.getElementById('lb-note-hint').classList.remove('open');
       document.getElementById('lb-note-card').classList.toggle('open');
+    });
+
+    document.getElementById('lb-note-hint-close').addEventListener('click', e => {
+      e.stopPropagation();
+      document.getElementById('lb-note-hint').classList.remove('open');
     });
 
     document.getElementById('lb-note-close').addEventListener('click', e => {
