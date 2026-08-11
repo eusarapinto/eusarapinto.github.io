@@ -314,18 +314,120 @@
 
     @media (min-width: 601px) { .lb-more { display: none; } }
 
-    footer { padding: 48px 150px; border-top: 1px solid var(--gray); display: flex; align-items: center; justify-content: space-between; }
-    @media (max-width: 1100px) { footer { padding: 40px; } }
-    @media (max-width: 600px) { footer { flex-direction: column; gap: 16px; padding: 32px 20px; text-align: center; } }
-    .footer-name { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.03em; }
-    .footer-nocookies { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.03em; }
-    .footer-links a { font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid-gray); text-decoration: none; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--black); }
 
     /* ── TICKER ── */
     .ticker { display: none; }
     body { padding-bottom: 0; padding-top: 0; }
 
+
+    /* ── FOOTER ── */
+    footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
+    @media (max-width: 1100px) { footer { padding: 56px 40px 0; } }
+    @media (max-width: 600px) { footer { padding: 40px 24px 0; } }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+    @media (max-width: 900px) { .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; } }
+    @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; } }
+
+    .footer-col-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 20px;
+    }
+
+    .footer-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+    .footer-list a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-list a:hover { color: #ff0000; }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .footer-soon { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--black); }
+
+    .footer-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      position: relative;
+    }
+
+    .footer-copy-btn {
+      background: none; border: none; cursor: pointer; padding: 0;
+      color: var(--black); display: flex; align-items: center;
+      transition: color 0.2s; flex-shrink: 0;
+    }
+    .footer-copy-btn:hover { color: #ff0000; }
+    .footer-copy-btn svg { width: 16px; height: 16px; }
+
+    .footer-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .footer-tooltip.visible { opacity: 1; }
+    .footer-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--black);
+    }
+
+    @media (max-width: 600px) {
+      .footer-sep { display: none; }
+      .footer-break { display: block; margin-top: 4px; }
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gray);
+      padding: 24px 0 32px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--mid-gray);
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 <body>
@@ -435,11 +537,50 @@
   </main>
 
   <footer>
-    <span class="footer-name">© 2026 Eu sarapinto</span>
-    <span class="footer-nocookies">No cookies. No tracking. Just comics.</span>
-    <div class="footer-links">
-      <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+    <div class="footer-cols">
+
+      <div class="footer-col">
+        <p class="footer-col-title">Site links</p>
+        <div class="footer-list">
+          <a href="/">Home</a>
+          <a href="/bio">Bio / Contact</a>
+          <a href="/cv">CV</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Follow me</p>
+        <div class="footer-list">
+          <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@eusarapinto" target="_blank" rel="noopener">Tik Tok</a>
+          <a href="https://www.facebook.com/eusarapinto/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://eusarapinto.tumblr.com/" target="_blank" rel="noopener">Tumblr</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Talk to me</p>
+        <p class="footer-note">Send me an email at:</p>
+        <div class="footer-email">
+          <span id="footer-email-text">eusarapinto@gmail.com</span>
+          <button class="footer-copy-btn" id="footer-copy-btn" aria-label="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="9" y="9" width="13" height="13"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+          <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Newsletter</p>
+        <p class="footer-soon">Coming soon.</p>
+      </div>
+
     </div>
+
+    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics.</span></div>
   </footer>
 
   <script>
@@ -738,6 +879,15 @@
     });
 
     loadComics();
+
+    document.getElementById('footer-copy-btn').addEventListener('click', () => {
+      const email = document.getElementById('footer-email-text').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        const t = document.getElementById('footer-tooltip');
+        t.classList.add('visible');
+        setTimeout(() => t.classList.remove('visible'), 2000);
+      });
+    });
   </script>
   <!-- Ticker -->
   <div class="ticker" aria-hidden="true">
