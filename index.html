@@ -315,10 +315,10 @@
       .lb-nav-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
       .lb-nav-cards.single { grid-template-columns: 1fr; }
       .lb-nav-card {
-        display: flex; align-items: center; gap: 8px;
+        display: flex; align-items: stretch; gap: 0;
         border: 1px solid var(--gray); border-radius: 8px;
-        padding: 8px; cursor: pointer; background: none;
-        text-align: left; min-width: 0;
+        padding: 0; cursor: pointer; background: none;
+        text-align: left; min-width: 0; overflow: hidden;
         transition: border-color 0.2s, box-shadow 0.2s;
       }
       @media (hover: hover) { .lb-nav-card:hover { border-color: var(--black); } }
@@ -326,8 +326,8 @@
       .lb-nav-card.next { flex-direction: row-reverse; text-align: right; }
       .lb-nav-card.empty { display: none; }
       .lb-nav-arrow { width: 15px; height: 15px; flex-shrink: 0; vertical-align: -2px; color: var(--black); }
-      .lb-nav-thumb { width: 56px; height: 56px; flex-shrink: 0; object-fit: cover; display: block; background: var(--light-gray); }
-      .lb-nav-body { min-width: 0; flex: 1; }
+      .lb-nav-thumb { width: 56px; align-self: stretch; flex-shrink: 0; object-fit: cover; display: block; background: var(--light-gray); }
+      .lb-nav-body { min-width: 0; flex: 1; padding: 10px 12px; }
       .lb-nav-num { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; color: var(--mid-gray); display: flex; align-items: center; gap: 5px; margin-bottom: 2px; }
       .lb-nav-card.next .lb-nav-num { justify-content: flex-end; }
       .lb-nav-title { font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 400; color: var(--black); display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
