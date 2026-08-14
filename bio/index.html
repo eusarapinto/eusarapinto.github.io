@@ -18,13 +18,27 @@
   <meta name="twitter:image" content="https://eusarapinto.github.io/og-image.png">
   <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
   <link rel="apple-touch-icon" href="../juliafavicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,700&family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
   <style>
+    /* ── SELF-HOSTED FONTS ── */
+    @font-face {
+      font-family: 'Inter';
+      src: url('../fonts/Intervariablefont.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Fraunces';
+      src: url('../fonts/Frauncesvariablefont.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666; --red: #ff0000; }
     html { font-size: 16px; }
-    body { font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
+    body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
     /* ── HEADER ── */
     header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
