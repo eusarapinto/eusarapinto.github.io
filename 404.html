@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-existence exists here — Eu Sarapinto</title>
+  <meta name="description" content="This page does not exist. Either you typed the wrong URL or it was deleted.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/juliafavicon.svg">
+  <link rel="apple-touch-icon" href="/juliafavicon.svg">
+  <style>
+    /* ── SELF-HOSTED FONTS ── */
+    @font-face {
+      font-family: 'Inter';
+      src: url('/fonts/Intervariablefont.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Fraunces';
+      src: url('/fonts/Frauncesvariablefont.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666; --red: #ff0000; }
+    html { font-size: 16px; }
+    body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
+
+    header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+    header.scrolled { border-color: var(--gray); }
+    @media (max-width: 1100px) { header { padding: 24px 40px; } }
+    @media (max-width: 600px) { header { padding: 20px; } }
+
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo-img { height: 28px; width: auto; display: block; }
+    @media (max-width: 600px) { .logo-img { height: 22px; } }
+
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; transition: color 0.2s; }
+    nav a:hover { color: var(--red); }
+    nav a.active { color: var(--red); font-weight: 800; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
+    .mobile-menu a.active { color: var(--red); font-weight: 800; }
+    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
+    .mobile-menu-close svg { width: 22px; height: 22px; }
+    @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
+
+    main { flex: 1; }
+
+    /* ── FOOTER ── */
+    footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
+    @media (max-width: 1100px) { footer { padding: 56px 40px 0; } }
+    @media (max-width: 600px) { footer { padding: 40px 24px 0; } }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+    @media (max-width: 900px) { .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; } }
+    @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; } }
+
+    .footer-col-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 20px;
+    }
+
+    .footer-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+    .footer-list a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-list a:hover { color: var(--red); }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .footer-soon { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--black); }
+
+    .footer-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      position: relative;
+    }
+
+    .footer-copy-btn {
+      background: none; border: none; cursor: pointer; padding: 0;
+      color: var(--black); display: flex; align-items: center;
+      transition: color 0.2s; flex-shrink: 0;
+    }
+    .footer-copy-btn:hover { color: var(--red); }
+    .footer-copy-btn svg { width: 16px; height: 16px; }
+
+    .footer-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .footer-tooltip.visible { opacity: 1; }
+    .footer-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--black);
+    }
+
+    @media (max-width: 600px) {
+      .footer-sep { display: none; }
+      .footer-break { display: block; margin-top: 4px; }
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--gray);
+      padding: 24px 0 32px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--mid-gray);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── 404 (shares the Enough Julia layout) ── */
+    .ej {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 24px 96px;
+    }
+    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
+
+    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
+    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
+
+    .ej-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 24px;
+      max-width: 100%;
+      text-wrap: balance;
+    }
+
+    .ej-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--black);
+      max-width: 1000px;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 600px) {
+      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
+      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
+      .ej-body br { display: none; }
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 43px;
+      padding: 0 16px;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--red); }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <a href="/" class="logo">
+      <img src="/eusarapintologo.svg" alt="eu sarapinto" class="logo-img">
+    </a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/enough-julia">Enough Julia</a>
+      <a href="/bio">Bio / Contact</a>
+      <a href="/cv">CV</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+        <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
+      </svg>
+    </button>
+    <a href="/">Home</a>
+    <a href="/enough-julia">Enough Julia</a>
+    <a href="/bio">Bio / Contact</a>
+    <a href="/cv">CV</a>
+  </div>
+
+
+  <main class="ej">
+    <img class="ej-spot" src="/404-spot.png" alt="">
+
+    <h1 class="ej-title">Non-existence exists here</h1>
+    <p class="ej-body">Either you typed the wrong URL or I deleted the page. <br>Both options yield the same ontological paradox.</p>
+
+    <a class="btn" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>Go back to comics</a>
+  </main>
+
+  <footer>
+    <div class="footer-cols">
+
+      <div class="footer-col">
+        <p class="footer-col-title">Site links</p>
+        <div class="footer-list">
+          <a href="/">Home</a>
+          <a href="/enough-julia">Enough Julia</a>
+          <a href="/bio">Bio / Contact</a>
+          <a href="/cv">CV</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Follow me</p>
+        <div class="footer-list">
+          <a href="https://instagram.com/eusarapinto" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.tiktok.com/@eusarapinto" target="_blank" rel="noopener">Tik Tok</a>
+          <a href="https://www.facebook.com/eusarapinto/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://eusarapinto.tumblr.com/" target="_blank" rel="noopener">Tumblr</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Talk to me</p>
+        <p class="footer-note">Send me an email at:</p>
+        <div class="footer-email">
+          <span id="footer-email-text">eusarapinto@gmail.com</span>
+          <button class="footer-copy-btn" id="footer-copy-btn" aria-label="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="9" y="9" width="13" height="13"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+          </button>
+          <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">Newsletter</p>
+        <p class="footer-soon">Coming soon, probably.</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics.</span></div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.add('open');
+    });
+    document.getElementById('mobile-menu-close').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+
+    document.getElementById('footer-copy-btn').addEventListener('click', () => {
+      const email = document.getElementById('footer-email-text').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        const t = document.getElementById('footer-tooltip');
+        t.classList.add('visible');
+        setTimeout(() => t.classList.remove('visible'), 2000);
+      });
+    });
+  </script>
+
+</body>
+</html>

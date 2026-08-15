@@ -674,6 +674,47 @@
     let activeIndex = null;
     let mobilePanelIndex = 0;
 
+    // ── URL / slug helpers (History API deep-linking) ──
+    function slugify(str) {
+      return str
+        .normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+    // readable slug from the title; falls back to the numeric id
+    // for titles that are emoji-only (🐍, 👀, 👍) and slugify to nothing
+    function slugFor(index) {
+      const c = comics[index];
+      return slugify(c.title) || String(c.id);
+    }
+    // resolve a ?c= value back to a comic index. Accepts either the
+    // title slug or the raw id, so both work as permalinks.
+    function indexForSlug(slug) {
+      if (!slug) return -1;
+      const s = String(slug).toLowerCase();
+      let i = comics.findIndex(c => slugify(c.title) === s);
+      if (i === -1) i = comics.findIndex(c => String(c.id).toLowerCase() === s);
+      return i;
+    }
+    function currentSlugParam() {
+      return new URLSearchParams(location.search).get('c');
+    }
+    // on first load, open the comic named in ?c= (if any)
+    function initFromURL() {
+      const slug = currentSlugParam();
+      if (!slug) return;
+      const idx = indexForSlug(slug);
+      if (idx !== -1) {
+        const canonical = slugFor(idx);
+        history.replaceState({ c: canonical }, '', '?c=' + canonical);
+        openLightbox(idx, true);
+      } else {
+        // ?c= points to nothing → drop it and stay on the grid
+        history.replaceState({}, '', location.pathname);
+      }
+    }
+
     let lastScrollY = 0;
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
@@ -695,6 +736,7 @@
         const res = await fetch('comics.json');
         comics = await res.json();
         renderGrid();
+        initFromURL();
       } catch (e) {
         document.getElementById('grid').innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:80px;font-size:0.78rem;color:var(--mid-gray)">Could not load the comics.</div>';
       }
@@ -754,10 +796,18 @@
       document.getElementById('lb-next').disabled = mobilePanelIndex === images.length - 1;
     }
 
-    function openLightbox(index) {
+    function openLightbox(index, fromHistory = false) {
       activeIndex = index;
       mobilePanelIndex = 0;
       const comic = comics[index];
+
+      // push a history entry so back/swipe walks through comics and the
+      // URL can be shared. Skipped when we're reacting to history itself.
+      if (!fromHistory) {
+        const slug = slugFor(index);
+        history.pushState({ c: slug }, '', '?c=' + slug);
+      }
+      document.title = comic.title + ' — Eu Sarapinto';
       const isMobile = window.innerWidth <= 600;
 
       document.getElementById('lb-title').textContent = comic.title;
@@ -913,7 +963,7 @@
       }
     });
 
-    function closeLightbox() {
+    function closeLightbox(fromHistory = false) {
       document.getElementById('lightbox').classList.remove('open');
       document.getElementById('lb-note-card').classList.remove('open');
       document.getElementById('lb-note-hint').classList.remove('open');
@@ -922,6 +972,12 @@
       document.getElementById('header').classList.remove('hidden');
       activeIndex = null;
       mobilePanelIndex = 0;
+      document.title = 'Eu Sarapinto';
+      // clean the URL back to the grid (only when the user closed it,
+      // not when we're already reacting to a back/forward navigation)
+      if (!fromHistory && currentSlugParam()) {
+        history.pushState({}, '', location.pathname);
+      }
     }
 
     document.getElementById('lb-note-btn').addEventListener('click', e => {
@@ -1005,6 +1061,16 @@
     });
     document.getElementById('mobile-menu-close').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.remove('open');
+    });
+
+    // back / forward / mobile swipe-back: bring the UI in line with the URL
+    window.addEventListener('popstate', () => {
+      const idx = indexForSlug(currentSlugParam());
+      if (idx !== -1) {
+        openLightbox(idx, true);
+      } else if (activeIndex !== null) {
+        closeLightbox(true);
+      }
     });
 
     loadComics();
