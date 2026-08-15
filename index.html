@@ -707,7 +707,11 @@
       const idx = indexForSlug(slug);
       if (idx !== -1) {
         const canonical = slugFor(idx);
-        history.replaceState({ c: canonical }, '', '?c=' + canonical);
+        // Someone landed straight on a shared comic link. Put a grid entry
+        // underneath it so back / swipe closes to the grid just like during
+        // normal browsing, instead of leaving the site on the first back.
+        history.replaceState({}, '', location.pathname);
+        history.pushState({ c: canonical }, '', '?c=' + canonical);
         openLightbox(idx, true);
       } else {
         // ?c= points to nothing → drop it and stay on the grid
@@ -797,15 +801,24 @@
     }
 
     function openLightbox(index, fromHistory = false) {
+      const wasOpen = activeIndex !== null;
       activeIndex = index;
       mobilePanelIndex = 0;
       const comic = comics[index];
 
-      // push a history entry so back/swipe walks through comics and the
-      // URL can be shared. Skipped when we're reacting to history itself.
+      // Keep exactly one history entry above the grid while the lightbox
+      // is open: push when opening from the grid, replace when switching
+      // between comics. That way back / swipe always returns to the grid
+      // and closes the lightbox — it never steps through previously-viewed
+      // comics — while the URL still updates so any comic can be shared.
+      // Skipped when we're reacting to history itself.
       if (!fromHistory) {
         const slug = slugFor(index);
-        history.pushState({ c: slug }, '', '?c=' + slug);
+        if (wasOpen) {
+          history.replaceState({ c: slug }, '', '?c=' + slug);
+        } else {
+          history.pushState({ c: slug }, '', '?c=' + slug);
+        }
       }
       document.title = comic.title + ' — Eu Sarapinto';
       const isMobile = window.innerWidth <= 600;
@@ -973,10 +986,12 @@
       activeIndex = null;
       mobilePanelIndex = 0;
       document.title = 'Eu Sarapinto';
-      // clean the URL back to the grid (only when the user closed it,
-      // not when we're already reacting to a back/forward navigation)
+      // When the user closes it (X / Esc / backdrop), step back over the
+      // single history entry we added on open, so we land on the grid and
+      // the URL returns to '/'. When we're already reacting to a back /
+      // forward navigation, the browser has handled history for us.
       if (!fromHistory && currentSlugParam()) {
-        history.pushState({}, '', location.pathname);
+        history.back();
       }
     }
 
