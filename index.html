@@ -285,8 +285,11 @@
     .lb-images { display: flex; gap: 8px; align-items: center; justify-content: center; height: 100%; width: 100%; }
 
     .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--black); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
-    .lb-arrow:hover { background: var(--red); border-color: var(--red); color: var(--white); }
-    .lb-arrow:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+    .lb-arrow:enabled:hover { background: var(--red); border-color: var(--red); color: var(--white); }
+    /* no pointer-events:none here: a disabled <button> already fires no
+       click, and keeping it hit-testable stops the click from falling
+       through to the backdrop behind it (which used to close/reopen). */
+    .lb-arrow:disabled { opacity: 0.2; cursor: default; }
     .lb-arrow svg { width: 20px; height: 20px; }
     .lb-arrow .arrow-chevron { display: none; }
     .lb-arrow .arrow-line { display: block; width: 17px; height: 17px; }
@@ -986,12 +989,14 @@
       activeIndex = null;
       mobilePanelIndex = 0;
       document.title = 'Eu Sarapinto';
-      // When the user closes it (X / Esc / backdrop), step back over the
-      // single history entry we added on open, so we land on the grid and
-      // the URL returns to '/'. When we're already reacting to a back /
-      // forward navigation, the browser has handled history for us.
+      // When the user closes it (X / Esc / backdrop), return the URL to the
+      // grid *synchronously*. history.back() was async and depended on the
+      // entry beneath being the grid, so it could occasionally leave a stale
+      // ?c= in the address bar. replaceState always lands on '/' right away.
+      // When we're already reacting to a back / forward navigation, the
+      // browser has handled history for us.
       if (!fromHistory && currentSlugParam()) {
-        history.back();
+        history.replaceState({}, '', location.pathname);
       }
     }
 
