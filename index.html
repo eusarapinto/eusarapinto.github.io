@@ -1016,7 +1016,9 @@
       document.getElementById('lb-note-card').classList.remove('open');
     });
 
-    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    // wrap so the click event isn't passed in as `fromHistory` (a truthy
+    // event object would make closeLightbox skip the URL reset)
+    document.getElementById('lb-close').addEventListener('click', () => closeLightbox());
 
     document.getElementById('lb-content').addEventListener('click', e => {
       if (window.innerWidth <= 600) return;
