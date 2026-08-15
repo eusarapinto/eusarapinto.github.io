@@ -37,7 +37,7 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666;
-      --red: #ff0000; --yellow: #FFF07D; --gap: 12px; }
+      --red: #ff0000; --yellow: #FFF07D; --gap: 12px; --pill-bg: #F7F6F3; }
     html { font-size: 16px; }
     body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
@@ -58,13 +58,13 @@
 
     /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--black); transition: all 0.3s; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; transition: all 0.3s; }
 
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
     .mobile-menu a.active { color: var(--red); font-weight: 800; }
-    .mobile-menu-close { position: absolute; top: 20px; right: 20px; background: none; border: none; cursor: pointer; color: var(--black); }
+    .mobile-menu-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: none; cursor: pointer; color: var(--black); }
     .mobile-menu-close svg { width: 22px; height: 22px; }
 
     @media (max-width: 600px) {
@@ -91,19 +91,24 @@
     }
     .tile-placeholder { position: absolute; inset: 0; background: linear-gradient(90deg, #f0f0ee 25%, #e8e8e4 50%, #f0f0ee 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
 
+    /* number badge (top-left, appears on hover) — same look as the count pill */
     .tile-pill {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: transparent;
-      color: white;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      background: var(--pill-bg);
+      color: var(--black);
       font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-weight: 600;
-      letter-spacing: 0.04em;
-      padding: 3px 8px;
-      border-radius: 20px;
-      border: 1.5px solid rgba(255,255,255,0.85);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      padding: 0 8px;
+      border-radius: 999px;
+      border: 1px solid var(--black);
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
@@ -138,7 +143,29 @@
     .lb-img-wrap img { max-height: calc(100vh - 160px); max-width: 100%; width: auto; height: auto; object-fit: contain; opacity: 0; transition: opacity 0.4s ease; display: block; }
     .lb-img-skeleton { display: none; }
     .tile.active img { opacity: 0.7; }
-    .tile-multi { position: absolute; top: 8px; right: 8px; width: 18px; height: 18px; opacity: 0.9; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2)); }
+    /* multi-panel count pill (top-right, always visible) */
+    .tile-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 0 7px 0 6px;
+      background: var(--pill-bg);
+      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.66rem;
+      font-weight: 600;
+      line-height: 1;
+      border-radius: 999px;
+      border: 1px solid var(--black);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .tile-count-icon { width: 12px; height: 12px; display: block; flex-shrink: 0; }
+    .tile-count-icon .mask { fill: var(--pill-bg); }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
 
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94); -ms-overflow-style: none; scrollbar-width: none; }
@@ -151,7 +178,7 @@
     .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--black); }
     .lb-meta { display: flex; align-items: center; gap: 8px; }
     .lb-date { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
-    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--black); border: 1px solid var(--black); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
+    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--black); background: var(--pill-bg); border: 1px solid var(--black); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
 
     /* author note */
     .lb-note-btn {
@@ -277,7 +304,7 @@
       font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300;
       line-height: 1.6; color: var(--black);
     }
-    .lb-close { width: 32px; height: 32px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
+    .lb-close { width: 44px; height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
     .lb-close:hover { color: var(--red); }
     .lb-close svg { width: 20px; height: 20px; }
 
@@ -507,7 +534,7 @@
 
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
         <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
       </svg>
     </button>
@@ -553,20 +580,20 @@
         </div>
       </div>
       <button class="lb-close" id="lb-close" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
         </svg>
       </button>
     </div>
     <div class="lb-content" id="lb-content">
       <button class="lb-arrow prev" id="lb-prev">
-        <svg class="arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="15.5 21 7.5 12 15.5 3"/></svg>
+        <svg class="arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="15.5 21 7.5 12 15.5 3"/></svg>
         <svg class="arrow-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="10.5 6.5 5 12 10.5 17.5"/></svg>
       </button>
       <div class="lb-images" id="lb-images"></div>
       <span class="lb-counter" id="lb-counter"></span>
       <button class="lb-arrow next" id="lb-next">
-        <svg class="arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><polyline points="8.5 21 16.5 12 8.5 3"/></svg>
+        <svg class="arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8.5 21 16.5 12 8.5 3"/></svg>
         <svg class="arrow-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13.5 6.5 19 12 13.5 17.5"/></svg>
       </button>
     </div>
@@ -667,10 +694,12 @@
   </footer>
 
   <script>
-    const MULTI_ICON = `<svg class="tile-multi" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linejoin="miter" xmlns="http://www.w3.org/2000/svg">
-      <path d="M3 7v14h14"/>
-      <rect x="7" y="3" width="14" height="14" fill="white"/>
-    </svg>`;
+    // duplicate/copy icon, rounded to match the Figma drawing. The front
+    // square is filled with the pill colour so it masks the back square's
+    // overlap, leaving the back as a bottom-left bracket. Uses currentColor
+    // so the pill's text colour drives the stroke (same weight as the digit).
+    const MULTI_ICON = `<svg class="tile-count-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="8" width="12" height="12" rx="3"/><rect x="8" y="3" width="12" height="12" rx="3" class="mask"/></svg>`;
+    const multiPill = (count) => `<span class="tile-count">${MULTI_ICON}${count}</span>`;
 
     let comics = [];
     let activeIndex = null;
@@ -781,7 +810,7 @@
             <div class="tile-placeholder"></div>
             <img data-src="${comic.cover}" alt="${comic.title}">
             <span class="tile-pill">#${comics.length - i}</span>
-            ${comic.images.length > 1 ? MULTI_ICON : ''}
+            ${comic.images.length > 1 ? multiPill(comic.images.length) : ''}
             <div class="tile-overlay"><span class="tile-title">${comic.title}</span></div>
           </div>`;
         tile.addEventListener('click', () => openLightbox(i));
@@ -890,8 +919,12 @@
         : '';
 
       if (isMobile) {
-        document.getElementById('lb-prev').disabled = true;
-        document.getElementById('lb-next').disabled = comic.images.length <= 1;
+        const prevBtn = document.getElementById('lb-prev');
+        const nextBtn = document.getElementById('lb-next');
+        prevBtn.style.display = '';
+        nextBtn.style.display = '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = comic.images.length <= 1;
 
         // show 9 next comics in circular order
         const next9 = Array.from({ length: 9 }, (_, i) => (index + 1 + i) % comics.length);
@@ -900,7 +933,7 @@
             const c = comics[origIndex];
             return `<div class="lb-more-tile" onclick="openLightbox(${origIndex})">
               <img src="${c.cover}" alt="${c.title}" onerror="this.style.display='none'">
-              ${c.images.length > 1 ? MULTI_ICON : ''}
+              ${c.images.length > 1 ? multiPill(c.images.length) : ''}
             </div>`;
           }).join('');
         document.getElementById('lb-more').style.display = comics.length > 1 ? '' : 'none';
@@ -947,8 +980,13 @@
           navBox.style.display = 'none';
         }
       } else {
-        document.getElementById('lb-prev').disabled = index === 0;
-        document.getElementById('lb-next').disabled = index === comics.length - 1;
+        // desktop: hide the arrow at each end rather than showing it disabled
+        const prevBtn = document.getElementById('lb-prev');
+        const nextBtn = document.getElementById('lb-next');
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        prevBtn.style.display = index === 0 ? 'none' : '';
+        nextBtn.style.display = index === comics.length - 1 ? 'none' : '';
         document.getElementById('lb-nav').style.display = 'none';
       }
 
