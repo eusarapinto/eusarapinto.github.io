@@ -72,8 +72,8 @@
     @media (max-width: 1100px) { .cv-wrapper { padding: 60px 40px 0; } }
     @media (max-width: 600px) { .cv-wrapper { padding: 40px 24px 0; } }
 
-    .cv-section { margin-bottom: 40px; }
-    .cv-section:last-child { margin-bottom: 24px; }
+    .cv-section { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--gray); }
+    .cv-section:last-child { margin-bottom: 24px; padding-bottom: 0; border-bottom: none; }
 
     .cv-section-title {
       font-family: 'Inter', sans-serif;
@@ -82,9 +82,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid-gray);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--gray);
+      margin-bottom: 20px;
     }
 
     .cv-entries { display: flex; flex-direction: column; gap: 20px; }

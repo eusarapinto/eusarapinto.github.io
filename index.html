@@ -99,7 +99,7 @@
       height: 18px;
       display: inline-flex;
       align-items: center;
-      background: var(--pill-bg);
+      background: #fff;
       color: var(--black);
       font-family: 'Inter', sans-serif;
       font-size: 0.66rem;
@@ -108,7 +108,6 @@
       line-height: 1;
       padding: 0 8px;
       border-radius: 999px;
-      border: 1px solid var(--black);
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
@@ -153,19 +152,18 @@
       align-items: center;
       gap: 3px;
       padding: 0 7px 0 6px;
-      background: var(--pill-bg);
+      background: #fff;
       color: var(--black);
       font-family: 'Inter', sans-serif;
       font-size: 0.66rem;
       font-weight: 600;
       line-height: 1;
       border-radius: 999px;
-      border: 1px solid var(--black);
       pointer-events: none;
       z-index: 2;
     }
     .tile-count-icon { width: 12px; height: 12px; display: block; flex-shrink: 0; }
-    .tile-count-icon .mask { fill: var(--pill-bg); }
+    .tile-count-icon .mask { fill: #fff; }
     .lb-more-tile { position: relative; aspect-ratio: 1; overflow: hidden; cursor: pointer; background: var(--light-gray); }
 
     .lightbox { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(255,255,255,0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: lbIn 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94); -ms-overflow-style: none; scrollbar-width: none; }
@@ -178,7 +176,7 @@
     .lb-title { font-family: 'Fraunces', serif; font-size: 1rem; font-weight: 400; color: var(--black); }
     .lb-meta { display: flex; align-items: center; gap: 8px; }
     .lb-date { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--mid-gray); font-weight: 300; letter-spacing: 0.03em; }
-    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--black); background: var(--pill-bg); border: 1px solid var(--black); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
+    .lb-number { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; color: var(--black); background: #fff; border: 1px solid var(--gray); border-radius: 20px; padding: 1px 7px; letter-spacing: 0.02em; }
 
     /* author note */
     .lb-note-btn {
@@ -311,7 +309,7 @@
     .lb-content { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 32px 80px; }
     .lb-images { display: flex; gap: 8px; align-items: center; justify-content: center; height: 100%; width: 100%; }
 
-    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--black); border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
+    .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: var(--white); border: 1px solid var(--gray); border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: background 0.2s, border-color 0.2s; z-index: 10; }
     .lb-arrow:enabled:hover { background: var(--red); border-color: var(--red); color: var(--white); }
     /* no pointer-events:none here: a disabled <button> already fires no
        click, and keeping it hit-testable stops the click from falling
@@ -326,8 +324,8 @@
     .lb-counter { display: none; }
     .lb-dots { display: none; align-items: center; justify-content: center; gap: 6px; }
     .lb-dots:empty { display: none; }
-    .lb-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; border: 1px solid var(--black); box-sizing: border-box; transition: background 0.2s; }
-    .lb-dot.active { background: var(--black); }
+    .lb-dot { width: 7px; height: 7px; border-radius: 999px; background: rgba(0,0,0,0.22); box-sizing: border-box; transition: width 0.25s ease, background 0.25s ease; }
+    .lb-dot.active { width: 17px; background: var(--black); }
 
     @media (max-width: 600px) {
       .lightbox.open { display: block; overflow-y: auto; background: var(--white); -webkit-overflow-scrolling: touch; }
@@ -349,7 +347,9 @@
       .lb-img-wrap .lb-img-skeleton { display: block; position: absolute; inset: 0; aspect-ratio: 1; }
       .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; z-index: 1; }
       .lb-img-wrap.mobile-active { display: block; }
-      .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: rgba(255,255,255,0.92); border: 1px solid var(--black); border-radius: 50%; z-index: 5; display: flex; }
+      .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; z-index: 5; display: flex; }
+      .lb-arrow::after { content: ''; position: absolute; inset: -6px; }
+      .lb-arrow svg { width: 16px; height: 16px; }
       .lb-arrow .arrow-chevron { display: block; }
       .lb-arrow .arrow-line { display: none; }
       .lb-arrow.prev { left: 12px; }
@@ -361,7 +361,6 @@
         z-index: 6;
         gap: 6px; padding: 5px 9px;
         background: rgba(255,255,255,0.92);
-        border: 1px solid var(--black);
         border-radius: 999px;
       }
       .lb-note-btn { display: none !important; }
@@ -560,15 +559,15 @@
         <div class="lb-meta">
           <span class="lb-number" id="lb-number"></span>
           <span class="lb-date" id="lb-date"></span>
-          <button class="lb-note-btn" id="lb-note-btn" aria-label="Author's note">
+          <button class="lb-note-btn" id="lb-note-btn" aria-label="A few words">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="miter">
               <path d="M3 4h18v12h-10l-5 4v-4H3z"/>
             </svg>
-            <span class="lb-note-tooltip">Author's note</span>
+            <span class="lb-note-tooltip">A few words</span>
           </button>
         </div>
         <div class="lb-note-hint" id="lb-note-hint">
-          <span class="lb-note-hint-text">Click to read author's note.</span>
+          <span class="lb-note-hint-text">Click to read a few words</span>
           <button class="lb-note-hint-close" id="lb-note-hint-close" aria-label="Dismiss">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
@@ -578,7 +577,7 @@
 
         <div class="lb-note-card" id="lb-note-card">
           <div class="lb-note-header">
-            <span class="lb-note-label">Author's note</span>
+            <span class="lb-note-label">A few words</span>
             <button class="lb-note-close" id="lb-note-close">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
@@ -608,7 +607,7 @@
       <div class="lb-dots" id="lb-dots"></div>
     </div>
     <div class="lb-mobile-note" id="lb-mobile-note" style="display:none;">
-      <p class="lb-mobile-note-label">Author's note</p>
+      <p class="lb-mobile-note-label">A few words</p>
       <p class="lb-mobile-note-text" id="lb-mobile-note-text"></p>
     </div>
     <div class="lb-nav" id="lb-nav" style="display:none;">
