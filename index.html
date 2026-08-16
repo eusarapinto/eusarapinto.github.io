@@ -304,7 +304,7 @@
       font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300;
       line-height: 1.6; color: var(--black);
     }
-    .lb-close { width: 44px; height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--black); transition: color 0.2s; padding: 0; }
+    .lb-close { width: 44px; height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: flex-end; color: var(--black); transition: color 0.2s; padding: 0; margin-right: -3px; }
     .lb-close:hover { color: var(--red); }
     .lb-close svg { width: 20px; height: 20px; }
 
@@ -324,7 +324,8 @@
     .lb-arrow.next { right: 20px; }
 
     .lb-counter { display: none; }
-    .lb-dots { display: none; align-items: center; justify-content: center; gap: 6px; padding: 14px 0; flex-shrink: 0; }
+    .lb-dots { display: none; align-items: center; justify-content: center; gap: 6px; }
+    .lb-dots:empty { display: none; }
     .lb-dot { width: 6px; height: 6px; border-radius: 50%; background: transparent; border: 1px solid var(--black); box-sizing: border-box; transition: background 0.2s; }
     .lb-dot.active { background: var(--black); }
 
@@ -332,7 +333,7 @@
       .lightbox.open { display: block; overflow-y: auto; background: var(--white); -webkit-overflow-scrolling: touch; }
       .lb-bar { position: sticky; top: 0; background: var(--white); z-index: 10; padding: 16px 20px; }
       .lb-content { padding: 0; display: block; position: relative; overflow: visible; }
-      .lb-counter { display: block; }
+      .lb-counter { display: none; }
       .lb-images { display: block; width: 100%; overflow: hidden; position: relative; }
       .lb-counter {
         position: absolute; top: 12px; right: 12px; z-index: 6;
@@ -354,7 +355,15 @@
       .lb-arrow.prev { left: 12px; }
       .lb-arrow.next { right: 12px; }
       .lb-arrow:disabled { opacity: 0; pointer-events: none; }
-      .lb-dots { display: flex; }
+      .lb-dots {
+        display: flex;
+        position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+        z-index: 6;
+        gap: 6px; padding: 5px 9px;
+        background: rgba(255,255,255,0.92);
+        border: 1px solid var(--black);
+        border-radius: 999px;
+      }
       .lb-note-btn { display: none !important; }
       .lb-mobile-note { padding: 24px 20px 16px; }
       .lb-mobile-note-label { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; }
@@ -596,14 +605,14 @@
         <svg class="arrow-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="8.5 21 16.5 12 8.5 3"/></svg>
         <svg class="arrow-line" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13.5 6.5 19 12 13.5 17.5"/></svg>
       </button>
+      <div class="lb-dots" id="lb-dots"></div>
     </div>
-    <div class="lb-dots" id="lb-dots"></div>
     <div class="lb-mobile-note" id="lb-mobile-note" style="display:none;">
       <p class="lb-mobile-note-label">Author's note</p>
       <p class="lb-mobile-note-text" id="lb-mobile-note-text"></p>
     </div>
     <div class="lb-nav" id="lb-nav" style="display:none;">
-      <p class="lb-nav-label" id="lb-nav-label">Previous / Next</p>
+      <p class="lb-nav-label" id="lb-nav-label">Continue reading</p>
       <div class="lb-nav-cards">
         <button class="lb-nav-card prev" id="lb-nav-prev">
           <div class="lb-nav-body">
@@ -674,10 +683,7 @@
         <div class="footer-email">
           <span id="footer-email-text">eusarapinto@gmail.com</span>
           <button class="footer-copy-btn" id="footer-copy-btn" aria-label="Copy email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
-              <rect x="9" y="9" width="13" height="13"/>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
           <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
         </div>
@@ -947,8 +953,7 @@
           navBox.style.display = '';
           const hasPrev = index > 0;
           const hasNext = index < comics.length - 1;
-          document.getElementById('lb-nav-label').textContent =
-            (hasPrev && hasNext) ? 'Previous / Next' : (hasNext ? 'Up next' : 'Previous');
+          document.getElementById('lb-nav-label').textContent = 'Continue reading';
           document.querySelector('.lb-nav-cards').classList.toggle('single', !(hasPrev && hasNext));
 
           const prevIdx = index - 1;
