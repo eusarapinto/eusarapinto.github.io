@@ -302,9 +302,22 @@
       font-family: 'Fraunces', serif; font-size: 0.9rem; font-weight: 300;
       line-height: 1.6; color: var(--black);
     }
-    .lb-close { width: 44px; height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: flex-end; color: var(--black); transition: color 0.2s; padding: 0; margin-right: -3px; }
-    .lb-close:hover { color: var(--red); }
-    .lb-close svg { width: 20px; height: 20px; }
+    .lb-actions { display: flex; align-items: center; position: relative; margin-right: -3px; }
+    .lb-share, .lb-close { width: 44px; height: 44px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: flex-end; color: var(--black); transition: color 0.2s; padding: 0; }
+    .lb-share:hover, .lb-close:hover { color: var(--red); }
+    .lb-share svg, .lb-close svg { width: 20px; height: 20px; }
+
+    /* share popover (desktop / browsers without native share) */
+    .lb-share-pop { position: absolute; top: calc(100% + 10px); right: 0; width: 252px; background: var(--white); border: 1px solid var(--gray); border-radius: 12px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.12); z-index: 30; display: none; }
+    .lb-share-pop.open { display: block; }
+    .lb-share-title { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 10px; }
+    .lb-share-row { display: flex; align-items: center; gap: 8px; border: 1px solid var(--gray); border-radius: 8px; padding: 5px 5px 5px 10px; margin-bottom: 10px; }
+    .lb-share-url { flex: 1; min-width: 0; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--black); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lb-share-copy { flex-shrink: 0; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; background: var(--black); color: var(--white); border: none; border-radius: 6px; padding: 6px 11px; cursor: pointer; transition: background 0.2s; }
+    .lb-share-copy:hover, .lb-share-copy.done { background: var(--red); }
+    .lb-share-nets { display: flex; gap: 6px; }
+    .lb-share-net { flex: 1; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: var(--black); text-decoration: none; border: 1px solid var(--gray); border-radius: 999px; padding: 6px 4px; transition: border-color 0.2s, color 0.2s; }
+    .lb-share-net:hover { border-color: var(--black); color: var(--red); }
 
     .lb-content { flex: 1; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding: 32px 80px; }
     .lb-images { display: flex; gap: 8px; align-items: center; justify-content: center; height: 100%; width: 100%; }
@@ -349,7 +362,7 @@
       .lb-img-wrap.mobile-active { display: block; }
       .lb-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: rgba(255,255,255,0.92); border: none; border-radius: 50%; z-index: 5; display: flex; }
       .lb-arrow::after { content: ''; position: absolute; inset: -6px; }
-      .lb-arrow svg { width: 16px; height: 16px; }
+      .lb-arrow svg { width: 16px; height: 16px; stroke-width: 2.2; }
       .lb-arrow .arrow-chevron { display: block; }
       .lb-arrow .arrow-line { display: none; }
       .lb-arrow.prev { left: 12px; }
@@ -587,11 +600,30 @@
           <p class="lb-note-text" id="lb-note-text"></p>
         </div>
       </div>
-      <button class="lb-close" id="lb-close" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
-        </svg>
-      </button>
+      <div class="lb-actions">
+        <button class="lb-share" id="lb-share" aria-label="Share">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+        </button>
+        <button class="lb-close" id="lb-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="21" y1="3" x2="3" y2="21"/><line x1="3" y1="3" x2="21" y2="21"/>
+          </svg>
+        </button>
+        <div class="lb-share-pop" id="lb-share-pop">
+          <p class="lb-share-title">Share this comic</p>
+          <div class="lb-share-row">
+            <span class="lb-share-url" id="lb-share-url"></span>
+            <button class="lb-share-copy" id="lb-share-copy">Copy</button>
+          </div>
+          <div class="lb-share-nets">
+            <a class="lb-share-net" id="lb-share-wa" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="lb-share-net" id="lb-share-x" target="_blank" rel="noopener">X</a>
+            <a class="lb-share-net" id="lb-share-fb" target="_blank" rel="noopener">Facebook</a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="lb-content" id="lb-content">
       <button class="lb-arrow prev" id="lb-prev">
@@ -840,6 +872,7 @@
       const wasOpen = activeIndex !== null;
       activeIndex = index;
       mobilePanelIndex = 0;
+      closeSharePop();
       const comic = comics[index];
 
       // Keep exactly one history entry above the grid while the lightbox
@@ -1024,6 +1057,7 @@
       document.getElementById('lightbox').classList.remove('open');
       document.getElementById('lb-note-card').classList.remove('open');
       document.getElementById('lb-note-hint').classList.remove('open');
+      document.getElementById('lb-share-pop').classList.remove('open');
       document.body.style.overflow = '';
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       document.getElementById('header').classList.remove('hidden');
@@ -1060,6 +1094,48 @@
     // wrap so the click event isn't passed in as `fromHistory` (a truthy
     // event object would make closeLightbox skip the URL reset)
     document.getElementById('lb-close').addEventListener('click', () => closeLightbox());
+
+    // ── share ──
+    function currentShareUrl() {
+      return location.origin + location.pathname + '?c=' + slugFor(activeIndex);
+    }
+    function closeSharePop() {
+      document.getElementById('lb-share-pop').classList.remove('open');
+    }
+    function openSharePop() {
+      const url = currentShareUrl();
+      const title = comics[activeIndex].title;
+      document.getElementById('lb-share-url').textContent = url.replace(/^https?:\/\//, '');
+      document.getElementById('lb-share-wa').href = 'https://wa.me/?text=' + encodeURIComponent(title + ' ' + url);
+      document.getElementById('lb-share-x').href = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(title);
+      document.getElementById('lb-share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+      const copyBtn = document.getElementById('lb-share-copy');
+      copyBtn.textContent = 'Copy'; copyBtn.classList.remove('done');
+      document.getElementById('lb-share-pop').classList.add('open');
+    }
+    document.getElementById('lb-share').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (activeIndex === null) return;
+      // phones (and anything that supports it) get the native share sheet;
+      // desktop gets the branded popover.
+      if (navigator.share && window.innerWidth <= 600) {
+        navigator.share({ title: comics[activeIndex].title, url: currentShareUrl() }).catch(() => {});
+      } else {
+        const pop = document.getElementById('lb-share-pop');
+        pop.classList.contains('open') ? closeSharePop() : openSharePop();
+      }
+    });
+    document.getElementById('lb-share-copy').addEventListener('click', (e) => {
+      e.stopPropagation();
+      navigator.clipboard.writeText(currentShareUrl()).then(() => {
+        const b = document.getElementById('lb-share-copy');
+        b.textContent = 'Copied'; b.classList.add('done');
+      }).catch(() => {});
+    });
+    // clicks inside the popover shouldn't bubble out and close it
+    document.getElementById('lb-share-pop').addEventListener('click', (e) => e.stopPropagation());
+    // any click outside the bar dismisses the popover
+    document.addEventListener('click', closeSharePop);
 
     document.getElementById('lb-content').addEventListener('click', e => {
       if (window.innerWidth <= 600) return;
