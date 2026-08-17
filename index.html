@@ -1235,6 +1235,14 @@
 
     // ── mobile carousel: follow the finger, snap on release ──
     let dragActive = false, dragAxis = null, dragW = 0, dragBaseX = 0;
+    function currentTranslateX(el) {
+      const t = getComputedStyle(el).transform;
+      if (!t || t === 'none') return 0;
+      const m = t.match(/matrix3?d?\(([^)]+)\)/);
+      if (!m) return 0;
+      const v = m[1].split(',').map(parseFloat);
+      return v.length === 16 ? v[12] : v[4];   // matrix3d tx=index12, matrix e=index4
+    }
 
     document.getElementById('lb-images').addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
@@ -1244,10 +1252,10 @@
       if (touchStartX < 30) return;                 // leave the OS back-gesture edge alone
       if (comics[activeIndex].images.length <= 1) return;
       const track = document.getElementById('lb-images');
-      dragActive = true; dragAxis = null;
-      dragW = track.offsetWidth;
-      dragBaseX = -mobilePanelIndex * dragW;
       track.style.transition = 'none';
+      dragActive = true; dragAxis = null;
+      dragW = track.getBoundingClientRect().width || window.innerWidth;
+      dragBaseX = currentTranslateX(track);         // continue from the real current position
     }, { passive: true });
 
     document.getElementById('lb-images').addEventListener('touchmove', e => {
@@ -1270,17 +1278,19 @@
         'translateX(' + (dragBaseX + move) + 'px)';
     }, { passive: false });
 
-    document.getElementById('lb-images').addEventListener('touchend', e => {
+    function endDrag(changedX) {
       if (!dragActive) return;
       dragActive = false;
       if (dragAxis !== 'x') return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dx = changedX - touchStartX;
       const images = comics[activeIndex].images;
       if (dx < -dragW * 0.18 && mobilePanelIndex < images.length - 1) mobilePanelIndex++;
       else if (dx > dragW * 0.18 && mobilePanelIndex > 0) mobilePanelIndex--;
       updateMobileCarousel(images);                  // animates the snap into place
       didSwipe = true;                               // don't let this fire a click afterwards
-    });
+    }
+    document.getElementById('lb-images').addEventListener('touchend', e => endDrag(e.changedTouches[0].clientX));
+    document.getElementById('lb-images').addEventListener('touchcancel', () => endDrag(touchStartX));
 
     let lastWindowWidth = window.innerWidth;
     window.addEventListener('resize', () => {
