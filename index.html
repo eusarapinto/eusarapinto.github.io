@@ -357,9 +357,9 @@
     @media (max-width: 600px) {
       .lightbox.open { display: block; overflow-y: auto; background: var(--white); -webkit-overflow-scrolling: touch; }
       .lb-bar { position: sticky; top: 0; background: var(--white); z-index: 10; padding: 16px 20px; }
-      .lb-content { padding: 0; display: block; position: relative; overflow: visible; }
+      .lb-content { padding: 0; display: block; position: relative; overflow: hidden; }
       .lb-counter { display: none; }
-      .lb-images { display: block; width: 100%; overflow: hidden; position: relative; }
+      .lb-images { display: flex; flex-wrap: nowrap; align-items: flex-start; width: 100%; position: relative; will-change: transform; }
       .lb-counter {
         position: absolute; top: 12px; right: 12px; z-index: 6;
         background: rgba(255,255,255,0.92);
@@ -370,7 +370,7 @@
         font-size: 0.68rem; font-weight: 500;
         color: var(--black); letter-spacing: 0.02em;
       }
-      .lb-img-wrap { display: none; width: 100%; position: relative; }
+      .lb-img-wrap { display: block; width: 100%; flex: 0 0 100%; position: relative; }
       .lb-img-wrap .lb-img-skeleton { display: block; position: absolute; inset: 0; aspect-ratio: 1; }
       .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; z-index: 1; }
       .lb-img-wrap.mobile-active { display: block; }
@@ -869,13 +869,15 @@
     }
 
     function updateMobileCarousel(images) {
-      document.querySelectorAll('#lb-images .lb-img-wrap').forEach((wrap, i) => {
-        wrap.classList.toggle('mobile-active', i === mobilePanelIndex);
-      });
+      const track = document.getElementById('lb-images');
+      const w = track.offsetWidth;
+      track.style.transition = 'transform 0.3s ease';
+      track.style.transform = 'translateX(' + (-mobilePanelIndex * w) + 'px)';
       document.querySelectorAll('.lb-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === mobilePanelIndex);
       });
-      document.getElementById('lb-counter').textContent = (mobilePanelIndex + 1) + ' / ' + images.length;
+      const c = document.getElementById('lb-counter');
+      if (c) c.textContent = (mobilePanelIndex + 1) + ' / ' + images.length;
       document.getElementById('lb-prev').disabled = mobilePanelIndex === 0;
       document.getElementById('lb-next').disabled = mobilePanelIndex === images.length - 1;
     }
@@ -959,6 +961,11 @@
               onload="this.style.opacity='1';var s=document.getElementById('lb-skel-${i}');if(s)s.style.display='none';">
           </div>`)
         .join('');
+
+      // reset the mobile carousel to the first panel, without animating
+      const _track = document.getElementById('lb-images');
+      _track.style.transition = 'none';
+      _track.style.transform = 'translateX(0)';
 
       const counterEl = document.getElementById('lb-counter');
       counterEl.style.visibility = comic.images.length > 1 ? 'visible' : 'hidden';
@@ -1226,22 +1233,53 @@
     let touchStartY = 0;
     let didSwipe = false;
 
+    // ── mobile carousel: follow the finger, snap on release ──
+    let dragActive = false, dragAxis = null, dragW = 0, dragBaseX = 0;
+
     document.getElementById('lb-images').addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
       didSwipe = false;
+      if (window.innerWidth > 600) return;
+      if (touchStartX < 30) return;                 // leave the OS back-gesture edge alone
+      if (comics[activeIndex].images.length <= 1) return;
+      const track = document.getElementById('lb-images');
+      dragActive = true; dragAxis = null;
+      dragW = track.offsetWidth;
+      dragBaseX = -mobilePanelIndex * dragW;
+      track.style.transition = 'none';
     }, { passive: true });
 
-    document.getElementById('lb-images').addEventListener('touchend', e => {
-      if (window.innerWidth > 600) return;
-      if (touchStartX < 30) return;
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) < Math.abs(dy) || Math.abs(dx) < 40) return;
-      didSwipe = true;
+    document.getElementById('lb-images').addEventListener('touchmove', e => {
+      if (!dragActive) return;
+      const dx = e.touches[0].clientX - touchStartX;
+      const dy = e.touches[0].clientY - touchStartY;
+      if (dragAxis === null) {
+        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;   // wait for a clear direction
+        dragAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+      }
+      if (dragAxis !== 'x') { dragActive = false; return; }  // vertical → let the page scroll
+      e.preventDefault();
       const images = comics[activeIndex].images;
-      if (dx < 0 && mobilePanelIndex < images.length - 1) { mobilePanelIndex++; updateMobileCarousel(images); }
-      else if (dx > 0 && mobilePanelIndex > 0) { mobilePanelIndex--; updateMobileCarousel(images); }
+      let move = dx;
+      if ((mobilePanelIndex === 0 && dx > 0) ||
+          (mobilePanelIndex === images.length - 1 && dx < 0)) {
+        move = dx * 0.35;                            // rubber-band at the ends
+      }
+      document.getElementById('lb-images').style.transform =
+        'translateX(' + (dragBaseX + move) + 'px)';
+    }, { passive: false });
+
+    document.getElementById('lb-images').addEventListener('touchend', e => {
+      if (!dragActive) return;
+      dragActive = false;
+      if (dragAxis !== 'x') return;
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const images = comics[activeIndex].images;
+      if (dx < -dragW * 0.18 && mobilePanelIndex < images.length - 1) mobilePanelIndex++;
+      else if (dx > dragW * 0.18 && mobilePanelIndex > 0) mobilePanelIndex--;
+      updateMobileCarousel(images);                  // animates the snap into place
+      didSwipe = true;                               // don't let this fire a click afterwards
     });
 
     let lastWindowWidth = window.innerWidth;
