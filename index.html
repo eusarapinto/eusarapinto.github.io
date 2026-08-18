@@ -1067,6 +1067,22 @@
       lb.scrollTop = 0;
       document.body.style.overflow = 'hidden';
 
+      // #lb-images was still `display: none` (inside the not-yet-open
+      // lightbox) when we set `_track.scrollLeft = 0` above, and some
+      // browsers silently ignore scrollLeft writes on an element with no
+      // layout box yet — so that reset could no-op and leave the carousel
+      // showing whichever panel the *previous* comic was scrolled to. Redo
+      // it now that .open has been applied, once layout has actually
+      // happened, so it reliably lands on panel 1 every time.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (activeIndex !== index) return; // a newer openLightbox call has since taken over
+          _track.scrollLeft = 0;
+          mobilePanelIndex = 0;
+          updateMobileCarouselUI(comic.images);
+        });
+      });
+
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       document.querySelector(`.tile[data-index="${index}"]`)?.classList.add('active');
     }
