@@ -359,7 +359,15 @@
       .lb-bar { position: sticky; top: 0; background: var(--white); z-index: 10; padding: 16px 20px; }
       .lb-content { padding: 0; display: block; position: relative; overflow: hidden; }
       .lb-counter { display: none; }
-      .lb-images { display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-start; gap: 0; width: 100%; height: auto; position: relative; will-change: transform; }
+      .lb-images {
+        display: flex; flex-wrap: nowrap; align-items: flex-start; justify-content: flex-start; gap: 0;
+        width: 100%; height: auto; position: relative;
+        overflow-x: auto; overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; -ms-overflow-style: none;
+      }
+      .lb-images::-webkit-scrollbar { display: none; }
       .lb-counter {
         position: absolute; top: 12px; right: 12px; z-index: 6;
         background: rgba(255,255,255,0.92);
@@ -370,7 +378,7 @@
         font-size: 0.68rem; font-weight: 500;
         color: var(--black); letter-spacing: 0.02em;
       }
-      .lb-img-wrap { display: block; width: 100%; flex: 0 0 100%; position: relative; }
+      .lb-img-wrap { display: block; width: 100%; flex: 0 0 100%; position: relative; scroll-snap-align: start; scroll-snap-stop: always; }
       .lb-img-wrap .lb-img-skeleton { display: block; position: absolute; inset: 0; aspect-ratio: 1; }
       .lb-img-wrap img { position: relative; width: 100%; height: auto; opacity: 0; transition: opacity 0.4s ease; display: block; z-index: 1; }
       .lb-img-wrap.mobile-active { display: block; }
@@ -868,11 +876,10 @@
       });
     }
 
-    function updateMobileCarousel(images) {
-      const track = document.getElementById('lb-images');
-      const w = track.offsetWidth;
-      track.style.transition = 'transform 0.3s ease';
-      track.style.transform = 'translateX(' + (-mobilePanelIndex * w) + 'px)';
+    // keeps dots / counter / arrow-disabled state in sync with mobilePanelIndex,
+    // regardless of whether the panel change came from a native swipe or a
+    // programmatic scroll
+    function updateMobileCarouselUI(images) {
       document.querySelectorAll('.lb-dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === mobilePanelIndex);
       });
@@ -880,6 +887,16 @@
       if (c) c.textContent = (mobilePanelIndex + 1) + ' / ' + images.length;
       document.getElementById('lb-prev').disabled = mobilePanelIndex === 0;
       document.getElementById('lb-next').disabled = mobilePanelIndex === images.length - 1;
+    }
+
+    // programmatic navigation only (arrow buttons / dots). The horizontal
+    // gesture itself + snapping is owned entirely by the browser via
+    // scroll-snap-type on #lb-images — this just scrolls it to the target
+    // panel and lets the scroll listener below pick up the UI sync.
+    function updateMobileCarousel(images, smooth = true) {
+      const track = document.getElementById('lb-images');
+      track.scrollTo({ left: mobilePanelIndex * track.clientWidth, behavior: smooth ? 'smooth' : 'auto' });
+      updateMobileCarouselUI(images);
     }
 
     function openLightbox(index, fromHistory = false) {
@@ -964,8 +981,7 @@
 
       // reset the mobile carousel to the first panel, without animating
       const _track = document.getElementById('lb-images');
-      _track.style.transition = 'none';
-      _track.style.transform = 'translateX(0)';
+      _track.scrollLeft = 0;
 
       const counterEl = document.getElementById('lb-counter');
       counterEl.style.visibility = comic.images.length > 1 ? 'visible' : 'hidden';
@@ -1207,10 +1223,6 @@
       }
     });
 
-    document.getElementById('lightbox').addEventListener('click', e => {
-      if (didSwipe) { didSwipe = false; return; }
-    });
-
     document.addEventListener('keydown', e => {
       if (!document.getElementById('lightbox').classList.contains('open')) return;
       if (e.key === 'Escape') {
@@ -1229,68 +1241,24 @@
       }
     });
 
-    let touchStartX = 0;
-    let touchStartY = 0;
-    let didSwipe = false;
-
-    // ── mobile carousel: follow the finger, snap on release ──
-    let dragActive = false, dragAxis = null, dragW = 0, dragBaseX = 0;
-    function currentTranslateX(el) {
-      const t = getComputedStyle(el).transform;
-      if (!t || t === 'none') return 0;
-      const m = t.match(/matrix3?d?\(([^)]+)\)/);
-      if (!m) return 0;
-      const v = m[1].split(',').map(parseFloat);
-      return v.length === 16 ? v[12] : v[4];   // matrix3d tx=index12, matrix e=index4
-    }
-
-    document.getElementById('lb-images').addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-      didSwipe = false;
-      if (window.innerWidth > 600) return;
-      if (touchStartX < 30) return;                 // leave the OS back-gesture edge alone
-      if (comics[activeIndex].images.length <= 1) return;
+    // ── mobile carousel: the browser owns the horizontal gesture + snapping
+    // (overflow-x: auto + scroll-snap-type: x mandatory on #lb-images, see CSS).
+    // JS only does programmatic navigation (arrows/dots, handled by
+    // updateMobileCarousel above) and keeps mobilePanelIndex + the dots/arrows
+    // UI in sync with whatever panel the native scroll lands on. Do NOT add
+    // JS drag/transform handlers back here — that's what broke Safari/Brave. ──
+    document.getElementById('lb-images').addEventListener('scroll', () => {
+      if (window.innerWidth > 600 || activeIndex === null) return;
       const track = document.getElementById('lb-images');
-      track.style.transition = 'none';
-      dragActive = true; dragAxis = null;
-      dragW = track.getBoundingClientRect().width || window.innerWidth;
-      dragBaseX = currentTranslateX(track);         // continue from the real current position
+      const images = comics[activeIndex].images;
+      const w = track.clientWidth || 1;
+      const idx = Math.round(track.scrollLeft / w);
+      const clamped = Math.max(0, Math.min(images.length - 1, idx));
+      if (clamped !== mobilePanelIndex) {
+        mobilePanelIndex = clamped;
+      }
+      updateMobileCarouselUI(images);
     }, { passive: true });
-
-    document.getElementById('lb-images').addEventListener('touchmove', e => {
-      if (!dragActive) return;
-      const dx = e.touches[0].clientX - touchStartX;
-      const dy = e.touches[0].clientY - touchStartY;
-      if (dragAxis === null) {
-        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;   // wait for a clear direction
-        dragAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
-      }
-      if (dragAxis !== 'x') { dragActive = false; return; }  // vertical → let the page scroll
-      e.preventDefault();
-      const images = comics[activeIndex].images;
-      let move = dx;
-      if ((mobilePanelIndex === 0 && dx > 0) ||
-          (mobilePanelIndex === images.length - 1 && dx < 0)) {
-        move = dx * 0.35;                            // rubber-band at the ends
-      }
-      document.getElementById('lb-images').style.transform =
-        'translateX(' + (dragBaseX + move) + 'px)';
-    }, { passive: false });
-
-    function endDrag(changedX) {
-      if (!dragActive) return;
-      dragActive = false;
-      if (dragAxis !== 'x') return;
-      const dx = changedX - touchStartX;
-      const images = comics[activeIndex].images;
-      if (dx < -dragW * 0.18 && mobilePanelIndex < images.length - 1) mobilePanelIndex++;
-      else if (dx > dragW * 0.18 && mobilePanelIndex > 0) mobilePanelIndex--;
-      updateMobileCarousel(images);                  // animates the snap into place
-      didSwipe = true;                               // don't let this fire a click afterwards
-    }
-    document.getElementById('lb-images').addEventListener('touchend', e => endDrag(e.changedTouches[0].clientX));
-    document.getElementById('lb-images').addEventListener('touchcancel', () => endDrag(touchStartX));
 
     let lastWindowWidth = window.innerWidth;
     window.addEventListener('resize', () => {
