@@ -1115,14 +1115,37 @@
       activeIndex = null;
       mobilePanelIndex = 0;
       document.title = 'Eu Sarapinto';
-      // When the user closes it (X / Esc / backdrop), return the URL to the
-      // grid *synchronously*. history.back() was async and depended on the
-      // entry beneath being the grid, so it could occasionally leave a stale
-      // ?c= in the address bar. replaceState always lands on '/' right away.
       // When we're already reacting to a back / forward navigation, the
-      // browser has handled history for us.
+      // browser has handled history for us. Otherwise (a forced close that
+      // didn't go through requestClose(), e.g. the resize handler below)
+      // just land the URL back on the grid without touching the history
+      // stack.
       if (!fromHistory && currentSlugParam()) {
         history.replaceState({}, '', location.pathname);
+      }
+    }
+
+    // User-initiated close (X button / Escape / backdrop click). Goes
+    // through a real history.back() instead of closeLightbox()'s
+    // replaceState fallback above, so it consumes the history entry that
+    // opening the lightbox pushed — exactly like the swipe-back / OS back
+    // gesture already does. Using replaceState() here (as this used to)
+    // repaints the current entry back to "grid" but never moves the history
+    // pointer, so each open + X-close cycle left one more phantom grid
+    // entry stacked underneath: swipe-back would then need several swipes
+    // to leave a single comic instead of just one, and X would behave
+    // differently from a real back gesture.
+    function requestClose() {
+      if (activeIndex === null) return;
+      if (currentSlugParam()) {
+        history.back();
+        // Safety net: if popstate doesn't fire shortly after — e.g. this
+        // lightbox was opened on the very first history entry in the tab
+        // and back() has nowhere to go — close it directly so the button
+        // never looks inert.
+        setTimeout(() => { if (activeIndex !== null) closeLightbox(); }, 300);
+      } else {
+        closeLightbox();
       }
     }
 
@@ -1137,9 +1160,7 @@
       document.getElementById('lb-note-hint').classList.remove('open');
     });
 
-    // wrap so the click event isn't passed in as `fromHistory` (a truthy
-    // event object would make closeLightbox skip the URL reset)
-    document.getElementById('lb-close').addEventListener('click', () => closeLightbox());
+    document.getElementById('lb-close').addEventListener('click', () => requestClose());
 
     // ── share ──
     function currentShareUrl() {
@@ -1226,7 +1247,7 @@
           document.getElementById('lb-note-card').classList.remove('open');
           return;
         }
-        closeLightbox();
+        requestClose();
       }
     });
 
@@ -1248,7 +1269,7 @@
           closeSharePop();
           document.getElementById('lb-note-card').classList.remove('open');
         } else {
-          closeLightbox();
+          requestClose();
         }
       }
       if (window.innerWidth > 600) {
