@@ -1074,14 +1074,23 @@
       // showing whichever panel the *previous* comic was scrolled to. Redo
       // it now that .open has been applied, once layout has actually
       // happened, so it reliably lands on panel 1 every time.
-      requestAnimationFrame(() => {
+      // Mobile-only: on desktop #lb-images isn't a scroller (all panels are
+      // shown side by side), and updateMobileCarouselUI() would wrongly
+      // stomp the #lb-prev/#lb-next disabled state that the desktop branch
+      // above just set for comic-to-comic navigation (it disables/enables
+      // them based on mobilePanelIndex, which is unrelated on desktop —
+      // this is what caused the desktop next/prev arrows to get stuck
+      // disabled after one click).
+      if (isMobile) {
         requestAnimationFrame(() => {
-          if (activeIndex !== index) return; // a newer openLightbox call has since taken over
-          _track.scrollLeft = 0;
-          mobilePanelIndex = 0;
-          updateMobileCarouselUI(comic.images);
+          requestAnimationFrame(() => {
+            if (activeIndex !== index) return; // a newer openLightbox call has since taken over
+            _track.scrollLeft = 0;
+            mobilePanelIndex = 0;
+            updateMobileCarouselUI(comic.images);
+          });
         });
-      });
+      }
 
       document.querySelectorAll('.tile').forEach(t => t.classList.remove('active'));
       document.querySelector(`.tile[data-index="${index}"]`)?.classList.add('active');
