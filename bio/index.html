@@ -152,12 +152,22 @@
       color: var(--black);
       display: flex;
       align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 14px;
+      flex-shrink: 0;
       padding: 0;
+      position: relative;
       transition: color 0.2s;
     }
 
     .email-copy-btn:hover { color: var(--red); }
-    .email-copy-btn svg { width: 16px; height: 16px; }
+    .email-copy-btn svg { width: 16px; height: auto; display: block; }
+    .email-copy-btn .icon-copy svg { width: 12px; height: 14px; }
+    .email-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
+    .email-copy-btn .icon-check { display: none; }
+    .email-copy-btn.copied .icon-copy { display: none; }
+    .email-copy-btn.copied .icon-check { display: block; }
 
     .tooltip {
       position: absolute;
@@ -249,11 +259,18 @@
 
     .footer-copy-btn {
       background: none; border: none; cursor: pointer; padding: 0;
-      color: var(--black); display: flex; align-items: center;
+      color: var(--black); display: flex; align-items: center; justify-content: center;
+      width: 12px; height: 14px;
+      position: relative;
       transition: color 0.2s; flex-shrink: 0;
     }
     .footer-copy-btn:hover { color: var(--red); }
-    .footer-copy-btn svg { width: 16px; height: 16px; }
+    .footer-copy-btn svg { width: 16px; height: auto; display: block; }
+    .footer-copy-btn .icon-copy svg { width: 12px; height: 14px; }
+    .footer-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
+    .footer-copy-btn .icon-check { display: none; }
+    .footer-copy-btn.copied .icon-copy { display: none; }
+    .footer-copy-btn.copied .icon-check { display: block; }
 
     .footer-tooltip {
       position: absolute;
@@ -342,9 +359,18 @@
         <div class="email-component">
           <span id="email-text">eusarapinto@gmail.com</span>
           <button class="email-copy-btn" id="copy-btn" aria-label="Copy email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="icon-copy">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23047 12L9.21973 12.2041C9.12421 13.1455 8.37594 13.8937 7.43457 13.9893L7.23047 14H2L1.7959 13.9893C0.854402 13.8938 0.106283 13.1456 0.0107422 12.2041L0 12V4.7998C0 3.69524 0.895431 2.7998 2 2.7998H2.76953V2C2.76953 0.895431 3.66496 1.28851e-07 4.76953 0H10L10.2041 0.0107422C11.2126 0.113139 12 0.964449 12 2V9.2002L11.9893 9.4043C11.8937 10.3457 11.1455 11.0939 10.2041 11.1895L10 11.2002H9.23047V12ZM3.76953 11.2002L3.66699 11.1953C3.1963 11.1474 2.82198 10.7726 2.77441 10.3018L2.76953 10.2002V3.7998H2C1.44771 3.7998 1 4.24752 1 4.7998V12C1.00011 12.5522 1.44778 13 2 13H7.23047C7.78256 12.9998 8.23036 12.5521 8.23047 12V11.2002H3.76953ZM4.76953 1C4.21725 1 3.76953 1.44772 3.76953 2V10.2002H10C10.5521 10.2 10.9999 9.75229 11 9.2002V2C11 1.44781 10.5521 1.00016 10 1H4.76953Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
+              </svg>
+            </span>
+            <span class="icon-check">
+              <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 4.5L4 8L11.5 0.5" stroke="black" stroke-width="1.21" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="tooltip" id="tooltip">Copied!</span>
           </button>
-          <div class="tooltip" id="tooltip">Copied!</div>
         </div>
       </div>
       <img class="bio-character" src="../bio2.svg" alt="">
@@ -380,9 +406,18 @@
         <div class="footer-email">
           <span id="footer-email-text">eusarapinto@gmail.com</span>
           <button class="footer-copy-btn" id="footer-copy-btn" aria-label="Copy email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            <span class="icon-copy">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23047 12L9.21973 12.2041C9.12421 13.1455 8.37594 13.8937 7.43457 13.9893L7.23047 14H2L1.7959 13.9893C0.854402 13.8938 0.106283 13.1456 0.0107422 12.2041L0 12V4.7998C0 3.69524 0.895431 2.7998 2 2.7998H2.76953V2C2.76953 0.895431 3.66496 1.28851e-07 4.76953 0H10L10.2041 0.0107422C11.2126 0.113139 12 0.964449 12 2V9.2002L11.9893 9.4043C11.8937 10.3457 11.1455 11.0939 10.2041 11.1895L10 11.2002H9.23047V12ZM3.76953 11.2002L3.66699 11.1953C3.1963 11.1474 2.82198 10.7726 2.77441 10.3018L2.76953 10.2002V3.7998H2C1.44771 3.7998 1 4.24752 1 4.7998V12C1.00011 12.5522 1.44778 13 2 13H7.23047C7.78256 12.9998 8.23036 12.5521 8.23047 12V11.2002H3.76953ZM4.76953 1C4.21725 1 3.76953 1.44772 3.76953 2V10.2002H10C10.5521 10.2 10.9999 9.75229 11 9.2002V2C11 1.44781 10.5521 1.00016 10 1H4.76953Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
+              </svg>
+            </span>
+            <span class="icon-check">
+              <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 4.5L4 8L11.5 0.5" stroke="black" stroke-width="1.21" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
           </button>
-          <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
         </div>
       </div>
 
@@ -410,24 +445,32 @@
       document.getElementById('mobile-menu').classList.remove('open');
     });
 
-    // copy email
-    document.getElementById('copy-btn').addEventListener('click', () => {
-      const email = document.getElementById('email-text').textContent;
-      navigator.clipboard.writeText(email).then(() => {
-        const tooltip = document.getElementById('tooltip');
-        tooltip.classList.add('visible');
-        setTimeout(() => tooltip.classList.remove('visible'), 2000);
-      });
-    });
+    // copy email (icon + tooltip swap, held for 3s)
+    function setupCopyButton(btnId, textId, tooltipId) {
+      const btn = document.getElementById(btnId);
+      const tooltip = document.getElementById(tooltipId);
+      let resetTimer;
 
-    document.getElementById('footer-copy-btn').addEventListener('click', () => {
-      const email = document.getElementById('footer-email-text').textContent;
-      navigator.clipboard.writeText(email).then(() => {
-        const t = document.getElementById('footer-tooltip');
-        t.classList.add('visible');
-        setTimeout(() => t.classList.remove('visible'), 2000);
+      btn.addEventListener('click', () => {
+        const email = document.getElementById(textId).textContent;
+        navigator.clipboard.writeText(email).then(() => {
+          clearTimeout(resetTimer);
+
+          btn.classList.add('copied');
+          btn.setAttribute('aria-label', 'Copied!');
+          tooltip.classList.add('visible');
+
+          resetTimer = setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.setAttribute('aria-label', 'Copy email');
+            tooltip.classList.remove('visible');
+          }, 3000);
+        });
       });
-    });
+    }
+
+    setupCopyButton('copy-btn', 'email-text', 'tooltip');
+    setupCopyButton('footer-copy-btn', 'footer-email-text', 'footer-tooltip');
   </script>
 
 </body>

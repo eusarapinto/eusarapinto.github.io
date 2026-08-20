@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enough Julia — Eu Sarapinto</title>
+  <title>Bio / Contact — Eu Sarapinto</title>
   <meta name="description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Eu Sarapinto">
@@ -40,6 +40,7 @@
     html { font-size: 16px; }
     body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
+    /* ── HEADER ── */
     header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--gray); }
     @media (max-width: 1100px) { header { padding: 24px 40px; } }
@@ -54,8 +55,9 @@
     nav a:hover { color: var(--red); }
     nav a.active { color: var(--red); font-weight: 800; }
 
+    /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; transition: all 0.3s; }
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
@@ -64,75 +66,129 @@
     .mobile-menu-close svg { width: 22px; height: 22px; }
     @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
 
+    /* ── BIO CONTENT ── */
     main { flex: 1; }
 
-    .cv-wrapper {
-      padding: 80px 150px 0 calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+    .bio-wrapper {
+      padding: 80px 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
     }
-    @media (max-width: 1100px) { .cv-wrapper { padding: 60px 40px 0; } }
-    @media (max-width: 600px) { .cv-wrapper { padding: 40px 24px 0; } }
 
-    .cv-section { margin-bottom: 40px; }
-    .cv-section:last-child { margin-bottom: 24px; }
+    @media (max-width: 1100px) {
+      .bio-wrapper { padding: 60px 40px; }
+    }
 
-    .cv-section-title {
+    @media (max-width: 600px) {
+      .bio-wrapper { padding: 40px 24px; }
+    }
+
+    .bio-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--black);
+    }
+
+    @media (max-width: 600px) {
+      .bio-text { font-size: 18px; }
+    }
+
+    .bio-text .highlight {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* ── EMAIL COMPONENT ── */
+    .contact-illustrations {
+      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+      display: flex;
+      align-items: flex-start;
+      gap: 80px;
+    }
+
+    @media (max-width: 1100px) { .contact-illustrations { padding: 0 40px 60px; gap: 60px; } }
+    @media (max-width: 600px) { .contact-illustrations { padding: 0 24px 40px; gap: 40px; } }
+
+    .contact-wrapper { flex-shrink: 0; }
+
+    .bio-character {
+      width: 90px;
+      height: auto;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) { .bio-character { width: 70px; } }
+
+    .contact-label {
       font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid-gray);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--gray);
+      margin-bottom: 12px;
     }
 
-    .cv-entries { display: flex; flex-direction: column; gap: 20px; }
-
-    .cv-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
-
-    .cv-entry-body { flex: 1; min-width: 0; }
-
-    .cv-entry-title {
+    .email-component {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--black);
-      margin-bottom: 3px;
+      position: relative;
     }
 
-    .cv-entry-sub {
-      font-size: 0.78rem;
-      color: var(--mid-gray);
-      line-height: 1.5;
-    }
-
-    .cv-entry-sub em { font-style: italic; }
-
-    .cv-entry-year {
-      font-size: 0.78rem;
-      color: var(--mid-gray);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .illustrations {
-      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+    .email-copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--black);
       display: flex;
-      gap: 24px;
-      align-items: flex-end;
-      justify-content: center;
+      align-items: center;
+      padding: 0;
+      transition: color 0.2s;
     }
 
-    .illustrations img {
-      width: 120px;
-      height: auto;
-      display: block;
-      flex-shrink: 0;
+    .email-copy-btn:hover { color: var(--red); }
+    .email-copy-btn svg { width: 16px; height: 16px; }
+
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
     }
 
-    @media (max-width: 1100px) { .illustrations { padding: 0 40px 60px; gap: 16px; } .illustrations img { width: 90px; } }
-    @media (max-width: 600px) { .illustrations { padding: 0 24px 40px; gap: 10px; flex-wrap: wrap; justify-content: center; } .illustrations img { width: 70px; } .illustrations img.hide-mobile { display: none !important; } }
+    .tooltip.visible { opacity: 1; }
 
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--black);
+    }
+
+    /* ── FOOTER ── */
 
     /* ── FOOTER ── */
     footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
@@ -193,18 +249,11 @@
 
     .footer-copy-btn {
       background: none; border: none; cursor: pointer; padding: 0;
-      color: var(--black); display: flex; align-items: center; justify-content: center;
-      width: 12px; height: 14px;
-      position: relative;
+      color: var(--black); display: flex; align-items: center;
       transition: color 0.2s; flex-shrink: 0;
     }
     .footer-copy-btn:hover { color: var(--red); }
-    .footer-copy-btn svg { width: 16px; height: auto; display: block; }
-    .footer-copy-btn .icon-copy svg { width: 12px; height: 14px; }
-    .footer-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
-    .footer-copy-btn .icon-check { display: none; }
-    .footer-copy-btn.copied .icon-copy { display: none; }
-    .footer-copy-btn.copied .icon-check { display: block; }
+    .footer-copy-btn svg { width: 16px; height: 16px; }
 
     .footer-tooltip {
       position: absolute;
@@ -249,93 +298,6 @@
       color: var(--mid-gray);
       letter-spacing: 0.03em;
     }
-
-    /* ── ENOUGH JULIA ── */
-    .ej {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 72px 24px 96px;
-    }
-    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
-
-    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
-    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
-
-    .ej-count { display: flex; gap: 48px; margin-bottom: 56px; }
-    @media (max-width: 600px) { .ej-count { gap: 14px; margin-bottom: 32px; } }
-
-    .ej-unit { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-
-    .ej-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--black);
-      font-variant-numeric: tabular-nums;
-    }
-    @media (max-width: 600px) { .ej-num { font-size: 1.75rem; } }
-
-    .ej-lbl {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-    }
-
-    .ej-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 24px;
-      max-width: 100%;
-      text-wrap: balance;
-    }
-    @media (max-width: 600px) {
-      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
-      .ej-lbl { font-size: 0.6rem; letter-spacing: 0.06em; }
-      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
-      .ej-body br { display: none; }
-    }
-
-    .ej-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--black);
-      max-width: 1000px;
-      margin-bottom: 40px;
-    }
-
-    /* ── BUTTON ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      height: 43px;
-      padding: 0 16px;
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: var(--red); }
   </style>
 </head>
 <body>
@@ -346,8 +308,8 @@
     </a>
     <nav>
       <a href="/">Home</a>
-      <a href="/enough-julia" class="active">Enough Julia</a>
-      <a href="/bio">Bio / Contact</a>
+      <a href="/enough-julia">Enough Julia</a>
+      <a href="/bio" class="active">Bio / Contact</a>
       <a href="/cv">CV</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -362,26 +324,32 @@
       </svg>
     </button>
     <a href="/">Home</a>
-    <a href="/enough-julia" class="active">Enough Julia</a>
-    <a href="/bio">Bio / Contact</a>
+    <a href="/enough-julia">Enough Julia</a>
+    <a href="/bio" class="active">Bio / Contact</a>
     <a href="/cv">CV</a>
   </div>
 
-
-  <main class="ej">
-    <img class="ej-spot" src="../ej-spot.png" alt="">
-
-    <div class="ej-count" id="ej-count">
-      <div class="ej-unit"><span class="ej-num" id="ej-d">00</span><span class="ej-lbl">Days</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-h">00</span><span class="ej-lbl">Hours</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-m">00</span><span class="ej-lbl">Minutes</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-s">00</span><span class="ej-lbl">Seconds</span></div>
+  <main>
+    <div class="bio-wrapper">
+      <p class="bio-text">
+        Born in 1993 in <span class="highlight">Porto, Portugal</span>, holding a pencil in her hand straight out of the womb, <span class="highlight">Sara</span> started drawing everywhere she should not have, compulsively. The hospital walls, the birth certificate, the nurse's face. Eventually calmed down when the frontal lobe kicked in, and studied <span class="highlight">Fine Arts</span> and <span class="highlight">Design</span>. Currently works as a <span class="highlight">Product Designer</span>, not only because it pays the bills but because she actually likes it. Whenever the corporate job doesn't knock her out, she likes to produce drawings that she sometimes calls <span class="highlight">illustrations</span> and other times <span class="highlight">comics</span>, because she is not sure of the difference. She absolutely wrote this herself in the third person.
+      </p>
     </div>
 
-    <h1 class="ej-title" id="ej-title">I am cooking a new comic strip.</h1>
-    <p class="ej-body" id="ej-body">I set this timer to finish it. Whether that counts as doing something or just avoiding it is unclear. <br>Come back at zero to see if it worked.</p>
+    <div class="contact-illustrations">
+      <div class="contact-wrapper">
+        <p class="contact-label">Talk to me at</p>
+        <div class="email-component">
+          <span id="email-text">eusarapinto@gmail.com</span>
+          <button class="email-copy-btn" id="copy-btn" aria-label="Copy email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+          <div class="tooltip" id="tooltip">Copied!</div>
+        </div>
+      </div>
+      <img class="bio-character" src="../bio2.svg" alt="">
+    </div>
 
-    <a class="btn" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>Go back to comics</a>
   </main>
 
   <footer>
@@ -412,18 +380,9 @@
         <div class="footer-email">
           <span id="footer-email-text">eusarapinto@gmail.com</span>
           <button class="footer-copy-btn" id="footer-copy-btn" aria-label="Copy email">
-            <span class="icon-copy">
-              <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23047 12L9.21973 12.2041C9.12421 13.1455 8.37594 13.8937 7.43457 13.9893L7.23047 14H2L1.7959 13.9893C0.854402 13.8938 0.106283 13.1456 0.0107422 12.2041L0 12V4.7998C0 3.69524 0.895431 2.7998 2 2.7998H2.76953V2C2.76953 0.895431 3.66496 1.28851e-07 4.76953 0H10L10.2041 0.0107422C11.2126 0.113139 12 0.964449 12 2V9.2002L11.9893 9.4043C11.8937 10.3457 11.1455 11.0939 10.2041 11.1895L10 11.2002H9.23047V12ZM3.76953 11.2002L3.66699 11.1953C3.1963 11.1474 2.82198 10.7726 2.77441 10.3018L2.76953 10.2002V3.7998H2C1.44771 3.7998 1 4.24752 1 4.7998V12C1.00011 12.5522 1.44778 13 2 13H7.23047C7.78256 12.9998 8.23036 12.5521 8.23047 12V11.2002H3.76953ZM4.76953 1C4.21725 1 3.76953 1.44772 3.76953 2V10.2002H10C10.5521 10.2 10.9999 9.75229 11 9.2002V2C11 1.44781 10.5521 1.00016 10 1H4.76953Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
-              </svg>
-            </span>
-            <span class="icon-check">
-              <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.5 4.5L4 8L11.5 0.5" stroke="black" stroke-width="1.21" stroke-linecap="round"/>
-              </svg>
-            </span>
-            <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
+          <span class="footer-tooltip" id="footer-tooltip">Copied!</span>
         </div>
       </div>
 
@@ -438,9 +397,12 @@
   </footer>
 
   <script>
+    // header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
     });
+
+    // hamburger
     document.getElementById('hamburger').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.add('open');
     });
@@ -448,50 +410,24 @@
       document.getElementById('mobile-menu').classList.remove('open');
     });
 
-    // ── countdown to 30 Sep, 23:59 Portugal (WEST, UTC+1) ──
-    const TARGET = new Date('2026-09-30T23:59:00+01:00');
-    const pad = n => String(n).padStart(2, '0');
-
-    function tick() {
-      const diff = TARGET - new Date();
-      if (diff <= 0) {
-        ['ej-d','ej-h','ej-m','ej-s'].forEach(id => document.getElementById(id).textContent = '00');
-        document.getElementById('ej-title').textContent = 'Time is up.';
-        document.getElementById('ej-body').innerHTML = 'Go look at the grid and find out whether it worked.';
-        clearInterval(timer);
-        return;
-      }
-      const s = Math.floor(diff / 1000);
-      document.getElementById('ej-d').textContent = pad(Math.floor(s / 86400));
-      document.getElementById('ej-h').textContent = pad(Math.floor(s / 3600) % 24);
-      document.getElementById('ej-m').textContent = pad(Math.floor(s / 60) % 60);
-      document.getElementById('ej-s').textContent = pad(s % 60);
-    }
-    tick();
-    const timer = setInterval(tick, 1000);
-
-    (function setupFooterCopyButton() {
-      const btn = document.getElementById('footer-copy-btn');
-      const tooltip = document.getElementById('footer-tooltip');
-      let resetTimer;
-
-      btn.addEventListener('click', () => {
-        const email = document.getElementById('footer-email-text').textContent;
-        navigator.clipboard.writeText(email).then(() => {
-          clearTimeout(resetTimer);
-
-          btn.classList.add('copied');
-          btn.setAttribute('aria-label', 'Copied!');
-          tooltip.classList.add('visible');
-
-          resetTimer = setTimeout(() => {
-            btn.classList.remove('copied');
-            btn.setAttribute('aria-label', 'Copy email');
-            tooltip.classList.remove('visible');
-          }, 3000);
-        });
+    // copy email
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const email = document.getElementById('email-text').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        const tooltip = document.getElementById('tooltip');
+        tooltip.classList.add('visible');
+        setTimeout(() => tooltip.classList.remove('visible'), 2000);
       });
-    })();
+    });
+
+    document.getElementById('footer-copy-btn').addEventListener('click', () => {
+      const email = document.getElementById('footer-email-text').textContent;
+      navigator.clipboard.writeText(email).then(() => {
+        const t = document.getElementById('footer-tooltip');
+        t.classList.add('visible');
+        setTimeout(() => t.classList.remove('visible'), 2000);
+      });
+    });
   </script>
 
 </body>
