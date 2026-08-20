@@ -146,6 +146,10 @@
     }
 
     .email-copy-btn {
+      --hit-pad: 6px;
+      box-sizing: content-box;
+      width: 12px;
+      height: 14px;
       background: none;
       border: none;
       cursor: pointer;
@@ -153,15 +157,20 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 12px;
-      height: 14px;
       flex-shrink: 0;
-      padding: 0;
+      padding: var(--hit-pad);
+      margin: calc(-1 * var(--hit-pad));
       position: relative;
-      transition: color 0.2s;
+      transition: color 0.2s, background 0.15s;
+      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      .email-copy-btn { --hit-pad: 16px; }
     }
 
-    .email-copy-btn:hover { color: var(--red); }
+    @media (hover: hover) {
+      .email-copy-btn:hover { color: var(--red); }
+    }
     .email-copy-btn svg { width: 16px; height: auto; display: block; }
     .email-copy-btn .icon-copy svg { width: 12px; height: 14px; }
     .email-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
@@ -171,7 +180,7 @@
 
     .tooltip {
       position: absolute;
-      bottom: calc(100% + 8px);
+      bottom: calc(100% - var(--hit-pad) + 8px);
       left: 50%;
       transform: translateX(-50%);
       background: var(--black);
@@ -258,13 +267,23 @@
     }
 
     .footer-copy-btn {
-      background: none; border: none; cursor: pointer; padding: 0;
-      color: var(--black); display: flex; align-items: center; justify-content: center;
+      --hit-pad: 6px;
+      box-sizing: content-box;
       width: 12px; height: 14px;
+      background: none; border: none; cursor: pointer;
+      color: var(--black); display: flex; align-items: center; justify-content: center;
       position: relative;
-      transition: color 0.2s; flex-shrink: 0;
+      padding: var(--hit-pad);
+      margin: calc(-1 * var(--hit-pad));
+      transition: color 0.2s, background 0.15s; flex-shrink: 0;
+      border-radius: 6px;
     }
-    .footer-copy-btn:hover { color: var(--red); }
+    @media (max-width: 600px) {
+      .footer-copy-btn { --hit-pad: 16px; }
+    }
+    @media (hover: hover) {
+      .footer-copy-btn:hover { color: var(--red); }
+    }
     .footer-copy-btn svg { width: 16px; height: auto; display: block; }
     .footer-copy-btn .icon-copy svg { width: 12px; height: 14px; }
     .footer-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
@@ -274,7 +293,7 @@
 
     .footer-tooltip {
       position: absolute;
-      bottom: calc(100% + 8px);
+      bottom: calc(100% - var(--hit-pad) + 8px);
       left: 50%;
       transform: translateX(-50%);
       background: var(--black);
@@ -458,6 +477,7 @@
 
           btn.classList.add('copied');
           btn.setAttribute('aria-label', 'Copied!');
+          btn.blur();
           tooltip.classList.add('visible');
 
           resetTimer = setTimeout(() => {
