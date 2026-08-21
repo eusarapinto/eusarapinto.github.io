@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enough Julia — Eu Sarapinto</title>
-  <meta name="description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
+  <title>Privacy Policy — Eu Sarapinto</title>
+  <meta name="description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Eu Sarapinto">
-  <meta property="og:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
-  <meta property="og:url" content="https://eusarapinto.github.io">
-  <meta property="og:image" content="https://eusarapinto.github.io/og-image.png">
+  <meta property="og:title" content="Privacy Policy — Eu Sarapinto">
+  <meta property="og:description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
+  <meta property="og:url" content="https://eusarapinto.com/privacy-policy">
+  <meta property="og:image" content="https://eusarapinto.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Eu Sarapinto">
-  <meta name="twitter:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
-  <meta name="twitter:image" content="https://eusarapinto.github.io/og-image.png">
+  <meta name="twitter:title" content="Privacy Policy — Eu Sarapinto">
+  <meta name="twitter:description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
+  <meta name="twitter:image" content="https://eusarapinto.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
   <link rel="apple-touch-icon" href="../juliafavicon.svg">
   <style>
@@ -27,19 +27,12 @@
       font-style: normal;
       font-display: swap;
     }
-    @font-face {
-      font-family: 'Fraunces';
-      src: url('../fonts/Frauncesvariablefont.woff2') format('woff2');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666; --red: #ff0000; }
     html { font-size: 16px; }
     body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
+    /* ── HEADER ── */
     header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--gray); }
     @media (max-width: 1100px) { header { padding: 24px 40px; } }
@@ -54,8 +47,9 @@
     nav a:hover { color: var(--red); }
     nav a.active { color: var(--red); font-weight: 800; }
 
+    /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; transition: all 0.3s; }
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
@@ -64,75 +58,89 @@
     .mobile-menu-close svg { width: 22px; height: 22px; }
     @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
 
+    /* ── POLICY CONTENT (same left offset as the bio / CV grid) ── */
     main { flex: 1; }
 
-    .cv-wrapper {
-      padding: 80px 150px 0 calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+    .policy-wrapper {
+      padding: 80px 150px 100px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
     }
-    @media (max-width: 1100px) { .cv-wrapper { padding: 60px 40px 0; } }
-    @media (max-width: 600px) { .cv-wrapper { padding: 40px 24px 0; } }
+    @media (max-width: 1100px) { .policy-wrapper { padding: 60px 40px 80px; } }
+    @media (max-width: 600px) { .policy-wrapper { padding: 40px 24px 60px; } }
 
-    .cv-section { margin-bottom: 40px; }
-    .cv-section:last-child { margin-bottom: 24px; }
+    /* same "biggest text" style as Enough Julia's .ej-title */
+    .policy-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 600px) { .policy-title-row { margin-bottom: 36px; } }
 
-    .cv-section-title {
+    .policy-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      max-width: 100%;
+      text-wrap: balance;
+    }
+    @media (max-width: 600px) { .policy-title { font-size: 1.5rem; } }
+
+    .policy-updated {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--mid-gray);
+      white-space: nowrap;
+    }
+
+    .policy-section { margin-bottom: 40px; }
+    .policy-section:last-child { margin-bottom: 0; }
+
+    /* same small-caps subsection label style as .footer-col-title / .ej-lbl */
+    .policy-heading {
       font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid-gray);
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--gray);
+      margin-bottom: 20px;
     }
 
-    .cv-entries { display: flex; flex-direction: column; gap: 20px; }
-
-    .cv-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
-
-    .cv-entry-body { flex: 1; min-width: 0; }
-
-    .cv-entry-title {
+    .policy-text {
+      font-family: 'Inter', sans-serif;
       font-size: 0.9rem;
-      font-weight: 500;
+      font-weight: 300;
+      line-height: 1.75;
       color: var(--black);
-      margin-bottom: 3px;
+      margin-bottom: 16px;
     }
+    .policy-text:last-child { margin-bottom: 0; }
 
-    .cv-entry-sub {
-      font-size: 0.78rem;
-      color: var(--mid-gray);
-      line-height: 1.5;
+    .policy-text a {
+      color: var(--red);
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
+    .policy-text a:hover { color: var(--black); }
 
-    .cv-entry-sub em { font-style: italic; }
-
-    .cv-entry-year {
-      font-size: 0.78rem;
-      color: var(--mid-gray);
-      white-space: nowrap;
-      flex-shrink: 0;
+    /* inline email + copy icon, same look as the footer's, sitting on the same line as the sentence */
+    .policy-email-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--black);
+      vertical-align: baseline;
     }
-
-    .illustrations {
-      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
-      display: flex;
-      gap: 24px;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .illustrations img {
-      width: 120px;
-      height: auto;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 1100px) { .illustrations { padding: 0 40px 60px; gap: 16px; } .illustrations img { width: 90px; } }
-    @media (max-width: 600px) { .illustrations { padding: 0 24px 40px; gap: 10px; flex-wrap: wrap; justify-content: center; } .illustrations img { width: 70px; } .illustrations img.hide-mobile { display: none !important; } }
-
 
     /* ── FOOTER ── */
     footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
@@ -177,8 +185,6 @@
       color: var(--black);
       margin-bottom: 14px;
     }
-
-    .footer-soon { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--black); }
 
     .footer-email {
       display: inline-flex;
@@ -262,7 +268,10 @@
     .footer-bottom-privacy { color: var(--black); font-weight: 500; text-decoration: none; }
     @media (hover: hover) { .footer-bottom-privacy:hover { color: var(--red); } }
 
-    /* ── NEWSLETTER FORM (footer) ── */
+    /* ── NEWSLETTER FORM (footer) — input matches .lb-share-field, button reuses .btn ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 43px; padding: 0 16px; background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    @media (hover: hover) { .btn:hover { background: var(--red); } }
+
     .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; }
     .newsletter-input {
       flex: 1 1 140px;
@@ -303,93 +312,6 @@
       position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
       overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
-
-    /* ── ENOUGH JULIA ── */
-    .ej {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 72px 24px 96px;
-    }
-    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
-
-    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
-    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
-
-    .ej-count { display: flex; gap: 48px; margin-bottom: 56px; }
-    @media (max-width: 600px) { .ej-count { gap: 14px; margin-bottom: 32px; } }
-
-    .ej-unit { display: flex; flex-direction: column; align-items: center; gap: 8px; }
-
-    .ej-num {
-      font-family: 'Inter', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: var(--black);
-      font-variant-numeric: tabular-nums;
-    }
-    @media (max-width: 600px) { .ej-num { font-size: 1.75rem; } }
-
-    .ej-lbl {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-    }
-
-    .ej-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 24px;
-      max-width: 100%;
-      text-wrap: balance;
-    }
-    @media (max-width: 600px) {
-      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
-      .ej-lbl { font-size: 0.6rem; letter-spacing: 0.06em; }
-      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
-      .ej-body br { display: none; }
-    }
-
-    .ej-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--black);
-      max-width: 1000px;
-      margin-bottom: 40px;
-    }
-
-    /* ── BUTTON ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      height: 43px;
-      padding: 0 16px;
-      background: var(--black);
-      color: var(--white);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: var(--red); }
   </style>
 </head>
 <body>
@@ -400,7 +322,7 @@
     </a>
     <nav>
       <a href="/">Home</a>
-      <a href="/enough-julia" class="active">Enough Julia</a>
+      <a href="/enough-julia">Enough Julia</a>
       <a href="/bio">Bio / Contact</a>
       <a href="/cv">CV</a>
     </nav>
@@ -416,26 +338,57 @@
       </svg>
     </button>
     <a href="/">Home</a>
-    <a href="/enough-julia" class="active">Enough Julia</a>
+    <a href="/enough-julia">Enough Julia</a>
     <a href="/bio">Bio / Contact</a>
     <a href="/cv">CV</a>
   </div>
 
+  <main>
+    <div class="policy-wrapper">
+      <div class="policy-title-row">
+        <h1 class="policy-title">Privacy policy</h1>
+        <p class="policy-updated">Last updated 21 Aug 2026</p>
+      </div>
 
-  <main class="ej">
-    <img class="ej-spot" src="../ej-spot.png" alt="">
+      <section class="policy-section">
+        <h2 class="policy-heading">The short version</h2>
+        <p class="policy-text">This site doesn't use cookies, doesn't track you, and doesn't run any analytics or ads. Everything this site needs to run (the code, the fonts, the icons, all of it) is self-hosted. Nothing loads from third-party servers, so no outside company sees you just for visiting. The only personal data I ever collect is your email address, and only if you choose to sign up for the newsletter. Everything below just explains that in more detail.</p>
+      </section>
 
-    <div class="ej-count" id="ej-count">
-      <div class="ej-unit"><span class="ej-num" id="ej-d">00</span><span class="ej-lbl">Days</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-h">00</span><span class="ej-lbl">Hours</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-m">00</span><span class="ej-lbl">Minutes</span></div>
-      <div class="ej-unit"><span class="ej-num" id="ej-s">00</span><span class="ej-lbl">Seconds</span></div>
+      <section class="policy-section">
+        <h2 class="policy-heading">Where this site lives</h2>
+        <p class="policy-text">This site is hosted on GitHub Pages. That means when you visit, GitHub's servers do the actual work of sending the pages to your browser, and like any web host, GitHub can log basic technical information to keep things running and secure, including IP addresses. This happens for every website on the internet: a server can't send a page to your browser without knowing where to send it. I don't have access to those server logs myself, that's GitHub's side of things, used for security and to keep the service working. If you want the details on what they collect, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a> covers it.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">The newsletter</h2>
+        <p class="policy-text">If you sign up for the newsletter, I collect one thing: your email address. That's it. I use it for exactly one purpose: sending you the newsletter. Nothing else, and I'll never sell it or hand it to anyone for advertising. The legal basis for this is your consent: you give it by entering your email and subscribing. You can take it back whenever you like.</p>
+        <p class="policy-text">The emails are sent through Buttondown, an email service that handles the sending and stores the subscriber list on my behalf. Buttondown is based in the US, so your email address is stored there. That transfer is covered by Standard Contractual Clauses (the standard legal mechanism for sending data outside the EU), and Buttondown only ever processes your email to provide the service, they don't collect anything beyond what you give them. You can read <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener">Buttondown's privacy policy</a> and <a href="https://buttondown.com/legal/gdpr-eu-compliance" target="_blank" rel="noopener">data processing agreement</a> if you want the full picture.</p>
+        <p class="policy-text">You can unsubscribe at any time using the link at the bottom of every email. You can also ask for a copy of your data or ask me to delete it entirely, and that gets handled right away too. I keep your email on the list until you unsubscribe or ask me to remove it, and no longer. And if you ever feel I've mishandled your data, you have the right to complain to your data protection authority. In Portugal, that's the <a href="https://www.cnpd.pt/" target="_blank" rel="noopener">CNPD</a> (Comissão Nacional de Proteção de Dados).</p>
+      </section>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">Questions?</h2>
+        <p class="policy-text">Email me at
+          <span class="policy-email-inline">
+            <span id="policy-email-text">hi@eusarapinto.com</span>
+            <button class="footer-copy-btn" id="policy-copy-btn" aria-label="Copy email">
+              <span class="icon-copy">
+                <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23047 12L9.21973 12.2041C9.12421 13.1455 8.37594 13.8937 7.43457 13.9893L7.23047 14H2L1.7959 13.9893C0.854402 13.8938 0.106283 13.1456 0.0107422 12.2041L0 12V4.7998C0 3.69524 0.895431 2.7998 2 2.7998H2.76953V2C2.76953 0.895431 3.66496 1.28851e-07 4.76953 0H10L10.2041 0.0107422C11.2126 0.113139 12 0.964449 12 2V9.2002L11.9893 9.4043C11.8937 10.3457 11.1455 11.0939 10.2041 11.1895L10 11.2002H9.23047V12ZM3.76953 11.2002L3.66699 11.1953C3.1963 11.1474 2.82198 10.7726 2.77441 10.3018L2.76953 10.2002V3.7998H2C1.44771 3.7998 1 4.24752 1 4.7998V12C1.00011 12.5522 1.44778 13 2 13H7.23047C7.78256 12.9998 8.23036 12.5521 8.23047 12V11.2002H3.76953ZM4.76953 1C4.21725 1 3.76953 1.44772 3.76953 2V10.2002H10C10.5521 10.2 10.9999 9.75229 11 9.2002V2C11 1.44781 10.5521 1.00016 10 1H4.76953Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
+                </svg>
+              </span>
+              <span class="icon-check">
+                <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.5 4.5L4 8L11.5 0.5" stroke="black" stroke-width="1.21" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="footer-tooltip" id="policy-tooltip">Copied!</span>
+            </button>
+          </span>
+        </p>
+      </section>
     </div>
-
-    <h1 class="ej-title" id="ej-title">I am cooking a new comic strip.</h1>
-    <p class="ej-body" id="ej-body">I set this timer to finish it. Whether that counts as doing something or just avoiding it is unclear. <br>Come back at zero to see if it worked.</p>
-
-    <a class="btn" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>Go back to comics</a>
   </main>
 
   <footer>
@@ -498,9 +451,12 @@
   </footer>
 
   <script>
+    // header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
     });
+
+    // hamburger
     document.getElementById('hamburger').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.add('open');
     });
@@ -508,35 +464,14 @@
       document.getElementById('mobile-menu').classList.remove('open');
     });
 
-    // ── countdown to 30 Sep, 23:59 Portugal (WEST, UTC+1) ──
-    const TARGET = new Date('2026-09-30T23:59:00+01:00');
-    const pad = n => String(n).padStart(2, '0');
-
-    function tick() {
-      const diff = TARGET - new Date();
-      if (diff <= 0) {
-        ['ej-d','ej-h','ej-m','ej-s'].forEach(id => document.getElementById(id).textContent = '00');
-        document.getElementById('ej-title').textContent = 'Time is up.';
-        document.getElementById('ej-body').innerHTML = 'Go look at the grid and find out whether it worked.';
-        clearInterval(timer);
-        return;
-      }
-      const s = Math.floor(diff / 1000);
-      document.getElementById('ej-d').textContent = pad(Math.floor(s / 86400));
-      document.getElementById('ej-h').textContent = pad(Math.floor(s / 3600) % 24);
-      document.getElementById('ej-m').textContent = pad(Math.floor(s / 60) % 60);
-      document.getElementById('ej-s').textContent = pad(s % 60);
-    }
-    tick();
-    const timer = setInterval(tick, 1000);
-
-    (function setupFooterCopyButton() {
-      const btn = document.getElementById('footer-copy-btn');
-      const tooltip = document.getElementById('footer-tooltip');
+    // copy email (icon + tooltip swap, held for 3s)
+    function setupCopyButton(btnId, textId, tooltipId) {
+      const btn = document.getElementById(btnId);
+      const tooltip = document.getElementById(tooltipId);
       let resetTimer;
 
       btn.addEventListener('click', () => {
-        const email = document.getElementById('footer-email-text').textContent;
+        const email = document.getElementById(textId).textContent;
         navigator.clipboard.writeText(email).then(() => {
           clearTimeout(resetTimer);
 
@@ -552,7 +487,10 @@
           }, 3000);
         });
       });
-    })();
+    }
+
+    setupCopyButton('policy-copy-btn', 'policy-email-text', 'policy-tooltip');
+    setupCopyButton('footer-copy-btn', 'footer-email-text', 'footer-tooltip');
   </script>
 
 </body>
