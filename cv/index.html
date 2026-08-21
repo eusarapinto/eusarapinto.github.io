@@ -281,6 +281,8 @@
     }
     .newsletter-input::placeholder { color: var(--mid-gray); }
     .newsletter-input:focus { outline: none; border-color: var(--black); }
+    /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
+    @media (max-width: 600px) { .newsletter-input { font-size: 16px; } }
     .newsletter-submit { flex-shrink: 0; }
     .newsletter-status {
       margin-top: 10px;
