@@ -347,7 +347,7 @@
     </a>
     <nav>
       <a href="/">Home</a>
-      <a href="/enoughjulia">Enough Julia</a>
+      <a href="/enough-julia">Enough Julia</a>
       <a href="/bio">Bio / Contact</a>
       <a href="/newsletter" class="active">Newsletter</a>
       <a href="/cv">CV</a>
@@ -364,7 +364,7 @@
       </svg>
     </button>
     <a href="/">Home</a>
-    <a href="/enoughjulia">Enough Julia</a>
+    <a href="/enough-julia">Enough Julia</a>
     <a href="/bio">Bio / Contact</a>
     <a href="/newsletter" class="active">Newsletter</a>
     <a href="/cv">CV</a>
@@ -374,7 +374,7 @@
     <img class="ej-spot" src="../newsletter-spot.png" alt="">
 
     <h1 class="ej-title">Join my Newsletter</h1>
-    <p class="ej-body">Stay in the loop with occasional updates, comics and illustrations. <br>I promise not to overwhelm your inbox.</p>
+    <p class="ej-body">Stay in the loop with occasional updates, comics and illustrations. <br>No inbox overwhelm, I promise.</p>
 
     <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="ej-newsletter-form" id="newsletter-form" novalidate>
       <label for="newsletter-email" class="sr-only">Enter your email</label>
@@ -384,7 +384,7 @@
       </div>
       <button type="submit" class="btn newsletter-submit">Join</button>
     </form>
-    <p class="newsletter-attribution">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</p>
+    <p class="newsletter-attribution">Check how data is handled in the <a href="/privacy-policy" class="privacy-link">Privacy Policy</a>.</p>
   </main>
 
   <footer>
@@ -394,7 +394,7 @@
         <p class="footer-col-title">Site links</p>
         <div class="footer-list">
           <a href="/">Home</a>
-          <a href="/enoughjulia">Enough Julia</a>
+          <a href="/enough-julia">Enough Julia</a>
           <a href="/bio">Bio / Contact</a>
           <a href="/newsletter">Newsletter</a>
           <a href="/cv">CV</a>
@@ -442,12 +442,12 @@
           </div>
           <button type="submit" class="btn newsletter-submit">Join</button>
         </form>
-        <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacypolicy" class="privacy-link">Privacy Policy</a></span></p>
+        <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacy-policy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacy-policy" class="privacy-link">Privacy Policy</a></span></p>
       </div>
 
     </div>
 
-    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics. | <a href="/privacypolicy" class="footer-bottom-privacy">Privacy Policy</a></span></div>
+    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics. | <a href="/privacy-policy" class="footer-bottom-privacy">Privacy Policy</a></span></div>
   </footer>
 
   <script>

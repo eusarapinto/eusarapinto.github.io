@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Newsletter — Eu Sarapinto</title>
-  <meta name="description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
+  <title>Enough Julia — Eu Sarapinto</title>
+  <meta name="description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Newsletter — Eu Sarapinto">
-  <meta property="og:description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
-  <meta property="og:url" content="https://eusarapinto.com/newsletter">
+  <meta property="og:title" content="Eu Sarapinto">
+  <meta property="og:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
+  <meta property="og:url" content="https://eusarapinto.com/enoughjulia">
   <meta property="og:image" content="https://eusarapinto.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Newsletter — Eu Sarapinto">
-  <meta name="twitter:description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
+  <meta name="twitter:title" content="Eu Sarapinto">
+  <meta name="twitter:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
   <meta name="twitter:image" content="https://eusarapinto.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
   <link rel="apple-touch-icon" href="../juliafavicon.svg">
@@ -27,13 +27,19 @@
       font-style: normal;
       font-display: swap;
     }
+    @font-face {
+      font-family: 'Fraunces';
+      src: url('../fonts/Frauncesvariablefont.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666; --red: #ff0000; }
     html { font-size: 16px; }
     body { font-optical-sizing: auto; font-family: 'Inter', sans-serif; font-weight: 300; background: var(--white); color: var(--black); min-height: 100vh; display: flex; flex-direction: column; }
 
-    /* ── HEADER ── */
     header { display: flex; align-items: center; justify-content: space-between; padding: 28px 150px; position: sticky; top: 0; background: var(--white); z-index: 100; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
     header.scrolled { border-color: var(--gray); }
     @media (max-width: 1100px) { header { padding: 24px 40px; } }
@@ -58,74 +64,205 @@
     .mobile-menu-close svg { width: 22px; height: 22px; }
     @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
 
-    /* ── NEWSLETTER (shares the Enough Julia / 404 layout) ── */
     main { flex: 1; }
 
-    .ej {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 72px 24px 96px;
+    .cv-wrapper {
+      padding: 80px 150px 0 calc(150px + (100vw - 300px - 48px) / 5 + 12px);
     }
-    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
+    @media (max-width: 1100px) { .cv-wrapper { padding: 60px 40px 0; } }
+    @media (max-width: 600px) { .cv-wrapper { padding: 40px 24px 0; } }
 
-    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
-    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
+    .cv-section { margin-bottom: 40px; }
+    .cv-section:last-child { margin-bottom: 24px; }
 
-    .ej-title {
+    .cv-section-title {
       font-family: 'Inter', sans-serif;
-      font-size: 3rem;
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      color: var(--black);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
       margin-bottom: 24px;
-      max-width: 100%;
-      text-wrap: balance;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--gray);
     }
 
-    .ej-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 1.6;
+    .cv-entries { display: flex; flex-direction: column; gap: 20px; }
+
+    .cv-entry { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
+
+    .cv-entry-body { flex: 1; min-width: 0; }
+
+    .cv-entry-title {
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--black);
-      max-width: 1000px;
-      margin-bottom: 40px;
+      margin-bottom: 3px;
+    }
+
+    .cv-entry-sub {
+      font-size: 0.78rem;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+
+    .cv-entry-sub em { font-style: italic; }
+
+    .cv-entry-year {
+      font-size: 0.78rem;
+      color: var(--mid-gray);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .illustrations {
+      padding: 0 150px 80px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .illustrations img {
+      width: 120px;
+      height: auto;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 1100px) { .illustrations { padding: 0 40px 60px; gap: 16px; } .illustrations img { width: 90px; } }
+    @media (max-width: 600px) { .illustrations { padding: 0 24px 40px; gap: 10px; flex-wrap: wrap; justify-content: center; } .illustrations img { width: 70px; } .illustrations img.hide-mobile { display: none !important; } }
+
+
+    /* ── FOOTER ── */
+    footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
+    @media (max-width: 1100px) { footer { padding: 56px 40px 0; } }
+    @media (max-width: 600px) { footer { padding: 40px 24px 0; } }
+
+    .footer-cols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      padding-bottom: 48px;
+    }
+    @media (max-width: 900px) { .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; } }
+    @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; } }
+
+    .footer-col-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 20px;
+    }
+
+    .footer-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+    .footer-list a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-list a:hover { color: var(--red); }
+
+    .footer-note {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .footer-soon { font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 400; color: var(--black); }
+
+    .footer-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--black);
+      position: relative;
+    }
+
+    .footer-copy-btn {
+      --hit-pad: 6px;
+      box-sizing: content-box;
+      width: 12px; height: 14px;
+      background: none; border: none; cursor: pointer;
+      color: var(--black); display: flex; align-items: center; justify-content: center;
+      position: relative;
+      padding: var(--hit-pad);
+      margin: calc(-1 * var(--hit-pad));
+      transition: color 0.2s, background 0.15s; flex-shrink: 0;
+      border-radius: 6px;
+    }
+    @media (max-width: 600px) {
+      .footer-copy-btn { --hit-pad: 16px; }
+    }
+    @media (hover: hover) {
+      .footer-copy-btn:hover { color: var(--red); }
+    }
+    .footer-copy-btn svg { width: 16px; height: auto; display: block; }
+    .footer-copy-btn .icon-copy svg { width: 12px; height: 14px; }
+    .footer-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
+    .footer-copy-btn .icon-check { display: none; }
+    .footer-copy-btn.copied .icon-copy { display: none; }
+    .footer-copy-btn.copied .icon-check { display: block; }
+
+    .footer-tooltip {
+      position: absolute;
+      bottom: calc(100% - var(--hit-pad) + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .footer-tooltip.visible { opacity: 1; }
+    .footer-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid transparent;
+      border-top-color: var(--black);
     }
 
     @media (max-width: 600px) {
-      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
-      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
-      .ej-body br { display: none; }
+      .footer-sep { display: none; }
+      .footer-break { display: block; margin-top: 4px; }
     }
 
-    /* form on the page itself (wider than the footer's, still same input/button) */
-    .ej-newsletter-form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
+    .footer-bottom {
+      border-top: 1px solid var(--gray);
+      padding: 24px 0 32px;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: var(--mid-gray);
+      letter-spacing: 0.03em;
     }
+    .footer-bottom-privacy { color: var(--black); font-weight: 500; text-decoration: none; }
+    @media (hover: hover) { .footer-bottom-privacy:hover { color: var(--red); } }
 
-    /* smallprint under the page's own form: left-aligned to match the
-       input's placeholder start. Needs the same width: 100%; max-width: 420px
-       as .ej-newsletter-form itself — without it the paragraph just shrinks
-       to fit its text and gets centered as a box by .ej's align-items,
-       which makes text-align: left a no-op. */
-    .ej .newsletter-attribution { width: 100%; max-width: 420px; margin: 10px auto 0; text-align: left; }
-
-    /* ── BUTTON ── */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 43px; padding: 0 16px; background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
-    @media (hover: hover) { .btn:hover { background: var(--red); } }
-
-    /* ── NEWSLETTER FORM (shared by page form + footer form) ── */
+    /* ── NEWSLETTER FORM (footer) ── */
     .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; }
     .newsletter-field { position: relative; flex: 999 1 140px; min-width: 0; }
     .newsletter-input {
@@ -212,131 +349,93 @@
       overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
     }
 
-    /* ── FOOTER ── */
-    footer { padding: 64px 150px 0; border-top: 1px solid var(--gray); }
-    @media (max-width: 1100px) { footer { padding: 56px 40px 0; } }
-    @media (max-width: 600px) { footer { padding: 40px 24px 0; } }
-
-    .footer-cols {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      padding-bottom: 48px;
+    /* ── ENOUGH JULIA ── */
+    .ej {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 72px 24px 96px;
     }
-    @media (max-width: 900px) { .footer-cols { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; } }
-    @media (max-width: 560px) { .footer-cols { grid-template-columns: 1fr; gap: 32px; padding-bottom: 36px; } }
+    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
 
-    .footer-col-title {
+    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
+    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
+
+    .ej-count { display: flex; gap: 48px; margin-bottom: 56px; }
+    @media (max-width: 600px) { .ej-count { gap: 14px; margin-bottom: 32px; } }
+
+    .ej-unit { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .ej-num {
+      font-family: 'Inter', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--black);
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 600px) { .ej-num { font-size: 1.75rem; } }
+
+    .ej-lbl {
       font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mid-gray);
-      margin-bottom: 20px;
     }
 
-    .footer-list { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-
-    .footer-list a {
+    .ej-title {
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 400;
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       color: var(--black);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-list a:hover { color: var(--red); }
-
-    .footer-note {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--black);
-      margin-bottom: 14px;
-    }
-
-    .footer-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: var(--black);
-      position: relative;
-    }
-
-    .footer-copy-btn {
-      --hit-pad: 6px;
-      box-sizing: content-box;
-      width: 12px; height: 14px;
-      background: none; border: none; cursor: pointer;
-      color: var(--black); display: flex; align-items: center; justify-content: center;
-      position: relative;
-      padding: var(--hit-pad);
-      margin: calc(-1 * var(--hit-pad));
-      transition: color 0.2s, background 0.15s; flex-shrink: 0;
-      border-radius: 6px;
+      margin-bottom: 24px;
+      max-width: 100%;
+      text-wrap: balance;
     }
     @media (max-width: 600px) {
-      .footer-copy-btn { --hit-pad: 16px; }
+      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
+      .ej-lbl { font-size: 0.6rem; letter-spacing: 0.06em; }
+      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
+      .ej-body br { display: none; }
     }
-    @media (hover: hover) {
-      .footer-copy-btn:hover { color: var(--red); }
-    }
-    .footer-copy-btn svg { width: 16px; height: auto; display: block; }
-    .footer-copy-btn .icon-copy svg { width: 12px; height: 14px; }
-    .footer-copy-btn .icon-check svg { width: 11px; height: 7.5px; }
-    .footer-copy-btn .icon-check { display: none; }
-    .footer-copy-btn.copied .icon-copy { display: none; }
-    .footer-copy-btn.copied .icon-check { display: block; }
 
-    .footer-tooltip {
-      position: absolute;
-      bottom: calc(100% - var(--hit-pad) + 8px);
-      left: 50%;
-      transform: translateX(-50%);
+    .ej-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--black);
+      max-width: 1000px;
+      margin-bottom: 40px;
+    }
+
+    /* ── BUTTON ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 43px;
+      padding: 0 16px;
       background: var(--black);
       color: var(--white);
       font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      padding: 5px 10px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
     }
-    .footer-tooltip.visible { opacity: 1; }
-    .footer-tooltip::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 5px solid transparent;
-      border-top-color: var(--black);
-    }
-
-    @media (max-width: 600px) {
-      .footer-sep { display: none; }
-      .footer-break { display: block; margin-top: 4px; }
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--gray);
-      padding: 24px 0 32px;
-      text-align: center;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: var(--mid-gray);
-      letter-spacing: 0.03em;
-    }
-    .footer-bottom-privacy { color: var(--black); font-weight: 500; text-decoration: none; }
-    @media (hover: hover) { .footer-bottom-privacy:hover { color: var(--red); } }
+    @media (hover: hover) { .btn:hover { background: var(--red); } }
   </style>
 </head>
 <body>
@@ -347,9 +446,9 @@
     </a>
     <nav>
       <a href="/">Home</a>
-      <a href="/enoughjulia">Enough Julia</a>
+      <a href="/enoughjulia" class="active">Enough Julia</a>
       <a href="/bio">Bio / Contact</a>
-      <a href="/newsletter" class="active">Newsletter</a>
+      <a href="/newsletter">Newsletter</a>
       <a href="/cv">CV</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -364,27 +463,27 @@
       </svg>
     </button>
     <a href="/">Home</a>
-    <a href="/enoughjulia">Enough Julia</a>
+    <a href="/enoughjulia" class="active">Enough Julia</a>
     <a href="/bio">Bio / Contact</a>
-    <a href="/newsletter" class="active">Newsletter</a>
+    <a href="/newsletter">Newsletter</a>
     <a href="/cv">CV</a>
   </div>
 
+
   <main class="ej">
-    <img class="ej-spot" src="../newsletter-spot.png" alt="">
+    <img class="ej-spot" src="../ej-spot.png" alt="">
 
-    <h1 class="ej-title">Join my Newsletter</h1>
-    <p class="ej-body">Stay in the loop with occasional updates, comics and illustrations. <br>I promise not to overwhelm your inbox.</p>
+    <div class="ej-count" id="ej-count">
+      <div class="ej-unit"><span class="ej-num" id="ej-d">00</span><span class="ej-lbl">Days</span></div>
+      <div class="ej-unit"><span class="ej-num" id="ej-h">00</span><span class="ej-lbl">Hours</span></div>
+      <div class="ej-unit"><span class="ej-num" id="ej-m">00</span><span class="ej-lbl">Minutes</span></div>
+      <div class="ej-unit"><span class="ej-num" id="ej-s">00</span><span class="ej-lbl">Seconds</span></div>
+    </div>
 
-    <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="ej-newsletter-form" id="newsletter-form" novalidate>
-      <label for="newsletter-email" class="sr-only">Enter your email</label>
-      <div class="newsletter-field">
-        <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
-        <span class="field-tooltip" id="newsletter-email-tooltip"></span>
-      </div>
-      <button type="submit" class="btn newsletter-submit">Join</button>
-    </form>
-    <p class="newsletter-attribution">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</p>
+    <h1 class="ej-title" id="ej-title">I am cooking a new comic strip.</h1>
+    <p class="ej-body" id="ej-body">I set this timer to finish it. Whether that counts as doing something or just avoiding it is unclear. <br>Come back at zero to see if it worked.</p>
+
+    <a class="btn" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;flex-shrink:0"><line x1="20" y1="12" x2="4" y2="12"/><polyline points="10 6 4 12 10 18"/></svg>Go back to comics</a>
   </main>
 
   <footer>
@@ -434,11 +533,11 @@
       <div class="footer-col">
         <p class="footer-col-title">Newsletter</p>
         <p class="footer-note"><span class="txt-full">Join my newsletter to receive updates.</span><span class="txt-short">Join to receive updates.</span></p>
-        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="footer-newsletter-form" novalidate>
-          <label for="footer-newsletter-email" class="sr-only">Enter your email</label>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="newsletter-form" novalidate>
+          <label for="newsletter-email" class="sr-only">Enter your email</label>
           <div class="newsletter-field">
-            <input type="email" name="email" id="footer-newsletter-email" class="newsletter-input" placeholder="Your email" required>
-            <span class="field-tooltip" id="footer-newsletter-email-tooltip"></span>
+            <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
+            <span class="field-tooltip" id="newsletter-email-tooltip"></span>
           </div>
           <button type="submit" class="btn newsletter-submit">Join</button>
         </form>
@@ -461,14 +560,35 @@
       document.getElementById('mobile-menu').classList.remove('open');
     });
 
-    // copy email (icon + tooltip swap, held for 3s)
-    function setupCopyButton(btnId, textId, tooltipId) {
-      const btn = document.getElementById(btnId);
-      const tooltip = document.getElementById(tooltipId);
+    // ── countdown to 30 Sep, 23:59 Portugal (WEST, UTC+1) ──
+    const TARGET = new Date('2026-09-30T23:59:00+01:00');
+    const pad = n => String(n).padStart(2, '0');
+
+    function tick() {
+      const diff = TARGET - new Date();
+      if (diff <= 0) {
+        ['ej-d','ej-h','ej-m','ej-s'].forEach(id => document.getElementById(id).textContent = '00');
+        document.getElementById('ej-title').textContent = 'Time is up.';
+        document.getElementById('ej-body').innerHTML = 'Go look at the grid and find out whether it worked.';
+        clearInterval(timer);
+        return;
+      }
+      const s = Math.floor(diff / 1000);
+      document.getElementById('ej-d').textContent = pad(Math.floor(s / 86400));
+      document.getElementById('ej-h').textContent = pad(Math.floor(s / 3600) % 24);
+      document.getElementById('ej-m').textContent = pad(Math.floor(s / 60) % 60);
+      document.getElementById('ej-s').textContent = pad(s % 60);
+    }
+    tick();
+    const timer = setInterval(tick, 1000);
+
+    (function setupFooterCopyButton() {
+      const btn = document.getElementById('footer-copy-btn');
+      const tooltip = document.getElementById('footer-tooltip');
       let resetTimer;
 
       btn.addEventListener('click', () => {
-        const email = document.getElementById(textId).textContent;
+        const email = document.getElementById('footer-email-text').textContent;
         navigator.clipboard.writeText(email).then(() => {
           clearTimeout(resetTimer);
 
@@ -484,9 +604,7 @@
           }, 3000);
         });
       });
-    }
-
-    setupCopyButton('footer-copy-btn', 'footer-email-text', 'footer-tooltip');
+    })();
 
     // custom on-brand replacement for the browser's native validation bubble
     function setupNewsletterValidation(formId, inputId, tooltipId) {
@@ -526,7 +644,6 @@
     }
 
     setupNewsletterValidation('newsletter-form', 'newsletter-email', 'newsletter-email-tooltip');
-    setupNewsletterValidation('footer-newsletter-form', 'footer-newsletter-email', 'footer-newsletter-email-tooltip');
   </script>
 
 </body>

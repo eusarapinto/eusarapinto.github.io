@@ -8,14 +8,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Eu Sarapinto">
   <meta property="og:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
-  <meta property="og:url" content="https://eusarapinto.com">
-  <meta property="og:image" content="https://eusarapinto.com/og-image.png">
+  <meta property="og:url" content="https://eusarapinto.github.io">
+  <meta property="og:image" content="https://eusarapinto.github.io/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Eu Sarapinto">
   <meta name="twitter:description" content="Welcome to Eu Sarapinto's corner of the internet. A grid of original comics, illustrations and visual thoughts, completely free of annoying algorithms.">
-  <meta name="twitter:image" content="https://eusarapinto.com/og-image.png">
+  <meta name="twitter:image" content="https://eusarapinto.github.io/og-image.png">
   <link rel="icon" type="image/svg+xml" href="juliafavicon.svg">
   <link rel="apple-touch-icon" href="juliafavicon.svg">
   <style>
@@ -663,32 +663,6 @@
     .footer-bottom-privacy { color: var(--black); font-weight: 500; text-decoration: none; }
     @media (hover: hover) { .footer-bottom-privacy:hover { color: var(--red); } }
   </style>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "name": "Eu Sarapinto",
-        "alternateName": "eusarapinto",
-        "url": "https://eusarapinto.com"
-      },
-      {
-        "@type": "Person",
-        "name": "Eu Sarapinto",
-        "alternateName": "eusarapinto",
-        "url": "https://eusarapinto.com",
-        "image": "https://eusarapinto.com/og-image.png",
-        "sameAs": [
-          "https://instagram.com/eusarapinto",
-          "https://www.tiktok.com/@eusarapinto",
-          "https://www.facebook.com/eusarapinto/",
-          "https://eusarapinto.tumblr.com/"
-        ]
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
 
@@ -698,7 +672,7 @@
     </a>
     <nav>
       <a href="/" class="active">Home</a>
-      <a href="/enoughjulia">Enough Julia</a>
+      <a href="/enough-julia">Enough Julia</a>
       <a href="/bio">Bio / Contact</a>
       <a href="/newsletter">Newsletter</a>
       <a href="/cv">CV</a>
@@ -715,7 +689,7 @@
       </svg>
     </button>
     <a href="/" class="active">Home</a>
-    <a href="/enoughjulia">Enough Julia</a>
+    <a href="/enough-julia">Enough Julia</a>
     <a href="/bio">Bio / Contact</a>
     <a href="/newsletter">Newsletter</a>
     <a href="/cv">CV</a>
@@ -847,7 +821,7 @@
         <p class="footer-col-title">Site links</p>
         <div class="footer-list">
           <a href="/">Home</a>
-          <a href="/enoughjulia">Enough Julia</a>
+          <a href="/enough-julia">Enough Julia</a>
           <a href="/bio">Bio / Contact</a>
           <a href="/newsletter">Newsletter</a>
           <a href="/cv">CV</a>
@@ -895,12 +869,12 @@
           </div>
           <button type="submit" class="btn newsletter-submit">Join</button>
         </form>
-        <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacypolicy" class="privacy-link">Privacy Policy</a></span></p>
+        <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacy-policy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacy-policy" class="privacy-link">Privacy Policy</a></span></p>
       </div>
 
     </div>
 
-    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics. | <a href="/privacypolicy" class="footer-bottom-privacy">Privacy Policy</a></span></div>
+    <div class="footer-bottom">© 2026 Eu sarapinto<span class="footer-sep"> | </span><span class="footer-break">No cookies, no tracking, just comics. | <a href="/privacy-policy" class="footer-bottom-privacy">Privacy Policy</a></span></div>
   </footer>
 
   <script>

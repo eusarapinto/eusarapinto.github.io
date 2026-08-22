@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Newsletter — Eu Sarapinto</title>
-  <meta name="description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
+  <title>Privacy Policy — Eu Sarapinto</title>
+  <meta name="description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Newsletter — Eu Sarapinto">
-  <meta property="og:description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
-  <meta property="og:url" content="https://eusarapinto.com/newsletter">
+  <meta property="og:title" content="Privacy Policy — Eu Sarapinto">
+  <meta property="og:description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
+  <meta property="og:url" content="https://eusarapinto.com/privacypolicy">
   <meta property="og:image" content="https://eusarapinto.com/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Newsletter — Eu Sarapinto">
-  <meta name="twitter:description" content="Join Eu Sarapinto's newsletter for occasional updates, comics and illustrations. No inbox overwhelm, promise.">
+  <meta name="twitter:title" content="Privacy Policy — Eu Sarapinto">
+  <meta name="twitter:description" content="How Eu Sarapinto's site handles data: no cookies, no tracking, no analytics. The only thing ever collected is your email, and only if you sign up for the newsletter.">
   <meta name="twitter:image" content="https://eusarapinto.com/og-image.png">
   <link rel="icon" type="image/svg+xml" href="../juliafavicon.svg">
   <link rel="apple-touch-icon" href="../juliafavicon.svg">
@@ -27,7 +27,6 @@
       font-style: normal;
       font-display: swap;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --black: #111; --white: #fff; --gray: #e8e8e4; --light-gray: #f4f4f2; --mid-gray: #666; --red: #ff0000; }
     html { font-size: 16px; }
@@ -48,8 +47,9 @@
     nav a:hover { color: var(--red); }
     nav a.active { color: var(--red); font-weight: 800; }
 
+    /* hamburger */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--black); border-radius: 999px; transition: all 0.3s; }
     .mobile-menu { display: none; position: fixed; inset: 0; background: var(--white); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
     .mobile-menu.open { display: flex; }
     .mobile-menu a { font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--black); text-decoration: none; }
@@ -58,158 +58,92 @@
     .mobile-menu-close svg { width: 22px; height: 22px; }
     @media (max-width: 600px) { nav { display: none; } .hamburger { display: flex; } }
 
-    /* ── NEWSLETTER (shares the Enough Julia / 404 layout) ── */
+    /* ── POLICY CONTENT (same left offset as the bio / CV grid) ── */
     main { flex: 1; }
 
-    .ej {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 72px 24px 96px;
+    .policy-wrapper {
+      padding: 80px 150px 100px calc(150px + (100vw - 300px - 48px) / 5 + 12px);
     }
-    @media (max-width: 600px) { .ej { padding: 40px 20px 56px; } }
+    @media (max-width: 1100px) { .policy-wrapper { padding: 60px 40px 80px; } }
+    @media (max-width: 600px) { .policy-wrapper { padding: 40px 24px 60px; } }
 
-    .ej-spot { height: 140px; width: auto; display: block; margin-bottom: 48px; }
-    @media (max-width: 600px) { .ej-spot { height: 92px; margin-bottom: 28px; } }
+    /* spot illustration above the title (same idea as the other pages' hero spots) */
+    .policy-spot { height: 220px; width: auto; display: block; margin-bottom: 36px; }
+    @media (max-width: 600px) { .policy-spot { height: 145px; margin-bottom: 24px; } }
 
-    .ej-title {
+    /* same "biggest text" style as Enough Julia's .ej-title */
+    .policy-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px 24px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 600px) { .policy-title-row { margin-bottom: 36px; } }
+
+    .policy-title {
       font-family: 'Inter', sans-serif;
       font-size: 3rem;
       font-weight: 700;
       line-height: 1.15;
       letter-spacing: -0.02em;
       color: var(--black);
-      margin-bottom: 24px;
       max-width: 100%;
       text-wrap: balance;
     }
+    @media (max-width: 600px) { .policy-title { font-size: 1.5rem; } }
 
-    .ej-body {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--black);
-      max-width: 1000px;
-      margin-bottom: 40px;
-    }
-
-    @media (max-width: 600px) {
-      .ej-title { font-size: 1.5rem; margin-bottom: 18px; }
-      .ej-body { font-size: 0.88rem; margin-bottom: 32px; }
-      .ej-body br { display: none; }
-    }
-
-    /* form on the page itself (wider than the footer's, still same input/button) */
-    .ej-newsletter-form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    /* smallprint under the page's own form: left-aligned to match the
-       input's placeholder start. Needs the same width: 100%; max-width: 420px
-       as .ej-newsletter-form itself — without it the paragraph just shrinks
-       to fit its text and gets centered as a box by .ej's align-items,
-       which makes text-align: left a no-op. */
-    .ej .newsletter-attribution { width: 100%; max-width: 420px; margin: 10px auto 0; text-align: left; }
-
-    /* ── BUTTON ── */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 43px; padding: 0 16px; background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
-    @media (hover: hover) { .btn:hover { background: var(--red); } }
-
-    /* ── NEWSLETTER FORM (shared by page form + footer form) ── */
-    .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; }
-    .newsletter-field { position: relative; flex: 999 1 140px; min-width: 0; }
-    .newsletter-input {
-      width: 100%;
-      height: 43px;
-      padding: 0 16px;
-      border: 1px solid var(--gray);
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 400;
-      color: var(--black);
-      background: var(--white);
-    }
-    .newsletter-input::placeholder { color: var(--mid-gray); }
-    .newsletter-input:focus { outline: none; border-color: var(--black); }
-    .newsletter-input.invalid { border-color: var(--red); }
-    /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
-    @media (max-width: 600px) { .newsletter-input { font-size: 16px; } }
-    .newsletter-submit { flex: 1 1 auto; }
-
-    /* on-brand replacement for the browser's native "please fill out this
-       field" validation bubble */
-    .field-tooltip {
-      position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      background: var(--black);
-      color: var(--white);
+    .policy-updated {
       font-family: 'Inter', sans-serif;
       font-size: 0.78rem;
-      letter-spacing: 0.04em;
-      padding: 6px 10px;
-      border-radius: 4px;
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(-4px);
-      pointer-events: none;
-      transition: opacity 0.15s, transform 0.15s;
-      z-index: 5;
-    }
-    .field-tooltip.visible { opacity: 1; transform: translateY(0); }
-    .field-tooltip::before {
-      content: '';
-      position: absolute;
-      bottom: 100%;
-      left: 16px;
-      border: 5px solid transparent;
-      border-bottom-color: var(--black);
-    }
-    .newsletter-status {
-      margin-top: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 400;
+      font-weight: 300;
+      letter-spacing: 0.03em;
       color: var(--mid-gray);
-      min-height: 1em;
-    }
-    .newsletter-status.error { color: var(--red); }
-    .footer-cols .footer-col:last-child { container-type: inline-size; }
-    .footer-note .txt-short, .newsletter-attribution .txt-short { display: none; }
-    @container (max-width: 280px) {
-      .footer-note .txt-full { display: none; }
-      .footer-note .txt-short { display: inline; }
-    }
-    @container (max-width: 260px) {
-      .newsletter-attribution .txt-full { display: none; }
-      .newsletter-attribution .txt-short { display: inline; }
+      white-space: nowrap;
     }
 
-    .newsletter-attribution {
-      margin-top: 10px;
-      padding-left: 17px;
+    .policy-section { margin-bottom: 40px; }
+    .policy-section:last-child { margin-bottom: 0; }
+
+    /* same small-caps subsection label style as .footer-col-title / .ej-lbl */
+    .policy-heading {
       font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
-      font-weight: 300;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       color: var(--mid-gray);
+      margin-bottom: 20px;
     }
-    .newsletter-attribution a { font-family: 'Inter', sans-serif; color: var(--mid-gray); text-decoration: none; }
-    .newsletter-attribution a.privacy-link { color: var(--black); font-weight: 500; }
-    @media (hover: hover) { .newsletter-attribution a.privacy-link:hover { color: var(--red); } }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+
+    .policy-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+    .policy-text:last-child { margin-bottom: 0; }
+
+    .policy-text a {
+      color: var(--red);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .policy-text a:hover { color: var(--black); }
+
+    /* inline email + copy icon, same look as the footer's, sitting on the same line as the sentence */
+    .policy-email-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      color: var(--black);
+      vertical-align: baseline;
     }
 
     /* ── FOOTER ── */
@@ -337,6 +271,96 @@
     }
     .footer-bottom-privacy { color: var(--black); font-weight: 500; text-decoration: none; }
     @media (hover: hover) { .footer-bottom-privacy:hover { color: var(--red); } }
+
+    /* ── NEWSLETTER FORM (footer) — input matches .lb-share-field, button reuses .btn ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 43px; padding: 0 16px; background: var(--black); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; transition: background 0.2s; }
+    @media (hover: hover) { .btn:hover { background: var(--red); } }
+
+    .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; }
+    .newsletter-field { position: relative; flex: 999 1 140px; min-width: 0; }
+    .newsletter-input {
+      width: 100%;
+      height: 43px;
+      padding: 0 16px;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+    }
+    .newsletter-input::placeholder { color: var(--mid-gray); }
+    .newsletter-input:focus { outline: none; border-color: var(--black); }
+    .newsletter-input.invalid { border-color: var(--red); }
+    /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
+    @media (max-width: 600px) { .newsletter-input { font-size: 16px; } }
+    .newsletter-submit { flex: 1 1 auto; }
+
+    /* on-brand replacement for the browser's native "please fill out this
+       field" validation bubble */
+    .field-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 6px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.15s;
+      z-index: 5;
+    }
+    .field-tooltip.visible { opacity: 1; transform: translateY(0); }
+    .field-tooltip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 16px;
+      border: 5px solid transparent;
+      border-bottom-color: var(--black);
+    }
+    .newsletter-status {
+      margin-top: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--mid-gray);
+      min-height: 1em;
+    }
+    .newsletter-status.error { color: var(--red); }
+    .footer-cols .footer-col:last-child { container-type: inline-size; }
+    .footer-note .txt-short, .newsletter-attribution .txt-short { display: none; }
+    @container (max-width: 280px) {
+      .footer-note .txt-full { display: none; }
+      .footer-note .txt-short { display: inline; }
+    }
+    @container (max-width: 260px) {
+      .newsletter-attribution .txt-full { display: none; }
+      .newsletter-attribution .txt-short { display: inline; }
+    }
+
+    .newsletter-attribution {
+      margin-top: 10px;
+      padding-left: 17px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: var(--mid-gray);
+    }
+    .newsletter-attribution a { font-family: 'Inter', sans-serif; color: var(--mid-gray); text-decoration: none; }
+    .newsletter-attribution a.privacy-link { color: var(--black); font-weight: 500; }
+    @media (hover: hover) { .newsletter-attribution a.privacy-link:hover { color: var(--red); } }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
   </style>
 </head>
 <body>
@@ -349,7 +373,7 @@
       <a href="/">Home</a>
       <a href="/enoughjulia">Enough Julia</a>
       <a href="/bio">Bio / Contact</a>
-      <a href="/newsletter" class="active">Newsletter</a>
+      <a href="/newsletter">Newsletter</a>
       <a href="/cv">CV</a>
     </nav>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -366,25 +390,57 @@
     <a href="/">Home</a>
     <a href="/enoughjulia">Enough Julia</a>
     <a href="/bio">Bio / Contact</a>
-    <a href="/newsletter" class="active">Newsletter</a>
+    <a href="/newsletter">Newsletter</a>
     <a href="/cv">CV</a>
   </div>
 
-  <main class="ej">
-    <img class="ej-spot" src="../newsletter-spot.png" alt="">
-
-    <h1 class="ej-title">Join my Newsletter</h1>
-    <p class="ej-body">Stay in the loop with occasional updates, comics and illustrations. <br>I promise not to overwhelm your inbox.</p>
-
-    <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="ej-newsletter-form" id="newsletter-form" novalidate>
-      <label for="newsletter-email" class="sr-only">Enter your email</label>
-      <div class="newsletter-field">
-        <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
-        <span class="field-tooltip" id="newsletter-email-tooltip"></span>
+  <main>
+    <div class="policy-wrapper">
+      <img class="policy-spot" src="../privacy-spot.png" alt="">
+      <div class="policy-title-row">
+        <h1 class="policy-title">Privacy policy</h1>
+        <p class="policy-updated">Last updated 21 Aug 2026</p>
       </div>
-      <button type="submit" class="btn newsletter-submit">Join</button>
-    </form>
-    <p class="newsletter-attribution">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</p>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">The short version</h2>
+        <p class="policy-text">This site doesn't use cookies, doesn't track you, and doesn't run any analytics or ads. Everything this site needs to run (the code, the fonts, the icons, all of it) is self-hosted. Nothing loads from third-party servers, so no outside company sees you just for visiting. The only personal data I ever collect is your email address, and only if you choose to sign up for the newsletter. Everything below just explains that in more detail.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">Where this site lives</h2>
+        <p class="policy-text">This site is hosted on GitHub Pages. That means when you visit, GitHub's servers do the actual work of sending the pages to your browser, and like any web host, GitHub can log basic technical information to keep things running and secure, including IP addresses. This happens for every website on the internet: a server can't send a page to your browser without knowing where to send it. I don't have access to those server logs myself, that's GitHub's side of things, used for security and to keep the service working. If you want the details on what they collect, <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a> covers it.</p>
+      </section>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">The newsletter</h2>
+        <p class="policy-text">If you sign up for the newsletter, I collect one thing: your email address. That's it. I use it for exactly one purpose: sending you the newsletter. Nothing else, and I'll never sell it or hand it to anyone for advertising. The legal basis for this is your consent: you give it by entering your email and subscribing. You can take it back whenever you like.</p>
+        <p class="policy-text">The emails are sent through Buttondown, an email service that handles the sending and stores the subscriber list on my behalf. Buttondown is based in the US, so your email address is stored there. That transfer is covered by Standard Contractual Clauses (the standard legal mechanism for sending data outside the EU), and Buttondown only ever processes your email to provide the service, they don't collect anything beyond what you give them. You can read <a href="https://buttondown.com/legal/privacy" target="_blank" rel="noopener">Buttondown's privacy policy</a> and <a href="https://buttondown.com/legal/gdpr-eu-compliance" target="_blank" rel="noopener">data processing agreement</a> if you want the full picture.</p>
+        <p class="policy-text">You can unsubscribe at any time using the link at the bottom of every email. You can also ask for a copy of your data or ask me to delete it entirely, and that gets handled right away too. I keep your email on the list until you unsubscribe or ask me to remove it, and no longer. And if you ever feel I've mishandled your data, you have the right to complain to your data protection authority. In Portugal, that's the <a href="https://www.cnpd.pt/" target="_blank" rel="noopener">CNPD</a> (Comissão Nacional de Proteção de Dados).</p>
+      </section>
+
+      <section class="policy-section">
+        <h2 class="policy-heading">Questions?</h2>
+        <p class="policy-text">Email me at
+          <span class="policy-email-inline">
+            <span id="policy-email-text">hi@eusarapinto.com</span>
+            <button class="footer-copy-btn" id="policy-copy-btn" aria-label="Copy email">
+              <span class="icon-copy">
+                <svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.23047 12L9.21973 12.2041C9.12421 13.1455 8.37594 13.8937 7.43457 13.9893L7.23047 14H2L1.7959 13.9893C0.854402 13.8938 0.106283 13.1456 0.0107422 12.2041L0 12V4.7998C0 3.69524 0.895431 2.7998 2 2.7998H2.76953V2C2.76953 0.895431 3.66496 1.28851e-07 4.76953 0H10L10.2041 0.0107422C11.2126 0.113139 12 0.964449 12 2V9.2002L11.9893 9.4043C11.8937 10.3457 11.1455 11.0939 10.2041 11.1895L10 11.2002H9.23047V12ZM3.76953 11.2002L3.66699 11.1953C3.1963 11.1474 2.82198 10.7726 2.77441 10.3018L2.76953 10.2002V3.7998H2C1.44771 3.7998 1 4.24752 1 4.7998V12C1.00011 12.5522 1.44778 13 2 13H7.23047C7.78256 12.9998 8.23036 12.5521 8.23047 12V11.2002H3.76953ZM4.76953 1C4.21725 1 3.76953 1.44772 3.76953 2V10.2002H10C10.5521 10.2 10.9999 9.75229 11 9.2002V2C11 1.44781 10.5521 1.00016 10 1H4.76953Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
+                </svg>
+              </span>
+              <span class="icon-check">
+                <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0.5 4.5L4 8L11.5 0.5" stroke="black" stroke-width="1.21" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="footer-tooltip" id="policy-tooltip">Copied!</span>
+            </button>
+          </span>
+        </p>
+      </section>
+    </div>
   </main>
 
   <footer>
@@ -434,11 +490,11 @@
       <div class="footer-col">
         <p class="footer-col-title">Newsletter</p>
         <p class="footer-note"><span class="txt-full">Join my newsletter to receive updates.</span><span class="txt-short">Join to receive updates.</span></p>
-        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="footer-newsletter-form" novalidate>
-          <label for="footer-newsletter-email" class="sr-only">Enter your email</label>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="newsletter-form" novalidate>
+          <label for="newsletter-email" class="sr-only">Enter your email</label>
           <div class="newsletter-field">
-            <input type="email" name="email" id="footer-newsletter-email" class="newsletter-input" placeholder="Your email" required>
-            <span class="field-tooltip" id="footer-newsletter-email-tooltip"></span>
+            <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
+            <span class="field-tooltip" id="newsletter-email-tooltip"></span>
           </div>
           <button type="submit" class="btn newsletter-submit">Join</button>
         </form>
@@ -451,9 +507,12 @@
   </footer>
 
   <script>
+    // header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
     });
+
+    // hamburger
     document.getElementById('hamburger').addEventListener('click', () => {
       document.getElementById('mobile-menu').classList.add('open');
     });
@@ -486,6 +545,7 @@
       });
     }
 
+    setupCopyButton('policy-copy-btn', 'policy-email-text', 'policy-tooltip');
     setupCopyButton('footer-copy-btn', 'footer-email-text', 'footer-tooltip');
 
     // custom on-brand replacement for the browser's native validation bubble
@@ -526,7 +586,6 @@
     }
 
     setupNewsletterValidation('newsletter-form', 'newsletter-email', 'newsletter-email-tooltip');
-    setupNewsletterValidation('footer-newsletter-form', 'footer-newsletter-email', 'footer-newsletter-email-tooltip');
   </script>
 
 </body>
