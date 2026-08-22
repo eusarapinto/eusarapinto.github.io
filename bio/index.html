@@ -362,6 +362,19 @@
     /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
     @media (max-width: 600px) { .newsletter-input { font-size: 16px; } }
     .newsletter-submit { flex: 1 1 auto; }
+    .newsletter-submit .btn-spinner { display: none; }
+    .newsletter-submit.loading .btn-label { display: none; }
+    .newsletter-submit.loading .btn-spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: btn-spinner-spin 0.7s linear infinite;
+    }
+    .newsletter-submit:disabled { cursor: default; opacity: 0.75; }
+    @keyframes btn-spinner-spin { to { transform: rotate(360deg); } }
 
     /* on-brand replacement for the browser's native "please fill out this
        field" validation bubble */
@@ -545,7 +558,7 @@
             <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
             <span class="field-tooltip" id="newsletter-email-tooltip"></span>
           </div>
-          <button type="submit" class="btn newsletter-submit">Join</button>
+          <button type="submit" class="btn newsletter-submit"><span class="btn-label">Join</span><span class="btn-spinner" aria-hidden="true"></span></button>
         </form>
         <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacypolicy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacypolicy" class="privacy-link">Privacy Policy</a></span></p>
       </div>
@@ -602,6 +615,7 @@
       const form = document.getElementById(formId);
       const input = document.getElementById(inputId);
       const tip = document.getElementById(tooltipId);
+      const submitBtn = form ? form.querySelector('.newsletter-submit') : null;
       if (!form || !input || !tip) return;
 
       function showError(msg) {
@@ -612,6 +626,12 @@
       function hideError() {
         tip.classList.remove('visible');
         input.classList.remove('invalid');
+      }
+      function setLoading(isLoading) {
+        if (!submitBtn) return;
+        submitBtn.classList.toggle('loading', isLoading);
+        submitBtn.disabled = isLoading;
+        submitBtn.setAttribute('aria-busy', isLoading ? 'true' : 'false');
       }
 
       form.addEventListener('submit', (e) => {
@@ -627,11 +647,18 @@
           input.focus();
         } else {
           hideError();
+          setLoading(true);
         }
       });
 
       input.addEventListener('input', hideError);
       input.addEventListener('blur', hideError);
+
+      // if the page is restored from bfcache after a back navigation,
+      // make sure the button isn't stuck showing the spinner
+      window.addEventListener('pageshow', (e) => {
+        if (e.persisted) setLoading(false);
+      });
     }
 
     setupNewsletterValidation('newsletter-form', 'newsletter-email', 'newsletter-email-tooltip');
