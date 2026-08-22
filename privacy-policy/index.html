@@ -67,6 +67,10 @@
     @media (max-width: 1100px) { .policy-wrapper { padding: 60px 40px 80px; } }
     @media (max-width: 600px) { .policy-wrapper { padding: 40px 24px 60px; } }
 
+    /* spot illustration above the title (same idea as the other pages' hero spots) */
+    .policy-spot { height: 220px; width: auto; display: block; margin-bottom: 36px; }
+    @media (max-width: 600px) { .policy-spot { height: 145px; margin-bottom: 24px; } }
+
     /* same "biggest text" style as Enough Julia's .ej-title */
     .policy-title-row {
       display: flex;
@@ -273,9 +277,9 @@
     @media (hover: hover) { .btn:hover { background: var(--red); } }
 
     .newsletter-form { display: flex; flex-wrap: wrap; gap: 8px; }
+    .newsletter-field { position: relative; flex: 999 1 140px; min-width: 0; }
     .newsletter-input {
-      flex: 1 1 140px;
-      min-width: 0;
+      width: 100%;
       height: 43px;
       padding: 0 16px;
       border: 1px solid var(--gray);
@@ -288,9 +292,40 @@
     }
     .newsletter-input::placeholder { color: var(--mid-gray); }
     .newsletter-input:focus { outline: none; border-color: var(--black); }
+    .newsletter-input.invalid { border-color: var(--red); }
     /* iOS Safari auto-zooms on focus when an input's font-size is under 16px */
     @media (max-width: 600px) { .newsletter-input { font-size: 16px; } }
-    .newsletter-submit { flex-shrink: 0; }
+    .newsletter-submit { flex: 1 1 auto; }
+
+    /* on-brand replacement for the browser's native "please fill out this
+       field" validation bubble */
+    .field-tooltip {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      padding: 6px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(-4px);
+      pointer-events: none;
+      transition: opacity 0.15s, transform 0.15s;
+      z-index: 5;
+    }
+    .field-tooltip.visible { opacity: 1; transform: translateY(0); }
+    .field-tooltip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 16px;
+      border: 5px solid transparent;
+      border-bottom-color: var(--black);
+    }
     .newsletter-status {
       margin-top: 10px;
       font-family: 'Inter', sans-serif;
@@ -300,8 +335,20 @@
       min-height: 1em;
     }
     .newsletter-status.error { color: var(--red); }
+    .footer-cols .footer-col:last-child { container-type: inline-size; }
+    .footer-note .txt-short, .newsletter-attribution .txt-short { display: none; }
+    @container (max-width: 280px) {
+      .footer-note .txt-full { display: none; }
+      .footer-note .txt-short { display: inline; }
+    }
+    @container (max-width: 260px) {
+      .newsletter-attribution .txt-full { display: none; }
+      .newsletter-attribution .txt-short { display: inline; }
+    }
+
     .newsletter-attribution {
       margin-top: 10px;
+      padding-left: 17px;
       font-family: 'Inter', sans-serif;
       font-size: 0.68rem;
       font-weight: 300;
@@ -349,6 +396,7 @@
 
   <main>
     <div class="policy-wrapper">
+      <img class="policy-spot" src="../privacy-spot.png" alt="">
       <div class="policy-title-row">
         <h1 class="policy-title">Privacy policy</h1>
         <p class="policy-updated">Last updated 21 Aug 2026</p>
@@ -441,13 +489,16 @@
 
       <div class="footer-col">
         <p class="footer-col-title">Newsletter</p>
-        <p class="footer-note">Join my newsletter to receive updates.</p>
-        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="newsletter-form">
+        <p class="footer-note"><span class="txt-full">Join my newsletter to receive updates.</span><span class="txt-short">Join to receive updates.</span></p>
+        <form action="https://buttondown.com/api/emails/embed-subscribe/eusarapinto" method="post" class="newsletter-form" id="newsletter-form" novalidate>
           <label for="newsletter-email" class="sr-only">Enter your email</label>
-          <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
+          <div class="newsletter-field">
+            <input type="email" name="email" id="newsletter-email" class="newsletter-input" placeholder="Your email" required>
+            <span class="field-tooltip" id="newsletter-email-tooltip"></span>
+          </div>
           <button type="submit" class="btn newsletter-submit">Join</button>
         </form>
-        <p class="newsletter-attribution">Check how data is handled in the <a href="/privacy-policy" class="privacy-link">Privacy Policy</a>.</p>
+        <p class="newsletter-attribution"><span class="txt-full">Check how data is handled in the <a href="/privacy-policy" class="privacy-link">Privacy Policy</a>.</span><span class="txt-short">Check <a href="/privacy-policy" class="privacy-link">Privacy Policy</a></span></p>
       </div>
 
     </div>
@@ -496,6 +547,45 @@
 
     setupCopyButton('policy-copy-btn', 'policy-email-text', 'policy-tooltip');
     setupCopyButton('footer-copy-btn', 'footer-email-text', 'footer-tooltip');
+
+    // custom on-brand replacement for the browser's native validation bubble
+    function setupNewsletterValidation(formId, inputId, tooltipId) {
+      const form = document.getElementById(formId);
+      const input = document.getElementById(inputId);
+      const tip = document.getElementById(tooltipId);
+      if (!form || !input || !tip) return;
+
+      function showError(msg) {
+        tip.textContent = msg;
+        tip.classList.add('visible');
+        input.classList.add('invalid');
+      }
+      function hideError() {
+        tip.classList.remove('visible');
+        input.classList.remove('invalid');
+      }
+
+      form.addEventListener('submit', (e) => {
+        if (!input.checkValidity()) {
+          e.preventDefault();
+          if (input.validity.valueMissing) {
+            showError('Please enter your email.');
+          } else if (input.validity.typeMismatch) {
+            showError('Please enter a valid email.');
+          } else {
+            showError('Please check your email.');
+          }
+          input.focus();
+        } else {
+          hideError();
+        }
+      });
+
+      input.addEventListener('input', hideError);
+      input.addEventListener('blur', hideError);
+    }
+
+    setupNewsletterValidation('newsletter-form', 'newsletter-email', 'newsletter-email-tooltip');
   </script>
 
 </body>
